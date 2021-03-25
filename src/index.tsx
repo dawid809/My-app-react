@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import App from './App';
-import Main from './components/main/Main';
+import MainPage from './components/mainPage/MainPage';
 import {Reset} from 'styled-reset';
 
 
@@ -9,7 +8,7 @@ import {Reset} from 'styled-reset';
 ReactDOM.render(
   <>
   <Reset></Reset>
-  <Main></Main>
+  <MainPage></MainPage>
   </>,
   document.getElementById('root')
 );
