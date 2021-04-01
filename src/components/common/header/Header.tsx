@@ -7,27 +7,25 @@ import {Colors} from '../../../styledHelpers/Colors';
 import {ExpandedMenu} from '../header/ExpandedMenu'
 
 const InnerWrapper = styled.div`
-width: 1200px;
 background: ${Colors.white};
 display: flex;
 justify-content: space-between;
 align-items:center;
 height:30px;
-border: 1px solid;
 padding: 10px;
-box-shadow: 0px 2px 5px 0px #9E9696;
+box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+margin-bottom: 5px;
 `;
 
 const LeftIcons = styled.div`
 margin-left:20px;
-width: 13%;
 display: flex;
 justify-content: space-between;
 `;
 
 const RightIcons = styled.div`
 margin-right:20px;
-width:10%;
+
 display: flex;
 justify-content: space-between;
 `;
@@ -73,7 +71,7 @@ export const Header : FC = () => {
   };
 
       return(
-        <Wrapper>
+       
           <InnerWrapper>
             <div ref={wrapperRef}>
             <LeftIcons onClick={menuHandler}>
@@ -100,6 +98,6 @@ export const Header : FC = () => {
             <img src="icons/bell.png" />
           </RightIcons>
           </InnerWrapper>
-        </Wrapper>
+        
       );
 };

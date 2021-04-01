@@ -5,16 +5,14 @@ import {Colors} from '../../../styledHelpers/Colors';
 import {Wrapper} from '../../../styledHelpers/Components';
 
 const LeftWrapper = styled.div`
-width: 250px;
-min-height: 1000px;
+padding: 20px;
 background: ${Colors.white};
-position: relative;
-justify-content:center;
-border-left: 1px solid black;
+max-width: 200px;
+display: flex;
+flex-direction: column;
 `;
 
 const ProfileWrapper = styled.div`
-width: 80%;
 margin-left: auto;
 margin-right: auto;
 margin-bottom:30px;
@@ -23,19 +21,16 @@ padding:5px;
 `;
 
 const AboutMe = styled.div`
-width: 100%;
 border-top: 1px solid lightgray;
 margin-top: 5px;
 `;
 
 const General = styled.div`
-width: 80%;
 margin-left: auto;
 margin-right: auto;
 `;
 
 const SubtitleWrapper = styled.div`
-width: 100%;
 margin: 12px;
 `;
 
@@ -64,7 +59,7 @@ margin-top: 3px;
 export const LeftMenu : FC = () => {
 return(
 
-    <Wrapper>
+   
     <LeftWrapper>
         <ProfileWrapper>
             <img src="logo192.png"></img>
@@ -98,6 +93,6 @@ return(
             </SubtitleWrapper>
         </General>
     </LeftWrapper>
-    </Wrapper>
+   
     );
 };
