@@ -38,7 +38,7 @@ const MainPage: FC = () =>{
         <Wrapper>
             <Header></Header>
             <Content>
-                <LeftMenu></LeftMenu>
+                <LeftMenu/>
                 <ContentContext>
                     <PublicationsWrapper>
                         Publications

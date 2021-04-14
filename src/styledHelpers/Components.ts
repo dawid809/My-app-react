@@ -17,3 +17,15 @@ export const CustomImg = styled.img`
 export const CustomImgWithMargin = styled.img`
 margin-right: 15px;
 `;
+
+export const CustomImageWithBorder = styled.img`
+border : 1px solid ${Colors.black};
+padding: 2px 4px;
+border-radius: 5px;
+position:absolute;
+right: 0px;
+height:15px;
+width:15px;
+top:1px;
+cursor: pointer;
+`;

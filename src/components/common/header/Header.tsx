@@ -2,7 +2,6 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
-import {Wrapper} from '../../../styledHelpers/Components';
 import {Colors} from '../../../styledHelpers/Colors';
 import {ExpandedMenu} from '../header/ExpandedMenu'
 import {Search} from '../header/Search';
@@ -16,7 +15,7 @@ justify-content: space-between;
 align-items:center;
 height:30px;
 padding: 10px;
-box-shadow: 0 5px 5px rgba(182, 182, 182, 0.75);
+box-shadow: 0 5px 5px ${Colors.lightGray};
 margin-bottom: 5px;
 `;
 

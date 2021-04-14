@@ -1,24 +1,23 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
-import {Colors} from '../../../styledHelpers/Colors';
 
 import {CustomImg} from '../../../styledHelpers/Components';
-
-
-const WraperHome = styled.div`
-  display: flex;
-  align-items:center;
-`;
 
 const LeftIconsWrapper = styled.div`
 margin-left:20px;
 width:100%;
 display: flex;
 justify-content: space-between;
+cursor: pointer;
+`;
+
+const WraperHome = styled.div`
+  display: flex;
+  align-items:center;
 `;
 
 const HomeText = styled.h1`
-font-size: 1rem;
+font-size: 1.1rem;
 float:right;
 margin-left: 20px;
 text-align:center;
