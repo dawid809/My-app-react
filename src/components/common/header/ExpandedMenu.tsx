@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import {Colors} from '../../../styledHelpers/Colors';
+import {CustomImgWithMargin} from '../../../styledHelpers/Components';
 
 const ExpandedWrapper = styled.div`
 position: absolute;
@@ -29,10 +30,6 @@ flex-direction:column;
 align-items:flex-start;
 `;
 
-const CustomImg = styled.img`
-  margin-right:15px;
-`;
-
 const LogoutWrapper = styled.div`
 display:flex;
 align-self:center;
@@ -58,6 +55,7 @@ const CustomSubtitles = styled.h3`
 color: ${Colors.gray};
 margin: 5px;
 `;
+
 export const ExpandedMenu : FC = () => {
     return(
     <ExpandedWrapper>
@@ -67,76 +65,76 @@ export const ExpandedMenu : FC = () => {
          <CustomSubtitles>Platfom</CustomSubtitles>
 
          <ImgAndTextContainer>
-            <CustomImg src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house.png" />
             <CustomPargraf> Home </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/publications.png" />
+            <CustomImgWithMargin src="icons/publications.png" />
             <CustomPargraf>  Publications </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/people.png" />
+            <CustomImgWithMargin src="icons/people.png" />
             <CustomPargraf>People </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/entities2.png" />
+            <CustomImgWithMargin src="icons/entities2.png" />
             <CustomPargraf> Entities </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/administration.png" />
+            <CustomImgWithMargin src="icons/administration.png" />
             <CustomPargraf> Administration</CustomPargraf>
         </ImgAndTextContainer>
 
         <CustomSubtitles>Workspaces</CustomSubtitles>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house.png" />
             <CustomPargraf> Client contract </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house.png" />
             <CustomPargraf> Supplier contract </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/entities.png" />
+            <CustomImgWithMargin src="icons/entities.png" />
             <CustomPargraf> Corporate  </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house.png" />
             <CustomPargraf> Group Norms </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImg src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house.png" />
             <CustomPargraf> Real estate contracts </CustomPargraf>
         </ImgAndTextContainer>
     </ScrollWrapper>
     <AccountWraper>
         <CustomSubtitles>Account</CustomSubtitles>
         <ProfileWrapper>
-            <CustomImg src="icons/people.png" /> 
+            <CustomImgWithMargin src="icons/people.png" /> 
             Name 
             See profile
         </ProfileWrapper>
         <ImgAndTextContainer>
-            <CustomImg src="icons/privacy.png" />
+            <CustomImgWithMargin src="icons/privacy.png" />
             Privacy
         </ImgAndTextContainer>
         <ImgAndTextContainer>
-        <CustomImg src="icons/settings.png" />
+        <CustomImgWithMargin src="icons/settings.png" />
         <CustomPargraf> Settings </CustomPargraf>
         </ImgAndTextContainer>
         
     </AccountWraper>
         <LogoutWrapper>
-            <CustomImg src="icons/logout.png" />
+            <CustomImgWithMargin src="icons/logout.png" />
             <CustomPargraf>  Logout </CustomPargraf>
         </LogoutWrapper>
         

@@ -10,3 +10,10 @@ export const Wrapper = styled.div`
     /* position:relative; */
     /* min-height:1200px; */
 `;
+
+export const CustomImg = styled.img`
+`;
+
+export const CustomImgWithMargin = styled.img`
+margin-right: 15px;
+`;

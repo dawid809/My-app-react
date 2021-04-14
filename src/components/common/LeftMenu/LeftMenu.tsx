@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import {Colors} from '../../../styledHelpers/Colors';
 import {Wrapper} from '../../../styledHelpers/Components';
+import {CustomImg} from '../../../styledHelpers/Components';
 
 const LeftWrapper = styled.div`
 padding: 20px;
