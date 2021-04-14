@@ -56,6 +56,8 @@ const InputText = styled.input`
 margin-right:-30px;
 width:100%;
 min-height: 25px;
+border: 1px solid ${Colors.gray};
+text-align:center;
 `;
 
 const CustomIcon = styled.img`

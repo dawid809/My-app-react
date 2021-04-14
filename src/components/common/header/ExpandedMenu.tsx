@@ -45,6 +45,11 @@ display:flex;
 margin: 5px;
 `;
 
+const ScrollWrapper = styled.div`
+overflow-x: hidden;
+height: 300px;
+`;
+
 const CustomPargraf = styled.p`
 align-self:center;
 `;
@@ -56,6 +61,7 @@ margin: 5px;
 export const ExpandedMenu : FC = () => {
     return(
     <ExpandedWrapper>
+        <ScrollWrapper>
             <input type="text" placeholder="Filter ..."/>
 
          <CustomSubtitles>Platfom</CustomSubtitles>
@@ -111,7 +117,7 @@ export const ExpandedMenu : FC = () => {
             <CustomImg src="icons/house.png" />
             <CustomPargraf> Real estate contracts </CustomPargraf>
         </ImgAndTextContainer>
-
+    </ScrollWrapper>
     <AccountWraper>
         <CustomSubtitles>Account</CustomSubtitles>
         <ProfileWrapper>

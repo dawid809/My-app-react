@@ -46,10 +46,10 @@ text-align: center;
 `;
 
 const SubtitleText = styled.a`
- font-size: 0.85rem;
- font-weight:600;
+font-size: 0.85rem;
+font-weight:500;
 margin: 5px;
- align-self:center;
+align-self:center;
 `;
 
 const SmallText = styled.h4`
@@ -69,6 +69,7 @@ right: 0px;
 height:15px;
 width:15px;
 top:1px;
+cursor: pointer;
 `;
 
 const CustomImage = styled.img`
