@@ -19,13 +19,14 @@ margin-bottom: 5px;
 
 const LeftIcons = styled.div`
 margin-left:20px;
+width:100%;
 display: flex;
 justify-content: space-between;
 `;
 
 const RightIcons = styled.div`
 margin-right:20px;
-
+width: 100px;
 display: flex;
 justify-content: space-between;
 `;
@@ -59,8 +60,24 @@ min-height: 25px;
 
 const CustomIcon = styled.img`
 margin-left:50px;
+width:80%;
 `;
 
+const CustomIconInsideWrapper = styled.img`
+width: 60%;
+height: 60%;
+`;
+
+
+const RoundedWrapperForImage = styled.div`
+border-radius: 50%;
+background: lightgray;
+height:25px;
+width: 25px;
+display:flex;
+align-items: center;
+justify-content:center;
+`;
 
 export const Header : FC = () => { 
   const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
@@ -94,8 +111,8 @@ export const Header : FC = () => {
          </InputWrapper>
           <RightIcons>
             <img src="icons/house.png" />
-            <img src="icons/comments.png" />
-            <img src="icons/bell.png" />
+            <RoundedWrapperForImage><CustomIconInsideWrapper src="icons/comments.png" /></RoundedWrapperForImage>
+            <RoundedWrapperForImage><CustomIconInsideWrapper src="icons/bell.png" /></RoundedWrapperForImage>
           </RightIcons>
           </InnerWrapper>
         

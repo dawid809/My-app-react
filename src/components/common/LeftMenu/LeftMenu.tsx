@@ -13,25 +13,29 @@ flex-direction: column;
 `;
 
 const ProfileWrapper = styled.div`
-margin-left: auto;
-margin-right: auto;
-margin-bottom:30px;
 box-shadow: -1px 2px 10px -1px #9E9696;
 padding:5px;
+display: flex;
+flex-direction:column;
 `;
 
 const AboutMe = styled.div`
 border-top: 1px solid lightgray;
-margin-top: 5px;
+margin-top: 10px;
+display:flex;
+flex-direction:column;
 `;
 
 const General = styled.div`
-margin-left: auto;
-margin-right: auto;
+display:flex;
+flex-direction:column;
+margin-left:5px;
 `;
 
 const SubtitleWrapper = styled.div`
-margin: 12px;
+margin: 10px;
+display:flex;
+position:relative;
 `;
 
 const NameText = styled.h2`
@@ -42,10 +46,10 @@ text-align: center;
 `;
 
 const SubtitleText = styled.a`
- font-size: 1rem;
+ font-size: 0.85rem;
  font-weight:600;
- padding:10px;
- margin:5px;
+margin: 5px;
+ align-self:center;
 `;
 
 const SmallText = styled.h4`
@@ -54,6 +58,21 @@ font-weight: 400;
 color: ${Colors.gray};
 text-align: center;
 margin-top: 3px;
+`;
+
+const CustomImageWithBorder = styled.img`
+border : 1px solid ${Colors.black};
+padding: 2px 4px;
+border-radius: 5px;
+position:absolute;
+right: 0px;
+height:15px;
+width:15px;
+top:1px;
+`;
+
+const CustomImage = styled.img`
+margin-right: 5px;
 `;
 
 export const LeftMenu : FC = () => {
@@ -67,28 +86,28 @@ return(
             <SmallText>Job title - comapny</SmallText>
            <AboutMe>
                 <SubtitleWrapper>
-                    <img src="icons/network.png"/>
+                    <CustomImage src="icons/network.png"/>
                     <SubtitleText>Your network</SubtitleText>
-                    <img src="icons/user-plus.png"/>
+                    <CustomImageWithBorder src="icons/user-plus.png"/>
                </SubtitleWrapper>
                <SubtitleWrapper>
-                    <img src="icons/publications.png"/>
+                    <CustomImage src="icons/publications.png"/>
                     <SubtitleText>Your publications</SubtitleText>
-                    <img src="icons/plus.png"/>
+                    <CustomImageWithBorder src="icons/plus.png"/>
                </SubtitleWrapper>
            </AboutMe>
         </ProfileWrapper>
         <General>
             <SubtitleWrapper>
-                <img src="icons/publications.png"/>
+                <CustomImage src="icons/publications.png"/>
                 <SubtitleText>Publications</SubtitleText>
             </SubtitleWrapper>
             <SubtitleWrapper>
-                <img src="icons/ecosystem.png"/>
+                <CustomImage src="icons/ecosystem.png"/>
                 <SubtitleText>Ecosystem</SubtitleText>
             </SubtitleWrapper>
             <SubtitleWrapper>
-                <img src="icons/entities.png"/>
+                <CustomImage src="icons/entities2.png"/>
                 <SubtitleText>Entities</SubtitleText>
             </SubtitleWrapper>
         </General>
