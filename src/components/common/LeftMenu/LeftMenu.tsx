@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import {Colors} from '../../../styledHelpers/Colors';
 import {CustomImgWithMargin} from '../../../styledHelpers/Components';
 import {Profile} from '../LeftMenu/Profile';
+import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {StyledLink} from '../../../styledHelpers/Components'
 
 const LeftWrapper = styled.div`
 padding: 20px;
@@ -11,6 +13,7 @@ background: ${Colors.white};
 max-width: 200px;
 display: flex;
 flex-direction: column;
+height: 800px;
 `;
 
 const General = styled.div`
@@ -35,22 +38,27 @@ align-self:center;
 
 export const LeftMenu : FC = () => {
 return(
-
-   
     <LeftWrapper>
         <Profile/> 
         <General>
             <SubtitleWrapper>
                 <CustomImgWithMargin src="icons/publications.png"alt="Publications" />
-                <SubtitleText>Publications</SubtitleText>
+                <StyledLink to="/publications">
+                    <SubtitleText>Publications</SubtitleText>
+                </StyledLink>
             </SubtitleWrapper>
+       
             <SubtitleWrapper>
                 <CustomImgWithMargin src="icons/ecosystem.png" alt="Ecosystem" />
+                <StyledLink to="/ecosystem">
                 <SubtitleText>Ecosystem</SubtitleText>
+                </StyledLink>
             </SubtitleWrapper>
             <SubtitleWrapper>
                 <CustomImgWithMargin src="icons/entities2.png" alt="Entities" />
+                <StyledLink to="/entities">
                 <SubtitleText>Entities</SubtitleText>
+                </StyledLink>
             </SubtitleWrapper>
         </General>
     </LeftWrapper>

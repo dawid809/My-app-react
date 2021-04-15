@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import {Colors} from '../../../styledHelpers/Colors';
 import {CustomImgWithMargin} from '../../../styledHelpers/Components';
+import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {StyledLink} from '../../../styledHelpers/Components'
 
 const ExpandedWrapper = styled.div`
 position: absolute;
@@ -44,17 +46,19 @@ margin: 5px;
 
 const ScrollWrapper = styled.div`
 overflow-x: hidden;
-height: 300px;
+overflow-y: scroll;
 `;
 
 const CustomPargraf = styled.p`
 align-self:center;
+text-decoration:none;
 `;
 
 const CustomSubtitles = styled.h3`
 color: ${Colors.gray};
 margin: 5px;
 `;
+
 
 export const ExpandedMenu : FC = () => {
     return(
@@ -66,22 +70,30 @@ export const ExpandedMenu : FC = () => {
 
          <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/house.png" />
-            <CustomPargraf> Home </CustomPargraf>
+            <StyledLink to="/">
+                <CustomPargraf> Home </CustomPargraf>
+            </StyledLink>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/publications.png" />
-            <CustomPargraf>  Publications </CustomPargraf>
+            <StyledLink to="/publications">
+                <CustomPargraf>  Publications </CustomPargraf>
+            </StyledLink>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/people.png" />
-            <CustomPargraf>People </CustomPargraf>
+            <StyledLink to="/people">
+                <CustomPargraf>People </CustomPargraf>
+            </StyledLink>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/entities2.png" />
-            <CustomPargraf> Entities </CustomPargraf>
+            <StyledLink to="/entities">
+                <CustomPargraf> Entities </CustomPargraf>
+            </StyledLink>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>

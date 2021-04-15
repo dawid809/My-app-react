@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Colors } from './Colors';
+import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     background: whitesmoke;
@@ -28,4 +29,19 @@ height:15px;
 width:15px;
 top:1px;
 cursor: pointer;
+`;
+
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+
+    &:focus,&:visited, &:link, &:active {
+        text-decoration: none;
+        color: ${Colors.black};
+    }
+
+    &:hover{
+        text-decoration: none;
+        color: ${Colors.blue};
+    }
 `;

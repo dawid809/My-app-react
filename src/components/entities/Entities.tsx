@@ -9,29 +9,20 @@ width: 1000px;
 min-height:1000px;
 `;
 
-const PublicationsWrapper = styled.div`
-background:whitesmoke;
-height: 400px;
-margin:5%;
-border: 1px solid ${Colors.gray};
-`;
-const WorkspacesWrapper = styled.div`
+const EntitiesWrapper = styled.div`
 background:whitesmoke;
 height: 400px;
 margin:5%;
 border: 1px solid ${Colors.gray};
 `;
 
-export const Publications: FC = () => {
+export const Entities: FC = () => {
 
   return (
     <ContentContext>
-      <PublicationsWrapper>
-        Publications
-      </PublicationsWrapper>
-      <WorkspacesWrapper>
-         Workspaces
-      </WorkspacesWrapper>
+      <EntitiesWrapper>
+        Entities
+      </EntitiesWrapper>
     </ContentContext>
   );
 };
