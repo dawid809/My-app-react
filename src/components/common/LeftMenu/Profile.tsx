@@ -1,9 +1,13 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import {Colors} from '../../../styledHelpers/Colors';
 import {CustomImg} from '../../../styledHelpers/Components';
 import {CustomImageWithBorder} from '../../../styledHelpers/Components';
+import { getUsers } from '../../../actions/usersActions';
+
+type GetUsers = ReturnType<typeof getUsers>
 
 
 const ProfileWrapper = styled.div`
@@ -48,7 +52,14 @@ display:flex;
 flex-direction:column;
 `;
 
+
+
 export const Profile : FC = () => {
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch<GetUsers>(getUsers())
+    }, []);
 
     return (
         <ProfileWrapper>
