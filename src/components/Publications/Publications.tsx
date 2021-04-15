@@ -2,6 +2,9 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 
 import { Colors } from '../../styledHelpers/Colors';
+import {Workspaces} from '../publications/Workspaces'
+import {LatestPublications} from '../publications/LatestPublications'
+import {ResumeWork} from '../publications/ResumeWork'
 
 const ContentContext = styled.div`
 background: ${Colors.white};
@@ -9,29 +12,14 @@ width: 1000px;
 min-height:1000px;
 `;
 
-const PublicationsWrapper = styled.div`
-background:whitesmoke;
-height: 400px;
-margin:5%;
-border: 1px solid ${Colors.gray};
-`;
-const WorkspacesWrapper = styled.div`
-background:whitesmoke;
-height: 400px;
-margin:5%;
-border: 1px solid ${Colors.gray};
-`;
 
 export const Publications: FC = () => {
 
   return (
     <ContentContext>
-      <PublicationsWrapper>
-        Publications
-      </PublicationsWrapper>
-      <WorkspacesWrapper>
-         Workspaces
-      </WorkspacesWrapper>
+      <LatestPublications/>
+      <Workspaces/>
+      <ResumeWork/>
     </ContentContext>
   );
 };

@@ -13,7 +13,7 @@ background: ${Colors.white};
 max-width: 200px;
 display: flex;
 flex-direction: column;
-height: 800px;
+height: auto;
 `;
 
 const General = styled.div`
