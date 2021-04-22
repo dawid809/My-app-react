@@ -7,12 +7,16 @@ import {CustomImg} from '../../../styledHelpers/Components';
 import {CustomImageWithBorder} from '../../../styledHelpers/Components';
 import { getUsers } from '../../../actions/usersActions';
 import { GET_USERS } from '../../../actions/actionTypes/userTypes';
+import { getPhotos } from '../../../actions/photosActions';
+import { GET_PHOTOS } from '../../../actions/actionTypes/photoTypes';
 
 import{ useSelector} from 'react-redux';
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducers';
+import { IPhotosReducer } from '../../../reducers/photosReducer';
 
 type GetUsers = ReturnType<typeof getUsers>
+type GetPhotos = ReturnType<typeof getPhotos>
 
 
 const ProfileWrapper = styled.div`
@@ -57,6 +61,12 @@ display:flex;
 flex-direction:column;
 `;
 
+const UserAvatar = styled.img`
+align-self:center;
+border-radius: 50%;
+width: 40%;
+height: 40%;
+`;
 
 
 export const Profile : FC = () => {
@@ -70,12 +80,21 @@ export const Profile : FC = () => {
         ...globalState.users
     }));
 
+    const dispatch2 = useDispatch();
+    useEffect(() => {
+        dispatch2<GetPhotos>(getPhotos())
+    }, []);
+
+    const {photosList} = useSelector<IState, IPhotosReducer>(globalState => ({
+        ...globalState.photos
+    }));
+
     return (
         
         <ProfileWrapper>
             {console.log({usersList})}
-            <CustomImg src="logo192.png" alt="User photo" />
-            <NameText>{usersList[5].name}</NameText>
+            <UserAvatar src={photosList[1].url} alt="User photo" />
+            <NameText>{usersList[3].name}</NameText>
             <SmallText>Job title - comapny</SmallText>
             <AboutMe>
                 <SubtitleWrapper>
