@@ -12,10 +12,10 @@ const defaultState = (): IUsersReducer => ({
 export default (state = defaultState(), action: any) => {
     switch (action.type) {
         case actionTypes.GET_USERS: {
-            const paylod: actionTypes.IUserTypes['GET_USERS'] = action;
+            const data: actionTypes.IUserTypes['GET_USERS'] = action;
             return {
                 ...state,
-                usersList: paylod.usersList
+                usersList: data.usersList
             }
         }
         default: {

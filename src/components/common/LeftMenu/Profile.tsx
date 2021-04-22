@@ -6,6 +6,11 @@ import {Colors} from '../../../styledHelpers/Colors';
 import {CustomImg} from '../../../styledHelpers/Components';
 import {CustomImageWithBorder} from '../../../styledHelpers/Components';
 import { getUsers } from '../../../actions/usersActions';
+import { GET_USERS } from '../../../actions/actionTypes/userTypes';
+
+import{ useSelector} from 'react-redux';
+import { IState } from '../../../reducers';
+import { IUsersReducer } from '../../../reducers/usersReducers';
 
 type GetUsers = ReturnType<typeof getUsers>
 
@@ -61,10 +66,16 @@ export const Profile : FC = () => {
         dispatch<GetUsers>(getUsers())
     }, []);
 
+    const {usersList} = useSelector<IState, IUsersReducer>(globalState => ({
+        ...globalState.users
+    }));
+
     return (
+        
         <ProfileWrapper>
+            {console.log({usersList})}
             <CustomImg src="logo192.png" alt="User photo" />
-            <NameText>Name Surname</NameText>
+            <NameText>{usersList[5].name}</NameText>
             <SmallText>Job title - comapny</SmallText>
             <AboutMe>
                 <SubtitleWrapper>
