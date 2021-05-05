@@ -6,10 +6,12 @@ import {LeftMenu} from '../common/LeftMenu/LeftMenu';
 import {Wrapper} from '../../styledHelpers/Components';
 import { Colors } from '../../styledHelpers/Colors';
 import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Home } from '../home/Home';
 import { Publications } from '../publications/Publications';
 import { Entities } from '../entities/Entities';
 import { Ecosystem } from '../ecosystem/Ecosystem';
 import { People } from '../people/People';
+import { Administration } from '../administration/Administration';
 
 
 //const Wrapper = styled.div``;
@@ -27,7 +29,7 @@ const MainPage: FC = () =>{
                     <LeftMenu/>
                         <Switch>
                             <Route path="/" exact>
-                                Home
+                               <Home/>
                             </Route>
                             <Route path="/publications" exact >
                                 <Publications/>
@@ -40,6 +42,9 @@ const MainPage: FC = () =>{
                             </Route>
                             <Route path="/people" exact >
                                 <People/>
+                            </Route>
+                            <Route path="/administration" exact >
+                                <Administration/>
                             </Route>
                         </Switch>
                 </Content>

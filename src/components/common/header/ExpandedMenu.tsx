@@ -56,6 +56,7 @@ const ImgAndTextContainer = styled.div`
 display:flex;
 margin: 5px;
 margin-top: 10px;
+align-items: center;
 `;
 
 const ScrollWrapper = styled.div`
@@ -156,7 +157,9 @@ export const ExpandedMenu : FC = () => {
 
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/administration.png" />
-            <CustomPargraf> Administration</CustomPargraf>
+            <StyledLink to="/administration">
+                <CustomPargraf> Administration</CustomPargraf>
+            </StyledLink>
         </ImgAndTextContainer>
 
         <CustomSubtitles>Workspaces</CustomSubtitles>
@@ -186,8 +189,11 @@ export const ExpandedMenu : FC = () => {
             <CustomPargraf> Real estate contracts </CustomPargraf>
         </ImgAndTextContainer>
     </ScrollWrapper>
+
     <AccountWraper>
+        
         <CustomSubtitles>Account</CustomSubtitles>
+
         <ProfileWrapper>
             <UserAvatar src={photosList[0]?.url} alt="User photo" /> 
             <RightProfileWrapper>
@@ -195,10 +201,12 @@ export const ExpandedMenu : FC = () => {
                 <ShowProfileWrapper>See profile</ShowProfileWrapper> 
             </RightProfileWrapper>
         </ProfileWrapper>
+
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/privacy.png" />
             <CustomPargraf>Privacy </CustomPargraf>
         </ImgAndTextContainer>
+
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/settings.png" />
             <CustomPargraf> Settings </CustomPargraf>

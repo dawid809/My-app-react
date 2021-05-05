@@ -9,7 +9,6 @@ import {StyledLink} from '../../../styledHelpers/Components'
 
 const LeftWrapper = styled.div`
 padding: 20px;
-background: ${Colors.white};
 display: flex;
 flex-direction: column;
 height: auto;

@@ -3,26 +3,26 @@ import styled from 'styled-components';
 
 import { Colors } from '../../styledHelpers/Colors';
 
-const ContentContext = styled.div`
+const HomeWrapper = styled.div`
 background: ${Colors.white};
 width: 100%;
 min-height:1000px;
 `;
 
-const PeopleWrapper = styled.div`
+const HomeContent = styled.div`
 background:whitesmoke;
 height: 400px;
 margin: 0.5% 5%;
 border: 1px solid ${Colors.gray};
 `;
 
-export const People: FC = () => {
+export const Home: FC = () => {
 
   return (
-    <ContentContext>
-      <PeopleWrapper>
-        People
-      </PeopleWrapper>
-    </ContentContext>
+    <HomeWrapper>
+       <HomeContent>
+             Home
+      </HomeContent>
+    </HomeWrapper>
   );
 };

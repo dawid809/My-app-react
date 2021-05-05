@@ -4,27 +4,25 @@ import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
 import { CustomImg } from '../../styledHelpers/Components';
 
-const EntitiesWrapper = styled.div`
-background: ${Colors.white};
+const AdministrationWrapper = styled.div`
 width: 100%;
 min-height:1000px;
 `;
 
-const EntitiesContent = styled.div`
+const AdministrationContent = styled.div`
 background:whitesmoke;
 height: 400px;
-margin: 0.5% 5%;
+margin:5%;
 border: 1px solid ${Colors.gray};
 `;
 
-export const Entities: FC = () => {
+export const Administration: FC = () => {
 
   return (
-    <EntitiesWrapper>
-      <EntitiesContent>
-        Entities
-        <CustomImg src="icons/cog.png"/>
-      </EntitiesContent>
-    </EntitiesWrapper>
+    <AdministrationWrapper>
+      <AdministrationContent>
+         Administration
+      </AdministrationContent>
+    </AdministrationWrapper>
   );
 };
