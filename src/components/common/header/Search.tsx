@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import styled from 'styled-components';
 import {Colors} from '../../../styledHelpers/Colors';
 
@@ -15,7 +15,6 @@ width: 100%;
 border-color: ${Colors.lightGray};
 border-radius: 4px;
 text-align:center;
-color: ${Colors.lightGray};
 ::placeholder {
   color: ${Colors.lightGray};
 }
@@ -30,7 +29,7 @@ export const Search : FC = () => {
 
     return (
     <InputWrapper>
-        <CustomFilter type="text" placeholder="Search Legalcuster" />
+        <CustomFilter type="text" placeholder="Search Legalcuster"/>
         <CustomImg src="icons/search.png" alt="Search" />
     </InputWrapper>
  );

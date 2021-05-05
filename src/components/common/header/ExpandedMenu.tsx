@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
@@ -79,7 +79,6 @@ padding: 4px;
 width: 90%;
 border-color: ${Colors.lightGray};
 border-radius: 4px;
-color: ${Colors.lightGray};
 ::placeholder {
   color: ${Colors.lightGray};;
 }
@@ -109,7 +108,9 @@ type GetPhotos = ReturnType<typeof getPhotos>
 
 
 export const ExpandedMenu : FC = () => {
+
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch<GetUsers>(getUsers())
         dispatch<GetPhotos>(getPhotos())
@@ -120,78 +121,105 @@ export const ExpandedMenu : FC = () => {
         ...globalState.photos
     }));
 
+    const [inputText, setInputText] = useState<string>('');
+
+    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const text = e.target.value;
+        setInputText(text);
+    }
+
     return(
     <ExpandedWrapper>
-          <CustomFilter type="text" placeholder="Filter ..."/>
+          <CustomFilter type="text" placeholder="Filter ..." value={inputText} onChange={inputHandler}/>
         <ScrollWrapper>
 
          <CustomSubtitles>Platfom</CustomSubtitles>
-
+         {'Home'.toLowerCase().includes(inputText.toLowerCase()) &&
          <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/house2.png" />
-            <StyledLink to="/">
+            <StyledLink to="/"> 
                 <CustomPargraf> Home </CustomPargraf>
             </StyledLink>
         </ImgAndTextContainer>
+         }
 
+         {'Publications'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/publications.png" />
             <StyledLink to="/publications">
                 <CustomPargraf>  Publications </CustomPargraf>
             </StyledLink>
         </ImgAndTextContainer>
+        }
 
+        {'People'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/people.png" />
             <StyledLink to="/people">
                 <CustomPargraf>People </CustomPargraf>
             </StyledLink>
         </ImgAndTextContainer>
+        }       
 
+        {'Entities'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/entities2.png" />
             <StyledLink to="/entities">
                 <CustomPargraf> Entities </CustomPargraf>
             </StyledLink>
         </ImgAndTextContainer>
+        }
 
+        {'Administration'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/administration.png" />
             <StyledLink to="/administration">
                 <CustomPargraf> Administration</CustomPargraf>
             </StyledLink>
         </ImgAndTextContainer>
+        }
 
         <CustomSubtitles>Workspaces</CustomSubtitles>
 
+        {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Client contract </CustomPargraf>
         </ImgAndTextContainer>
+        }
 
+        {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Supplier contract </CustomPargraf>
         </ImgAndTextContainer>
+        }
 
+        {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/entities.png" />
             <CustomPargraf> Corporate  </CustomPargraf>
         </ImgAndTextContainer>
+        }
 
+        {'Group Norms'.toLowerCase().includes(inputText.toLowerCase()) &&
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/book-alt.png" />
             <CustomPargraf> Group Norms </CustomPargraf>
         </ImgAndTextContainer>
+        }
 
+        {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) &&   
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Real estate contracts </CustomPargraf>
         </ImgAndTextContainer>
+        }
+
     </ScrollWrapper>
 
     <AccountWraper>
-        
+
         <CustomSubtitles>Account</CustomSubtitles>
 
         <ProfileWrapper>

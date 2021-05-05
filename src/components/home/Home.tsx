@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Colors } from '../../styledHelpers/Colors';
 
 const HomeWrapper = styled.div`
-background: ${Colors.white};
 width: 100%;
 min-height:1000px;
 `;

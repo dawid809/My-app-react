@@ -7,8 +7,7 @@ import {LatestPublications} from '../publications/LatestPublications'
 import {ResumeWork} from '../publications/ResumeWork'
 
 const ContentContext = styled.div`
-background: ${Colors.white};
-width: 1200px;
+width: 100%;
 min-height:1000px;
 `;
 

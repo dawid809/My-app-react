@@ -12,7 +12,7 @@ min-height:1000px;
 const AdministrationContent = styled.div`
 background:whitesmoke;
 height: 400px;
-margin:5%;
+margin: 0.5% 5%;
 border: 1px solid ${Colors.gray};
 `;
 

@@ -21,9 +21,10 @@ type GetPhotos = ReturnType<typeof getPhotos>
 
 const ProfileWrapper = styled.div`
 box-shadow: -1px 2px 10px -1px #9E9696;
-padding:5px;
+padding:20px 10px;
 display: flex;
 flex-direction:column;
+border-radius: 5px;
 `;
 
 const NameText = styled.h2`

@@ -8,11 +8,11 @@ import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import {StyledLink} from '../../../styledHelpers/Components'
 
 const LeftWrapper = styled.div`
-padding: 20px;
+padding: 36px;
 display: flex;
 flex-direction: column;
 height: auto;
-width: 225px;
+width: 300px;
 `;
 
 const General = styled.div`

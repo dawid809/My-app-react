@@ -4,7 +4,7 @@ import {Colors} from '../../../styledHelpers/Colors';
 
 const RightIconsWrapper = styled.div`
 margin-right:10px;
-width: 105px;
+width: 120px;
 padding: 10px;
 display: flex;
 justify-content: space-between;
