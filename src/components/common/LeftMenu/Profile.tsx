@@ -38,6 +38,7 @@ font-size: 0.85rem;
 font-weight:500;
 margin: 5px;
 align-self:center;
+margin-left: 15px;
 `;
 
 const SmallText = styled.h4`
@@ -64,9 +65,9 @@ flex-direction:column;
 const UserAvatar = styled.img`
 align-self:center;
 border-radius: 50%;
-width: 40%;
-height: 40%;
-margin: 10px;
+width: 28%;
+height: 28%;
+margin: 5px;
 `;
 
 
@@ -85,7 +86,6 @@ export const Profile : FC = () => {
 
     return (
         <ProfileWrapper>
-            {/* {usersList.length > 0  } */}
             {console.log({usersList})}
             <UserAvatar src={photosList[0]?.url} alt="User photo" />
             <NameText>{usersList[0]?.name}</NameText>

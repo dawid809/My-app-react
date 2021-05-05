@@ -1,16 +1,27 @@
-import React, {FC} from 'react';
+import React, {FC, useEffect} from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 import {Colors} from '../../../styledHelpers/Colors';
 import {CustomImgWithMargin} from '../../../styledHelpers/Components';
 import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import {StyledLink} from '../../../styledHelpers/Components'
+import { getUsers } from '../../../actions/usersActions';
+import { GET_USERS } from '../../../actions/actionTypes/userTypes';
+import { getPhotos } from '../../../actions/photosActions';
+import { GET_PHOTOS } from '../../../actions/actionTypes/photoTypes';
+
+import{ useSelector} from 'react-redux';
+import { IState } from '../../../reducers';
+import { IUsersReducer } from '../../../reducers/usersReducers';
+import { IPhotosReducer } from '../../../reducers/photosReducer';
+
 
 const ExpandedWrapper = styled.div`
 position: absolute;
 display:flex;
 flex-direction:column;
-min-width: 230px;
+min-width: 240px;
 background: white;
 border: 1px solid ${Colors.gray};
 z-index:5;
@@ -22,7 +33,7 @@ left: 30px;
 
 const AccountWraper = styled.div`
 margin-left:-10px;
-margin-right:-10px;
+padding-left: 10px;
 border-bottom: 1px solid ${Colors.gray};
 border-top: 1px solid ${Colors.gray};
 `;
@@ -30,20 +41,21 @@ border-top: 1px solid ${Colors.gray};
 const ProfileWrapper = styled.div`
 padding:5px;
 display:flex;
-flex-direction:column;
 align-items:flex-start;
 `;
 
 const LogoutWrapper = styled.div`
 display:flex;
-align-self:center;
-margin: 5px;
+justify-content:center;
+padding-right: 10px;
 margin-top: 10px;
+color:  ${Colors.gray};
 `;
 
 const ImgAndTextContainer = styled.div`
 display:flex;
 margin: 5px;
+margin-top: 10px;
 `;
 
 const ScrollWrapper = styled.div`
@@ -72,8 +84,41 @@ color: ${Colors.lightGray};
 }
 `;
 
+const UserAvatar = styled.img`
+border-radius: 50%;
+height: 35px;
+width: 35px;
+`;
+
+const RightProfileWrapper = styled.div`
+display: flex;
+flex-direction: column;
+margin-left: 10px;
+min-height:35px;
+justify-content:center;
+`;
+
+const ShowProfileWrapper = styled.p`
+color: ${Colors.blue};
+font-size: 13px;
+`;
+
+type GetUsers = ReturnType<typeof getUsers>
+type GetPhotos = ReturnType<typeof getPhotos>
+
 
 export const ExpandedMenu : FC = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch<GetUsers>(getUsers())
+        dispatch<GetPhotos>(getPhotos())
+    }, []);
+
+    const {usersList, photosList, currentUser} = useSelector<IState, IUsersReducer & IPhotosReducer>(globalState => ({
+        ...globalState.users,
+        ...globalState.photos
+    }));
+
     return(
     <ExpandedWrapper>
           <CustomFilter type="text" placeholder="Filter ..."/>
@@ -82,7 +127,7 @@ export const ExpandedMenu : FC = () => {
          <CustomSubtitles>Platfom</CustomSubtitles>
 
          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house.png" />
+            <CustomImgWithMargin src="icons/house2.png" />
             <StyledLink to="/">
                 <CustomPargraf> Home </CustomPargraf>
             </StyledLink>
@@ -117,12 +162,12 @@ export const ExpandedMenu : FC = () => {
         <CustomSubtitles>Workspaces</CustomSubtitles>
 
         <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house.png" />
+            <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Client contract </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house.png" />
+            <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Supplier contract </CustomPargraf>
         </ImgAndTextContainer>
 
@@ -132,29 +177,31 @@ export const ExpandedMenu : FC = () => {
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house.png" />
+            <CustomImgWithMargin src="icons/book-alt.png" />
             <CustomPargraf> Group Norms </CustomPargraf>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house.png" />
+            <CustomImgWithMargin src="icons/file-signature.png" />
             <CustomPargraf> Real estate contracts </CustomPargraf>
         </ImgAndTextContainer>
     </ScrollWrapper>
     <AccountWraper>
         <CustomSubtitles>Account</CustomSubtitles>
         <ProfileWrapper>
-            <CustomImgWithMargin src="icons/people.png" /> 
-            name
-            See profile
+            <UserAvatar src={photosList[0]?.url} alt="User photo" /> 
+            <RightProfileWrapper>
+                {usersList[0]?.name}
+                <ShowProfileWrapper>See profile</ShowProfileWrapper> 
+            </RightProfileWrapper>
         </ProfileWrapper>
         <ImgAndTextContainer>
             <CustomImgWithMargin src="icons/privacy.png" />
-            Privacy
+            <CustomPargraf>Privacy </CustomPargraf>
         </ImgAndTextContainer>
         <ImgAndTextContainer>
-        <CustomImgWithMargin src="icons/settings.png" />
-        <CustomPargraf> Settings </CustomPargraf>
+            <CustomImgWithMargin src="icons/settings.png" />
+            <CustomPargraf> Settings </CustomPargraf>
         </ImgAndTextContainer>
         
     </AccountWraper>

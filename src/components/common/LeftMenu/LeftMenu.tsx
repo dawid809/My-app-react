@@ -13,7 +13,7 @@ background: ${Colors.white};
 display: flex;
 flex-direction: column;
 height: auto;
-width: 300px;
+width: 225px;
 `;
 
 const General = styled.div`
@@ -25,14 +25,13 @@ margin-left:5px;
 const SubtitleWrapper = styled.div`
 margin: 10px;
 display:flex;
-position:relative;
+align-items:center;
 `;
 
 const SubtitleText = styled.a`
 font-size: 0.85rem;
 font-weight:500;
 margin: 5px;
-align-self:center;
 `;
 
 
@@ -54,6 +53,7 @@ return(
                 <SubtitleText>Ecosystem</SubtitleText>
                 </StyledLink>
             </SubtitleWrapper>
+
             <SubtitleWrapper>
                 <CustomImgWithMargin src="icons/entities2.png" alt="Entities" />
                 <StyledLink to="/entities">
