@@ -3,10 +3,12 @@ import * as actionTypes from '../actions/actionTypes/photoTypes'
 
 export interface IPhotosReducer {
     photosList: ISinglePhoto[];
+    currentPhoto: ISinglePhoto
 }
 
 const defaultState = (): IPhotosReducer => ({
-   photosList: []
+   photosList: [],
+   currentPhoto: undefined
 });
 
 export default (state = defaultState(), action: any) => {

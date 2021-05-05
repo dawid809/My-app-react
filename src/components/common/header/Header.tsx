@@ -40,7 +40,7 @@ export const Header : FC = () => {
           <div ref={wrapperRef}>
             <LeftIcons onClick={menuHandler}>
                 <LeftIconsContent></LeftIconsContent>
-              </LeftIcons>
+            </LeftIcons>
             {dropdownOpen &&
                 <ExpandedMenu />
               }

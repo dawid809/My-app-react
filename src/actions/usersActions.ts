@@ -10,7 +10,10 @@ export const getUsers = (): Promise<ISingleUser[]> => ((dispatch: Dispatch) => {
     .then((usersList: ISingleUser[]) => {
         dispatch({
             type: actionTypes.GET_USERS,
-            usersList
+            data: {
+            usersList,
+            currentUser: usersList[0]
+            }
         })
     })
 }) as any;

@@ -5,7 +5,7 @@ import { Colors } from '../../styledHelpers/Colors';
 
 const ContentContext = styled.div`
 background: ${Colors.white};
-width: 1000px;
+width: 1200px;
 min-height:1000px;
 `;
 

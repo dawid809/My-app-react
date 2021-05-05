@@ -66,6 +66,7 @@ align-self:center;
 border-radius: 50%;
 width: 40%;
 height: 40%;
+margin: 10px;
 `;
 
 
@@ -74,28 +75,21 @@ export const Profile : FC = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch<GetUsers>(getUsers())
+        dispatch<GetPhotos>(getPhotos())
     }, []);
 
-    const {usersList} = useSelector<IState, IUsersReducer>(globalState => ({
-        ...globalState.users
-    }));
-
-    const dispatch2 = useDispatch();
-    useEffect(() => {
-        dispatch2<GetPhotos>(getPhotos())
-    }, []);
-
-    const {photosList} = useSelector<IState, IPhotosReducer>(globalState => ({
+    const {usersList, photosList, currentUser} = useSelector<IState, IUsersReducer & IPhotosReducer>(globalState => ({
+        ...globalState.users,
         ...globalState.photos
     }));
 
     return (
-        
         <ProfileWrapper>
+            {/* {usersList.length > 0  } */}
             {console.log({usersList})}
-            <UserAvatar src={photosList[1].url} alt="User photo" />
-            <NameText>{usersList[3].name}</NameText>
-            <SmallText>Job title - comapny</SmallText>
+            <UserAvatar src={photosList[0]?.url} alt="User photo" />
+            <NameText>{usersList[0]?.name}</NameText>
+            <SmallText>Job title -  {usersList[0]?.company.name}</SmallText>
             <AboutMe>
                 <SubtitleWrapper>
                     <CustomImg src="icons/network.png" alt="Network" />

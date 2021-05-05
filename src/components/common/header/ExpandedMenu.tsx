@@ -10,12 +10,14 @@ const ExpandedWrapper = styled.div`
 position: absolute;
 display:flex;
 flex-direction:column;
-min-width: 250px;
+min-width: 230px;
 background: white;
 border: 1px solid ${Colors.gray};
 z-index:5;
 padding:10px;
+padding-right: 0px;
 margin:5px;
+left: 30px;
 `;
 
 const AccountWraper = styled.div`
@@ -59,12 +61,23 @@ color: ${Colors.gray};
 margin: 5px;
 `;
 
+const CustomFilter = styled.input`
+padding: 4px;
+width: 90%;
+border-color: ${Colors.lightGray};
+border-radius: 4px;
+color: ${Colors.lightGray};
+::placeholder {
+  color: ${Colors.lightGray};;
+}
+`;
+
 
 export const ExpandedMenu : FC = () => {
     return(
     <ExpandedWrapper>
+          <CustomFilter type="text" placeholder="Filter ..."/>
         <ScrollWrapper>
-            <input type="text" placeholder="Filter ..."/>
 
          <CustomSubtitles>Platfom</CustomSubtitles>
 
@@ -132,7 +145,7 @@ export const ExpandedMenu : FC = () => {
         <CustomSubtitles>Account</CustomSubtitles>
         <ProfileWrapper>
             <CustomImgWithMargin src="icons/people.png" /> 
-            Name 
+            name
             See profile
         </ProfileWrapper>
         <ImgAndTextContainer>

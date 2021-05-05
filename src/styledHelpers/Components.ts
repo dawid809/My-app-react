@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
     border: 1px solid ${Colors.gray};
-    width: 1200px;
+    width: auto;
     /* position:relative; */
     /* min-height:1200px; */
 `;

@@ -1,10 +1,14 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import {CustomImg} from '../../../styledHelpers/Components';
+export const CustomImg = styled.img`
+width: 22px;
+height: 22px;
+align-self:center;
+`;
 
 const LeftIconsWrapper = styled.div`
-margin-left:20px;
+margin-left:10px;
 width:100%;
 display: flex;
 justify-content: space-between;
@@ -36,7 +40,7 @@ export const LeftIconsContent : FC = () => {
             <WraperHome>
                 <CustomImg src="icons/house2.png"/>
                 <HomeText>Home</HomeText>
-                <CustomIcon src="icons/arrow-down.png"/>
+                <CustomIcon src="icons/arrow-down.png"style={{marginLeft: '100px'}}/>
             </WraperHome> 
        </LeftIconsWrapper>
  );

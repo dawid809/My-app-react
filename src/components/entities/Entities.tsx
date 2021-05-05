@@ -6,7 +6,7 @@ import { CustomImg } from '../../styledHelpers/Components';
 
 const EntitiesWrapper = styled.div`
 background: ${Colors.white};
-width: 1000px;
+min-width: 1200px;
 min-height:1000px;
 `;
 
