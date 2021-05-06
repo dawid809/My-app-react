@@ -29,7 +29,7 @@ const MainPage: FC = () =>{
                     <LeftMenu/>
                         <Switch>
                             <Route path="/" exact>
-                               <Home/>
+                                <Publications/>
                             </Route>
                             <Route path="/publications" exact >
                                 <Publications/>
