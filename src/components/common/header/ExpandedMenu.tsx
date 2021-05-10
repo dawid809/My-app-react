@@ -1,17 +1,17 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
-import {Colors} from '../../../styledHelpers/Colors';
-import {CustomImgWithMargin} from '../../../styledHelpers/Components';
-import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import {StyledLink} from '../../../styledHelpers/Components'
+import { Colors } from '../../../styledHelpers/Colors';
+import { CustomImgWithMargin } from '../../../styledHelpers/Components';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { StyledLink } from '../../../styledHelpers/Components'
 import { getUsers } from '../../../actions/usersActions';
 import { GET_USERS } from '../../../actions/actionTypes/userTypes';
 import { getPhotos } from '../../../actions/photosActions';
 import { GET_PHOTOS } from '../../../actions/actionTypes/photoTypes';
 
-import{ useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducers';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
@@ -107,7 +107,7 @@ type GetUsers = ReturnType<typeof getUsers>
 type GetPhotos = ReturnType<typeof getPhotos>
 
 
-export const ExpandedMenu : FC = () => {
+export const ExpandedMenu: FC = () => {
 
     const dispatch = useDispatch();
 
@@ -116,7 +116,7 @@ export const ExpandedMenu : FC = () => {
         dispatch<GetPhotos>(getPhotos())
     }, []);
 
-    const {usersList, photosList, currentUser} = useSelector<IState, IUsersReducer & IPhotosReducer>(globalState => ({
+    const { usersList, photosList, currentUser } = useSelector<IState, IUsersReducer & IPhotosReducer>(globalState => ({
         ...globalState.users,
         ...globalState.photos
     }));
@@ -128,125 +128,124 @@ export const ExpandedMenu : FC = () => {
         setInputText(text);
     }
 
-    return(
-    <ExpandedWrapper>
-          <CustomFilter type="text" placeholder="Filter ..." value={inputText} onChange={inputHandler}/>
-        <ScrollWrapper>
+    return (
+        <ExpandedWrapper>
+            <CustomFilter type="text" placeholder="Filter ..." value={inputText} onChange={inputHandler} />
+            <ScrollWrapper>
 
-         <CustomSubtitles>Platfom</CustomSubtitles>
-         {'Home'.toLowerCase().includes(inputText.toLowerCase()) &&
-         <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house2.png" />
-            <StyledLink to="/"> 
-                <CustomPargraf> Home </CustomPargraf>
-            </StyledLink>
-        </ImgAndTextContainer>
-         }
+                <CustomSubtitles>Platfom</CustomSubtitles>
+                {'Home'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/house2.png" />
+                        <StyledLink to="/">
+                            <CustomPargraf> Home </CustomPargraf>
+                        </StyledLink>
+                    </ImgAndTextContainer>
+                }
 
-         {'Publications'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/publications.png" />
-            <StyledLink to="/publications">
-                <CustomPargraf>  Publications </CustomPargraf>
-            </StyledLink>
-        </ImgAndTextContainer>
-        }
+                {'Publications'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/publications.png" />
+                        <StyledLink to="/publications">
+                            <CustomPargraf>  Publications </CustomPargraf>
+                        </StyledLink>
+                    </ImgAndTextContainer>
+                }
 
-        {'People'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/people.png" />
-            <StyledLink to="/people">
-                <CustomPargraf>People </CustomPargraf>
-            </StyledLink>
-        </ImgAndTextContainer>
-        }       
+                {'People'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/people.png" />
+                        <StyledLink to="/people">
+                            <CustomPargraf>People </CustomPargraf>
+                        </StyledLink>
+                    </ImgAndTextContainer>
+                }
 
-        {'Entities'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities2.png" />
-            <StyledLink to="/entities">
-                <CustomPargraf> Entities </CustomPargraf>
-            </StyledLink>
-        </ImgAndTextContainer>
-        }
+                {'Entities'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/entities2.png" />
+                        <StyledLink to="/entities">
+                            <CustomPargraf> Entities </CustomPargraf>
+                        </StyledLink>
+                    </ImgAndTextContainer>
+                }
 
-        {'Administration'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/administration.png" />
-            <StyledLink to="/administration">
-                <CustomPargraf> Administration</CustomPargraf>
-            </StyledLink>
-        </ImgAndTextContainer>
-        }
+                {'Administration'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/administration.png" />
+                        <StyledLink to="/administration">
+                            <CustomPargraf> Administration</CustomPargraf>
+                        </StyledLink>
+                    </ImgAndTextContainer>
+                }
 
-        <CustomSubtitles>Workspaces</CustomSubtitles>
+                <CustomSubtitles>Workspaces</CustomSubtitles>
 
-        {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Client contract </CustomPargraf>
-        </ImgAndTextContainer>
-        }
+                {'Client contract'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/file-signature.png" />
+                        <CustomPargraf> Client contract </CustomPargraf>
+                    </ImgAndTextContainer>
+                }
 
-        {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Supplier contract </CustomPargraf>
-        </ImgAndTextContainer>
-        }
+                {'Supplier contract'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/file-signature.png" />
+                        <CustomPargraf> Supplier contract </CustomPargraf>
+                    </ImgAndTextContainer>
+                }
 
-        {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities.png" />
-            <CustomPargraf> Corporate  </CustomPargraf>
-        </ImgAndTextContainer>
-        }
+                {'Corporate'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/entities.png" />
+                        <CustomPargraf> Corporate  </CustomPargraf>
+                    </ImgAndTextContainer>
+                }
 
-        {'Group Norms'.toLowerCase().includes(inputText.toLowerCase()) &&
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/book-alt.png" />
-            <CustomPargraf> Group Norms </CustomPargraf>
-        </ImgAndTextContainer>
-        }
+                {'Group Norms'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/book-alt.png" />
+                        <CustomPargraf> Group Norms </CustomPargraf>
+                    </ImgAndTextContainer>
+                }
 
-        {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) &&   
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Real estate contracts </CustomPargraf>
-        </ImgAndTextContainer>
-        }
+                {'Real estate contracts'.toLowerCase().includes(inputText.toLowerCase()) &&
+                    <ImgAndTextContainer>
+                        <CustomImgWithMargin src="icons/file-signature.png" />
+                        <CustomPargraf> Real estate contracts </CustomPargraf>
+                    </ImgAndTextContainer>
+                }
 
-    </ScrollWrapper>
+            </ScrollWrapper>
 
-    <AccountWraper>
+            <AccountWraper>
 
-        <CustomSubtitles>Account</CustomSubtitles>
+                <CustomSubtitles>Account</CustomSubtitles>
 
-        <ProfileWrapper>
-            <UserAvatar src={photosList[0]?.url} alt="User photo" /> 
-            <RightProfileWrapper>
-                {usersList[0]?.name}
-                <ShowProfileWrapper>See profile</ShowProfileWrapper> 
-            </RightProfileWrapper>
-        </ProfileWrapper>
+                <ProfileWrapper>
+                    <UserAvatar src={photosList[0]?.url} alt="User photo" />
+                    <RightProfileWrapper>
+                        {usersList[0]?.name}
+                        <ShowProfileWrapper>See profile</ShowProfileWrapper>
+                    </RightProfileWrapper>
+                </ProfileWrapper>
 
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/privacy.png" />
-            <CustomPargraf>Privacy </CustomPargraf>
-        </ImgAndTextContainer>
+                <ImgAndTextContainer>
+                    <CustomImgWithMargin src="icons/privacy.png" />
+                    <CustomPargraf>Privacy </CustomPargraf>
+                </ImgAndTextContainer>
 
-        <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/settings.png" />
-            <CustomPargraf> Settings </CustomPargraf>
-        </ImgAndTextContainer>
-        
-    </AccountWraper>
-        <LogoutWrapper>
-            <CustomImgWithMargin src="icons/logout.png" />
-            <CustomPargraf>  Logout </CustomPargraf>
-        </LogoutWrapper>
-        
-    </ExpandedWrapper>
+                <ImgAndTextContainer>
+                    <CustomImgWithMargin src="icons/settings.png" />
+                    <CustomPargraf> Settings </CustomPargraf>
+                </ImgAndTextContainer>
+
+            </AccountWraper>
+            <LogoutWrapper>
+                <CustomImgWithMargin src="icons/logout.png" />
+                <CustomPargraf>  Logout </CustomPargraf>
+            </LogoutWrapper>
+
+        </ExpandedWrapper>
     )
 };
-    

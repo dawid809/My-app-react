@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Colors } from './Colors';
-import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
 background: whitesmoke;

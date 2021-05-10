@@ -7,8 +7,8 @@ export interface IPhotosReducer {
 }
 
 const defaultState = (): IPhotosReducer => ({
-   photosList: [],
-   currentPhoto: undefined
+    photosList: [],
+    currentPhoto: undefined
 });
 
 export default (state = defaultState(), action: any) => {

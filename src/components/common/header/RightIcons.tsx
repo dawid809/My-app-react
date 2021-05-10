@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import {Colors} from '../../../styledHelpers/Colors';
+import { Colors } from '../../../styledHelpers/Colors';
 
 const RightIconsWrapper = styled.div`
 margin-right:10px;
@@ -46,12 +46,11 @@ right: -6px;
 top: -3px;
 justify-content: center;
 align-items: center;
-justify-content: center;
 font-size: 11px;
 color: ${Colors.white};
 `;
 
-export const RightIcons : FC = () => {
+export const RightIcons: FC = () => {
 
     return (
         <RightIconsWrapper>
@@ -65,5 +64,5 @@ export const RightIcons : FC = () => {
                 <NotificationCounterWrapper>11</NotificationCounterWrapper>
             </RoundedWrapperForImage>
         </RightIconsWrapper>
- );
+    );
 };

@@ -22,7 +22,7 @@ export const Entities: FC = () => {
     <EntitiesWrapper>
       <EntitiesContent>
         Entities
-        <CustomImg src="icons/cog.png"/>
+        <CustomImg src="icons/cog.png" />
       </EntitiesContent>
     </EntitiesWrapper>
   );

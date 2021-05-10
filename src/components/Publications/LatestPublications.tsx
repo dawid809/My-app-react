@@ -118,7 +118,7 @@ export const LatestPublications: FC = () => {
                     </Date>
                     <UserPhoto src={photosList[131]?.url}/>
                     <Date>
-                    {usersList[4].name}
+                    {usersList[4]?.name}
                     </Date>
                   </DateAndUserContainer>
                 </ContentContainer>
@@ -136,7 +136,7 @@ export const LatestPublications: FC = () => {
                     </Date>
                     <UserPhoto src={photosList[131]?.url}/>
                     <Date style= {{color: "black"}}>
-                    {usersList[4].name }
+                    {usersList[4]?.name }
                     </Date>
                   </DateAndUserContainer>
               </ContentContainer2>
@@ -151,7 +151,7 @@ export const LatestPublications: FC = () => {
                     </Date>
                     <UserPhoto src={photosList[131]?.url}/>
                     <Date style= {{color: "black"}}>
-                    {usersList[4].name}
+                    {usersList[4]?.name}
                     </Date>
                   </DateAndUserContainer>
               </ContentContainer2>
@@ -166,7 +166,7 @@ export const LatestPublications: FC = () => {
                     </Date>
                     <UserPhoto src={photosList[131]?.url}/>
                     <Date style= {{color: "black"}}>
-                    {usersList[4].name}
+                    {usersList[4]?.name}
                     </Date>
                   </DateAndUserContainer>
               </ContentContainer2>

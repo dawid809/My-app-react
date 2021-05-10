@@ -20,4 +20,4 @@ export interface ISingleUser {
         catchPhrase: string;
         bs: string;
     }
-};
+}

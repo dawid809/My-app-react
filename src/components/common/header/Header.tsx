@@ -1,12 +1,12 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import useDropdown from 'react-dropdown-hook';
 
-import {Colors} from '../../../styledHelpers/Colors';
-import {ExpandedMenu} from '../header/ExpandedMenu'
-import {Search} from '../header/Search';
-import {RightIcons} from '../header/RightIcons'
-import {LeftIconsContent} from '../header/LeftIcons'
+import { Colors } from '../../../styledHelpers/Colors';
+import { ExpandedMenu } from '../header/ExpandedMenu'
+import { Search } from '../header/Search';
+import { RightIcons } from '../header/RightIcons'
+import { LeftIconsContent } from '../header/LeftIcons'
 
 const InnerWrapper = styled.div`
 background: ${Colors.white};
@@ -26,7 +26,7 @@ display: flex;
 justify-content: space-between;
 `;
 
-export const Header : FC = () => { 
+export const Header: FC = () => {
   const [wrapperRef, dropdownOpen, toggleDropdown, closeDropdown] = useDropdown();
 
   const menuHandler = () => {
@@ -34,19 +34,19 @@ export const Header : FC = () => {
     toggleDropdown();
   };
 
-      return(
-       
-        <InnerWrapper>
-          <div ref={wrapperRef}>
-            <LeftIcons onClick={menuHandler}>
-                <LeftIconsContent></LeftIconsContent>
-            </LeftIcons>
-            {dropdownOpen &&
-                <ExpandedMenu />
-              }
-          </div>
-          <Search></Search>
-          <RightIcons></RightIcons>
-        </InnerWrapper>
-      );
+  return (
+
+    <InnerWrapper>
+      <div ref={wrapperRef}>
+        <LeftIcons onClick={menuHandler}>
+          <LeftIconsContent></LeftIconsContent>
+        </LeftIcons>
+        {dropdownOpen &&
+          <ExpandedMenu />
+        }
+      </div>
+      <Search></Search>
+      <RightIcons></RightIcons>
+    </InnerWrapper>
+  );
 };

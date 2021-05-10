@@ -5,4 +5,4 @@ export interface ISingleComment {
     name: string;
     email: string;
     body: string;
-};
+}

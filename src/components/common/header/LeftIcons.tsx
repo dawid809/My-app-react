@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
 export const CustomImg = styled.img`
@@ -32,16 +32,16 @@ margin-left:50px;
 width:80%;
 `;
 
-export const LeftIconsContent : FC = () => {
+export const LeftIconsContent: FC = () => {
 
     return (
         <LeftIconsWrapper>
-            <CustomImg src="logo192.png" style={{height: '30px',width: '30px'}}/>
+            <CustomImg src="logo192.png" style={{ height: '30px', width: '30px' }} />
             <WraperHome>
-                <CustomImg src="icons/house2.png"/>
+                <CustomImg src="icons/house2.png" />
                 <HomeText>Home</HomeText>
-                <CustomIcon src="icons/arrow-down.png"style={{marginLeft: '100px'}}/>
-            </WraperHome> 
-       </LeftIconsWrapper>
- );
+                <CustomIcon src="icons/arrow-down.png" style={{ marginLeft: '100px' }} />
+            </WraperHome>
+        </LeftIconsWrapper>
+    );
 };

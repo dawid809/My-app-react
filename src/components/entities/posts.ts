@@ -3,4 +3,4 @@ export interface ISinglePost {
     id: number;
     title: string;
     body: string;
-};
+}

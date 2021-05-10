@@ -7,8 +7,8 @@ export interface ICommentsReducer {
 }
 
 const defaultState = (): ICommentsReducer => ({
-   commentsList: [],
-   currentComment: undefined
+    commentsList: [],
+    currentComment: undefined
 });
 
 export default (state = defaultState(), action: any) => {

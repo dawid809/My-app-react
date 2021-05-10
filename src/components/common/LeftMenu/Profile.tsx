@@ -1,10 +1,10 @@
-import React, {FC, useEffect} from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
-import {Colors} from '../../../styledHelpers/Colors';
-import {CustomImg} from '../../../styledHelpers/Components';
-import {CustomImageWithBorder} from '../../../styledHelpers/Components';
+import { Colors } from '../../../styledHelpers/Colors';
+import { CustomImg } from '../../../styledHelpers/Components';
+import { CustomImageWithBorder } from '../../../styledHelpers/Components';
 import { getUsers } from '../../../actions/usersActions';
 import { GET_USERS } from '../../../actions/actionTypes/userTypes';
 import { getPhotos } from '../../../actions/photosActions';
@@ -16,7 +16,7 @@ import { GET_COMMENTS } from '../../../actions/actionTypes/commentTypes';
 import { getAlbums } from '../../../actions/albumsActions';
 import { GET_ALBUMS } from '../../../actions/actionTypes/albumTypes';
 
-import{ useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import { IState } from '../../../reducers';
 import { IUsersReducer } from '../../../reducers/usersReducers';
 import { IPhotosReducer } from '../../../reducers/photosReducer';
@@ -84,7 +84,7 @@ margin: 5px;
 `;
 
 
-export const Profile : FC = () => {
+export const Profile: FC = () => {
 
     const dispatch = useDispatch();
     useEffect(() => {
@@ -95,7 +95,7 @@ export const Profile : FC = () => {
         dispatch<GetAlbums>(getAlbums())
     }, []);
 
-    const {usersList, photosList, currentUser, postsList, commentsList, albumsList} = useSelector<IState, IUsersReducer & IPhotosReducer & IPostsReducer & ICommentsReducer & IAlbumsReducer>(globalState => ({
+    const { usersList, photosList, currentUser, postsList, commentsList, albumsList } = useSelector<IState, IUsersReducer & IPhotosReducer & IPostsReducer & ICommentsReducer & IAlbumsReducer>(globalState => ({
         ...globalState.users,
         ...globalState.photos,
         ...globalState.posts,
@@ -105,26 +105,31 @@ export const Profile : FC = () => {
 
     return (
         <ProfileWrapper>
-            {console.log({usersList})}
-            {console.log({photosList})}
-            {console.log({postsList})}
-            {console.log({commentsList})}
-            {console.log({albumsList})}
+            {console.log({ usersList })}
+            {console.log({ photosList })}
+            {console.log({ postsList })}
+            {console.log({ commentsList })}
+            {console.log({ albumsList })}
+
             <UserAvatar src={photosList[0]?.url} alt="User photo" />
             <NameText>{usersList[0]?.name}</NameText>
             <SmallText>Job title -  {usersList[0]?.company.name}</SmallText>
+            
             <AboutMe>
+
                 <SubtitleWrapper>
                     <CustomImg src="icons/network.png" alt="Network" />
                     <SubtitleText>Your network</SubtitleText>
                     <CustomImageWithBorder src="icons/user-plus.png" alt="Add user" />
                 </SubtitleWrapper>
+
                 <SubtitleWrapper>
                     <CustomImg src="icons/publications.png" alt="Publications" />
-                     <SubtitleText>Your publications</SubtitleText>
+                    <SubtitleText>Your publications</SubtitleText>
                     <CustomImageWithBorder src="icons/plus.png" alt="Icons" />
                 </SubtitleWrapper>
+
             </AboutMe>
         </ProfileWrapper>
- );
+    );
 };

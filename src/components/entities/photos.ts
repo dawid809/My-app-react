@@ -5,4 +5,4 @@ export interface ISinglePhoto {
     title: string;
     url: string;
     thumbnailUrl: string;
-};
+}

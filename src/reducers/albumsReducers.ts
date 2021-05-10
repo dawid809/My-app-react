@@ -7,8 +7,8 @@ export interface IAlbumsReducer {
 }
 
 const defaultState = (): IAlbumsReducer => ({
-   albumsList: [],
-   currentAlbum: undefined
+    albumsList: [],
+    currentAlbum: undefined
 });
 
 export default (state = defaultState(), action: any) => {

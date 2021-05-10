@@ -21,7 +21,7 @@ export const Administration: FC = () => {
   return (
     <AdministrationWrapper>
       <AdministrationContent>
-         Administration
+        Administration
       </AdministrationContent>
     </AdministrationWrapper>
   );

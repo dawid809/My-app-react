@@ -1,6 +1,6 @@
-import React, {FC, useState} from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
-import {Colors} from '../../../styledHelpers/Colors';
+import { Colors } from '../../../styledHelpers/Colors';
 
 const InputWrapper = styled.div`
 display: flex;
@@ -25,12 +25,12 @@ position: absolute;
 right: 10px;
 `;
 
-export const Search : FC = () => {
+export const Search: FC = () => {
 
-    return (
+  return (
     <InputWrapper>
-        <CustomFilter type="text" placeholder="Search Legalcuster"/>
-        <CustomImg src="icons/search.png" alt="Search" />
+      <CustomFilter type="text" placeholder="Search Legalcuster" />
+      <CustomImg src="icons/search.png" alt="Search" />
     </InputWrapper>
- );
+  );
 };

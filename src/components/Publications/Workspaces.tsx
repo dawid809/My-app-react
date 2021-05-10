@@ -31,8 +31,8 @@ export const Workspaces: FC = () => {
 
     return (
         <WorkspacesWrapper>
-            <div style={{margin: "10px 10px"}}>
-            Workspaces
+            <div style={{ margin: "10px 10px" }}>
+                Workspaces
             </div>
             <SliderContainer>
                 <SingleSlideContainer>
@@ -53,4 +53,4 @@ export const Workspaces: FC = () => {
             </SliderContainer>
         </WorkspacesWrapper>
     );
-  };
+};
