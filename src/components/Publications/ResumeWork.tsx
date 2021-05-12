@@ -1,33 +1,14 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
-// import ReactPaginate from 'react-paginate';
+import "../publications/index.css";
 
-import { Colors } from "../../styledHelpers/Colors";
-import { useSelector } from "react-redux";
-import { IState } from "../../reducers";
-import { getPosts } from "../../actions/postsActions";
-import { IPostsReducer } from "../../reducers/postsReducer";
-import { GET_POSTS } from "../../actions/actionTypes/postTypes";
-
-type GetPosts = ReturnType<typeof getPosts>;
+import { Pagination} from "../publications/Pagination";
 
 const ResumeWorkWrapper = styled.div`
   position: relative;
   background: whitesmoke;
   height: 400px;
   margin: 0.5% 5%;
-`;
-
-const PostsWrapper = styled.div`
-`;
-
-const SinglePostWrapper = styled.div`
-  background: white;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  margin: 5px 0;
-  padding: 5px;
 `;
 
 const TopContainer = styled.div`
@@ -88,40 +69,7 @@ const Subtititle = styled.h3`
   margin: 5px 0;
 `;
 
-const PostText = styled.a`
-`;
-
-const ImgAndTextWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 10px 0px;
-`;
-
-const PublicationDate = styled.a`
-  color: gray;
-  font-size: 12px;
-  align-self: center;
-`;
-
-const DotImg = styled(SmallImg)`
-  width: 4px;
-  height: 4px;
-  align-self: center;
-  margin: 0 10px;
-`;
-
-
 export const ResumeWork: FC = () => {
-
-    const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch<GetPosts>(getPosts());
-  }, []);
-
-  const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
-    ...globalState.posts,
-  }));
 
   return (
     <ResumeWorkWrapper>
@@ -143,25 +91,7 @@ export const ResumeWork: FC = () => {
           </FollowedContainer>
         </RightIconsAndTextWrapper>
       </TopContainer>
-      <PostsWrapper>
-        <SinglePostWrapper>
-        <Subtititle>
-          World Company
-        </Subtititle>
-        <PostText> repudiandae veniam quaerat sunt sed\nalias aut fugiat sit autem sed
-         est\nvoluptatem omnis possimus esse voluptatibus quis\nest aut tenetur dolor neque
-         </PostText>
-         <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <PostText>Subsid.corp</PostText>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <PostText>Client contract</PostText>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <PublicationDate> Updated 2 days ago</PublicationDate>
-            </ImgAndTextWrapper>
-        </SinglePostWrapper>
-      </PostsWrapper>
+      <Pagination/>
     </ResumeWorkWrapper>
   );
 };

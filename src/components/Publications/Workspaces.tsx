@@ -35,8 +35,8 @@ const TitleText = styled.h2`
 const ImgHalf = styled.img`
   width: 100%;
   height: 40%;
-  min-height: 70px;
-  max-height: 70px;
+  min-height: 90px;
+  max-height: 90px;
 `;
 
 const SingleContentWrapper = styled.div`
@@ -44,15 +44,22 @@ const SingleContentWrapper = styled.div`
 `;
 
 const SubtitleText = styled.h3`
-  margin: 10px;
-  font-weight: bold;
-  font-size: 0.9em;
-  float: right;
+align-self: center;
+margin: 0 10px;
 `;
 
 const ImgInsideDiv = styled.img`
   height: 80%;
   align-self: center;
+`;
+
+const TitleImgWrapper = styled.div`
+display: flex;
+flex-direction: row;
+padding: 10px;
+position: relative;
+top: -25px;
+margin-bottom: -25px;
 `;
 
 const ImgRoundedWrapper = styled.div`
@@ -69,12 +76,13 @@ const ImgAndTextWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 10px 0px;
+  margin: 5px 0px;
 `;
 
 const DatePulicationText = styled.a`
   color: gray;
   font-size: 12px;
+  margin: 0 5px;
 `;
 
 const SmallImg = styled.img`
@@ -87,6 +95,7 @@ const DotImg = styled(SmallImg)`
   width: 4px;
   height: 4px;
   align-self: center;
+  margin: 0 10px;
 `;
 
 const Text = styled.a`
@@ -119,11 +128,13 @@ export const Workspaces: FC = () => {
       <Slider {...settings}>
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
-          <SingleContentWrapper>
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
             <SubtitleText>Client Contract1</SubtitleText>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
               <Text>Client contract</Text>
@@ -136,11 +147,13 @@ export const Workspaces: FC = () => {
         </SingleSlideContainer>
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
-          <SingleContentWrapper>
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
             <SubtitleText>Client Contract2</SubtitleText>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
               <Text>Client contract</Text>
@@ -153,11 +166,13 @@ export const Workspaces: FC = () => {
         </SingleSlideContainer>
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
-          <SingleContentWrapper>
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
             <SubtitleText>Client Contract3</SubtitleText>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
               <Text>Client contract</Text>
@@ -170,11 +185,13 @@ export const Workspaces: FC = () => {
         </SingleSlideContainer>
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
-          <SingleContentWrapper>
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
             <SubtitleText>Client Contract4</SubtitleText>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
               <Text>Client contract</Text>
@@ -187,11 +204,13 @@ export const Workspaces: FC = () => {
         </SingleSlideContainer>
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
-          <SingleContentWrapper>
-            <SubtitleText>Client Contract5</SubtitleText>
-            <ImgRoundedWrapper>
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/book-alt.png" />
             </ImgRoundedWrapper>
+            <SubtitleText>Client Contract5</SubtitleText>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
               <Text>Client contract</Text>

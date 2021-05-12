@@ -27,6 +27,7 @@ height: 250px;
 margin: 0.5% 5%;
 border: 1px solid ${Colors.gray};
 border-radius: 5px;
+position: relative;
 `;
 
 const BigPhoto = styled.img`
@@ -47,6 +48,7 @@ height:50%;
 position: absolute;
 z-index:6;
 bottom: -30px;
+margin: 0 5px;
 `;
 
 const LatestPublicationsWrapper = styled.div`
@@ -61,8 +63,7 @@ const SinglePublication = styled.a`
 display: flex;
 width:100%;
 color: white;
-text-align: center;
-align-self: center;
+margin: 0 5px;
 `;
 
 const ContentContainer2 = styled.div`
@@ -92,12 +93,13 @@ margin: 0 5px;
 `;
 
 const TitleText = styled.h2`
-margin: 5px;
+margin: 2px 5px;
 font-weight: bold;
 `;
 
 const LinkText = styled.h3`
 color: blue;
+margin: 0 5px;
 `; 
 
 const SmallPhoto = styled.img`
