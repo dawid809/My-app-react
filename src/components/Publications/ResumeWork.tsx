@@ -28,15 +28,65 @@ display:flex;
 justify-content: space-between;
 `;
 
+const Title = styled.h2`
+`;
+
+const RightIconsAndTextWrapper = styled.div`
+display: flex;
+flex-direction: row;
+`;
+
+const SmallImg = styled.img`
+width: 16px;
+height: 16px;
+`;
+
+const SmallImgArrow = styled.img`
+width: 8px;
+height: 5px;
+`;
+
+
+const CustomInput = styled.input`
+border-color: gray;
+padding: 3px;
+border-radius: 5px;
+`;
+
+const FilterContainer = styled.div`
+margin: 0 10px;
+display: flex;
+align-items: center;
+`;
+
+const FollowedContainer = styled.div`
+display: flex;
+align-items: center;
+position: relative;
+`;
+
+const Subtititle = styled.h3`
+color: blue;
+margin: 0 5px;
+`;
+
 export const ResumeWork: FC = () => {
 
     return (
         <ResumeWorkWrapper>
             <TopContainer>
-                Resume your work 
-                <input type="text" placeholder="Filter by title..." />
-                <img src="icons/search.png" alt="filtrowanie" />
-                 Followed
+            <Title>Resume your work </Title>
+            <RightIconsAndTextWrapper>
+            <FilterContainer>
+                <CustomInput type="text" placeholder="Filter by title..." />
+                <SmallImg src="icons/search.png" alt="filtrowanie" style={{marginLeft:'-20px'}}/>
+                </FilterContainer>
+                <FollowedContainer>
+                <SmallImg src="icons/broadcast.png" alt="transmitowanie" />
+                <Subtititle>Followed</Subtititle>
+                 <SmallImgArrow src="icons/arrow-down.png" alt="strzałka-dół" />
+                 </FollowedContainer>
+                 </RightIconsAndTextWrapper>
             </TopContainer>
            <ContractWrapper>
                 <SingleContractWrapper>

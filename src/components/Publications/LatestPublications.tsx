@@ -30,14 +30,14 @@ border-radius: 5px;
 `;
 
 const BigPhoto = styled.img`
-width:100%;
-height:100%;
+min-width: 250px;
+height: 100%;
 position: absolute;
 `;
 
 const OnPhotoContainer = styled.div`
 height: 100%;
-width: 30%;
+width: 250px;
 position: relative;
 `;
 
@@ -50,32 +50,34 @@ bottom: -30px;
 `;
 
 const LatestPublicationsWrapper = styled.div`
-width: 70%;
+height: 100%;
 position: relative;
 display: flex;
 flex-direction: column;
+margin: 10px;
 `;
 
 const SinglePublication = styled.a`
 display: flex;
-width:90%;
+width:100%;
 color: white;
 text-align: center;
 align-self: center;
 `;
 
 const ContentContainer2 = styled.div`
-width:100%;
-height:20%;
 z-index:5;
+display: flex;
+margin: 5px;
 `;
 
 const DateAndUserContainer = styled.div`
-margin: 5px 10px;
 font-size: 12px;
 display: flex;
 align-items: center;
+align-self: flex-start;
 color: black;
+margin: 5px;
 `;
 
 const Date = styled.h6`
@@ -87,6 +89,20 @@ border-radius: 50%;
 width: 17px;
 height: 17px;
 margin: 0 5px;
+`;
+
+const TitleText = styled.h2`
+margin: 5px;
+font-weight: bold;
+`;
+
+const LinkText = styled.h3`
+color: blue;
+`; 
+
+const SmallPhoto = styled.img`
+max-height: 55px;
+max-width: 55px;
 `;
 
 export const LatestPublications: FC = () => {
@@ -125,24 +141,11 @@ export const LatestPublications: FC = () => {
           </OnPhotoContainer>
 
           <LatestPublicationsWrapper>
-           Latest publications
-              <ContentContainer2>
-                  <SinglePublication style= {{color: "black"}}>
-                    {postsList[2]?.title}
-                  </SinglePublication>
-                  <DateAndUserContainer>
-                    <Date style= {{color: "black"}}>
-                    7.07.2012 
-                    </Date>
-                    <UserPhoto src={photosList[131]?.url}/>
-                    <Date style= {{color: "black"}}>
-                    {usersList[4]?.name }
-                    </Date>
-                  </DateAndUserContainer>
-              </ContentContainer2>
-
-              <ContentContainer2>
-                  <SinglePublication style= {{color: "black"}}>
+          <TitleText>Latest publications</TitleText>
+          <ContentContainer2>
+          <SmallPhoto src={photosList[111]?.url} alt="Jakieś tam zdjęcie"/>
+            <div style= {{display: "flex", flexDirection: "column"}}>
+            <SinglePublication style= {{color: "black"}}>
                     {postsList[2]?.title}
                   </SinglePublication>
                   <DateAndUserContainer>
@@ -154,10 +157,13 @@ export const LatestPublications: FC = () => {
                     {usersList[4]?.name}
                     </Date>
                   </DateAndUserContainer>
+            </div>
               </ContentContainer2>
 
               <ContentContainer2>
-                  <SinglePublication style= {{color: "black"}}>
+          <SmallPhoto src={photosList[111]?.url} alt="Jakieś tam zdjęcie"/>
+            <div style= {{display: "flex", flexDirection: "column"}}>
+            <SinglePublication style= {{color: "black"}}>
                     {postsList[2]?.title}
                   </SinglePublication>
                   <DateAndUserContainer>
@@ -169,8 +175,28 @@ export const LatestPublications: FC = () => {
                     {usersList[4]?.name}
                     </Date>
                   </DateAndUserContainer>
+            </div>
               </ContentContainer2>
-            See more publications  
+
+              
+              <ContentContainer2>
+          <SmallPhoto src={photosList[111]?.url} alt="Jakieś tam zdjęcie"/>
+            <div style= {{display: "flex", flexDirection: "column"}}>
+            <SinglePublication style= {{color: "black"}}>
+                    {postsList[2]?.title}
+                  </SinglePublication>
+                  <DateAndUserContainer>
+                    <Date style= {{color: "black"}}>
+                    7.07.2012 
+                    </Date>
+                    <UserPhoto src={photosList[131]?.url}/>
+                    <Date style= {{color: "black"}}>
+                    {usersList[4]?.name}
+                    </Date>
+                  </DateAndUserContainer>
+            </div>
+              </ContentContainer2>
+              <LinkText>See more publications</LinkText> 
           </LatestPublicationsWrapper>
         </PublicationsWrapper>
     );

@@ -1,0 +1,47 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/* .slick-arrow {
+  color: black !important;
+  background-color: blue !important;
+}
+
+.slick-prev {
+  z-index: 100;
+}
+
+.slick-next {
+  z-index: 100;
+} */
+
+ .slick-slider {
+    width: 100%;
+    position: absolute;
+} 
+
+.slick-slide {
+    z-index: 100;
+    margin: 0 0.15%;
+    min-width: 200px !important;
+}
+
+.slick-list {
+}
+
+/* .slick-track {
+    max-width: 1000px;
+    min-height: 200px; 
+} */
+
+/* ul.slick-dots {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-end;
+} */
+
+/* ul.slick-dots li {
+    position: relative;
+    display: inline-block;
+}  */
+
+

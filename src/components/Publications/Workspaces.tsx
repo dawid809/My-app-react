@@ -1,56 +1,211 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { FC, useEffect } from "react";
+import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
-import { Colors } from '../../styledHelpers/Colors';
+import Slider from "react-slick";
+import { Colors } from "../../styledHelpers/Colors";
+import "../publications/index.css";
 
+import { useSelector } from "react-redux";
+import { IState } from "../../reducers";
+import { getPhotos } from "../../actions/photosActions";
+import { IPhotosReducer } from "../../reducers/photosReducer";
+import { GET_PHOTOS } from "../../actions/actionTypes/photoTypes";
+
+type GetPhotos = ReturnType<typeof getPhotos>;
 
 const WorkspacesWrapper = styled.div`
-position: relative;
-height: 150px;
-margin: 0.5% 5%;
-`;
-
-const SliderContainer = styled.div`
-display: flex;
-flex-direction: row;
-width: 100%;
-height: 100%;
-justify-content: space-between;
+  margin: 0.5% 5%;
+  position: relative;
+  height: 200px;
 `;
 
 const SingleSlideContainer = styled.div`
-width: 24%;
-height: 90%;
-background: red;
-border: 1px solid gray;
-border-radius: 5px;
-z-index:5; 
+  border: 1px solid gray;
+  border-radius: 5px;
+  z-index: 5;
+`;
+
+const TitleText = styled.h2`
+  margin: 10px;
+  font-weight: bold;
+`;
+
+const ImgHalf = styled.img`
+  width: 100%;
+  height: 40%;
+  min-height: 70px;
+  max-height: 70px;
+`;
+
+const SingleContentWrapper = styled.div`
+  margin: 5px;
+`;
+
+const SubtitleText = styled.h3`
+  margin: 10px;
+  font-weight: bold;
+  font-size: 0.9em;
+  float: right;
+`;
+
+const ImgInsideDiv = styled.img`
+  height: 80%;
+  align-self: center;
+`;
+
+const ImgRoundedWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  background: white;
+  width: 60px;
+  height: 60px;
+  border: 1px solid gray;
+  border-radius: 5px;
+`;
+
+const ImgAndTextWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 10px 0px;
+`;
+
+const DatePulicationText = styled.a`
+  color: gray;
+  font-size: 12px;
+`;
+
+const SmallImg = styled.img`
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+`;
+
+const DotImg = styled(SmallImg)`
+  width: 4px;
+  height: 4px;
+  align-self: center;
+`;
+
+const Text = styled.a`
+  font-size: 12px;
 `;
 
 export const Workspaces: FC = () => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    centerMode: true,
+  };
 
-    return (
-        <WorkspacesWrapper>
-            <div style={{ margin: "10px 10px" }}>
-                Workspaces
-            </div>
-            <SliderContainer>
-                <SingleSlideContainer>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<GetPhotos>(getPhotos());
+  }, []);
 
-                </SingleSlideContainer>
+  const { photosList } = useSelector<IState, IPhotosReducer>((globalState) => ({
+    ...globalState.photos,
+  }));
 
-                <SingleSlideContainer>
+  return (
+    <WorkspacesWrapper>
+      <TitleText> Workspaces </TitleText>
 
-                </SingleSlideContainer>
+      <Slider {...settings}>
+        {/* <div>adsas</div>
+                 <div>adsaadssssssssss</div>
+                 <div>adsasadddddds</div>
+                 <div>adsasadddddds</div> */}
 
-                <SingleSlideContainer>
-
-                </SingleSlideContainer>
-
-                <SingleSlideContainer>
-
-                </SingleSlideContainer>
-            </SliderContainer>
-        </WorkspacesWrapper>
-    );
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[111]?.url} alt="" />
+          <SingleContentWrapper>
+            <SubtitleText>Client Contract</SubtitleText>
+            <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/book-alt.png" alt="" />
+              <Text>Client contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>25 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[111]?.url} alt="" />
+          <SingleContentWrapper>
+            <SubtitleText>Client Contract</SubtitleText>
+            <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/book-alt.png" alt="" />
+              <Text>Client contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>25 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[111]?.url} alt="" />
+          <SingleContentWrapper>
+            <SubtitleText>Client Contract</SubtitleText>
+            <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/book-alt.png" alt="" />
+              <Text>Client contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>25 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[111]?.url} alt="" />
+          <SingleContentWrapper>
+            <SubtitleText>Client Contract</SubtitleText>
+            <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/book-alt.png" alt="" />
+              <Text>Client contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>25 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[111]?.url} alt="" />
+          <SingleContentWrapper>
+            <SubtitleText>Client Contract</SubtitleText>
+            <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/book-alt.png" />
+            </ImgRoundedWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/book-alt.png" alt="" />
+              <Text>Client contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>25 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+      </Slider>
+    </WorkspacesWrapper>
+  );
 };
