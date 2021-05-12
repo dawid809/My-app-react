@@ -25,13 +25,14 @@
     min-width: 200px !important;
 }
 
+
 .slick-list {
+  max-height: 192px !important;
 }
 
-/* .slick-track {
-    max-width: 1000px;
-    min-height: 200px; 
-} */
+.slick-track {
+  max-height: 192px !important;
+}
 
 /* ul.slick-dots {
     display: flex !important;
