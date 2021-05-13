@@ -12,6 +12,7 @@ import { Entities } from '../entities/Entities';
 import { Ecosystem } from '../ecosystem/Ecosystem';
 import { People } from '../people/People';
 import { Administration } from '../administration/Administration';
+import { Profile } from '../profile/Profile';
 
 
 //const Wrapper = styled.div``;
@@ -45,6 +46,9 @@ const MainPage: FC = () =>{
                             </Route>
                             <Route path="/administration" exact >
                                 <Administration/>
+                            </Route>
+                            <Route path="/profile" exact >
+                                <Profile/>
                             </Route>
                         </Switch>
                 </Content>

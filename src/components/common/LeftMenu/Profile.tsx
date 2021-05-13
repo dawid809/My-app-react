@@ -95,7 +95,7 @@ export const Profile: FC = () => {
         dispatch<GetAlbums>(getAlbums())
     }, []);
 
-    const { usersList, photosList, currentUser, postsList, commentsList, albumsList } = useSelector<IState, IUsersReducer & IPhotosReducer & IPostsReducer & ICommentsReducer & IAlbumsReducer>(globalState => ({
+    const { usersList, photosList, postsList, commentsList, albumsList } = useSelector<IState, IUsersReducer & IPhotosReducer & IPostsReducer & ICommentsReducer & IAlbumsReducer>(globalState => ({
         ...globalState.users,
         ...globalState.photos,
         ...globalState.posts,

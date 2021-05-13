@@ -7,13 +7,16 @@ import "../publications/index.css";
 import { Colors } from "../../styledHelpers/Colors";
 import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
-import { getPosts } from "../../actions/postsActions";
-import { IPostsReducer } from "../../reducers/postsReducer";
-import { GET_POSTS } from "../../actions/actionTypes/postTypes";
+import { getComments } from "../../actions/commentsActions";
+import { getUsers } from "../../actions/usersActions";
+import { ICommentsReducer } from "../../reducers/commentsReducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
 
-type GetPosts = ReturnType<typeof getPosts>;
+type GetComments = ReturnType<typeof getComments>;
+type GetUsers = ReturnType<typeof getUsers>;
 
-const PostsWrapper = styled.div``;
+const PostsWrapper = styled.div`
+`;
 
 const SinglePostWrapper = styled.div`
   background: white;
@@ -23,11 +26,6 @@ const SinglePostWrapper = styled.div`
   padding: 5px;
 `;
 
-const RightIconsAndTextWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 const SmallImg = styled.img`
   width: 12px;
   height: 12px;
@@ -35,41 +33,13 @@ const SmallImg = styled.img`
   align-self: center;
 `;
 
-const MediumImg = styled(SmallImg)`
-  width: 16px;
-  height: 16px; ;
-`;
-
-const SmallImgArrow = styled.img`
-  width: 8px;
-  height: 5px;
-  margin: 0 5px;
-`;
-
-const CustomInput = styled.input`
-  border-color: gray;
-  padding: 3px;
-  border-radius: 5px;
-`;
-
-const FilterContainer = styled.div`
-  margin: 0 10px;
-  display: flex;
-  align-items: center;
-`;
-
-const FollowedContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
-`;
-
 const Subtititle = styled.h3`
   color: blue;
   margin: 5px 0;
 `;
 
-const PostText = styled.a``;
+const PostText = styled.a`
+`;
 
 const ImgAndTextWrapper = styled.div`
   display: flex;
@@ -94,50 +64,56 @@ const DotImg = styled(SmallImg)`
 export const Pagination: FC = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch<GetPosts>(getPosts());
+    dispatch<GetComments>(getComments());
+    dispatch<GetUsers>(getUsers());
   }, []);
 
-  const { postsList } = useSelector<IState, IPostsReducer>((globalState) => ({
-    ...globalState.posts,
+  const { commentsList, usersList } = useSelector<IState, ICommentsReducer & IUsersReducer>((globalState) => ({
+    ...globalState.comments,
+    ...globalState.users,
   }));
 
-  const [posts, setPosts] = useState(postsList.slice(0, 100));
+  const [comments, setComments] = useState(commentsList.slice(0, 500));
   const [pageNumber, setPageNumber] = useState(0);
 
-  const postsPerPage = 10;
-  const pagesVisited = pageNumber * postsPerPage;
+  const commentsPerPage = 10;
+  const pagesVisited = pageNumber * commentsPerPage;
 
-  const displayPosts = postsList
-    .slice(pagesVisited, pagesVisited + postsPerPage)
-    .map((post) => {
+  const displayComments = commentsList
+    .slice(pagesVisited, pagesVisited + commentsPerPage)
+    .map((comments) => {
       return (
-        <PostsWrapper key={post.id}>
+        <PostsWrapper key={comments.id}>
           <SinglePostWrapper>
-            <Subtititle>{post?.title}</Subtititle>
-            <PostText> {post?.body}</PostText>
+            <Subtititle>{comments?.name}</Subtititle>
+            <PostText> {comments?.body}</PostText>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
-              <PostText>{post?.title}</PostText>
+              <PostText>{comments?.name}</PostText>
               <DotImg src="icons/black-circle.png" alt="" />
               <SmallImg src="icons/people.png" alt="" />
               <PostText>Client contract</PostText>
               <DotImg src="icons/black-circle.png" alt="" />
-              <PublicationDate> Updated 2 days ago</PublicationDate>
+              <PublicationDate> Updated 2 days ago by {usersList[0]?.name}</PublicationDate>
             </ImgAndTextWrapper>
           </SinglePostWrapper>
         </PostsWrapper>
       );
     });
 
-  const pageCount = Math.ceil(postsList.length / postsPerPage);
+  const pageCount = Math.ceil(commentsList.length / commentsPerPage);
 
   const changePage = ({ selected }: { selected: any }) => {
     setPageNumber(selected);
   };
   return (
     <div>
-      {console.log("Posts", displayPosts)}
-      {displayPosts}
+      {/* {commentsList.filter(elem => elem.name.
+        toLowerCase()
+        .includes)}
+        input.toLowerCase() */}
+      {console.log("Comments", displayComments)}
+      {displayComments}
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -148,6 +124,8 @@ export const Pagination: FC = () => {
         containerClassName={"pagination-bttns"}
         previousLinkClassName={"previous-bttn"}
         nextLinkClassName={"next-bttn"}
+        disabledClassName={"pagination-disabled"}
+        activeClassName={"pagination-active"}
       />
     </div>
   );

@@ -226,7 +226,9 @@ export const ExpandedMenu: FC = () => {
                     <UserAvatar src={photosList[0]?.url} alt="User photo" />
                     <RightProfileWrapper>
                         {usersList[0]?.name}
+                        <StyledLink to="/profile">
                         <ShowProfileWrapper>See profile</ShowProfileWrapper>
+                        </StyledLink>
                     </RightProfileWrapper>
                 </ProfileWrapper>
 

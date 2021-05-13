@@ -130,14 +130,14 @@ export const Workspaces: FC = () => {
           <ImgHalf src={photosList[111]?.url} alt="" />
           <TitleImgWrapper>
           <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
+              <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
-            <SubtitleText>Client Contract1</SubtitleText>
+            <SubtitleText>Client Contract</SubtitleText>
           </TitleImgWrapper>
           <SingleContentWrapper>
             <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <Text>Client contract</Text>
+              <SmallImg src="icons/file-signature.png" alt="" />
+              <Text>Contract</Text>
               <DotImg src="icons/black-circle.png" alt="" />
               <SmallImg src="icons/people.png" alt="" />
               <Text>25 Users</Text>
@@ -149,14 +149,33 @@ export const Workspaces: FC = () => {
           <ImgHalf src={photosList[111]?.url} alt="" />
           <TitleImgWrapper>
           <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
+              <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
-            <SubtitleText>Client Contract2</SubtitleText>
+            <SubtitleText>Supplier contract</SubtitleText>
           </TitleImgWrapper>
           <SingleContentWrapper>
             <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <Text>Client contract</Text>
+              <SmallImg src="icons/file-signature.png" alt="" />
+              <Text>Contract</Text>
+              <DotImg src="icons/black-circle.png" alt="" />
+              <SmallImg src="icons/people.png" alt="" />
+              <Text>50 Users</Text>
+            </ImgAndTextWrapper>
+            <DatePulicationText> Last update 2 days ago</DatePulicationText>
+          </SingleContentWrapper>
+        </SingleSlideContainer>
+        <SingleSlideContainer>
+          <ImgHalf src={photosList[112]?.url} alt="" />
+          <TitleImgWrapper>
+          <ImgRoundedWrapper>
+              <ImgInsideDiv src="icons/entities.png" />
+            </ImgRoundedWrapper>
+            <SubtitleText>Corporate</SubtitleText>
+          </TitleImgWrapper>
+          <SingleContentWrapper>
+            <ImgAndTextWrapper>
+              <SmallImg src="icons/entities.png" alt="" />
+              <Text>Corporate</Text>
               <DotImg src="icons/black-circle.png" alt="" />
               <SmallImg src="icons/people.png" alt="" />
               <Text>25 Users</Text>
@@ -165,58 +184,39 @@ export const Workspaces: FC = () => {
           </SingleContentWrapper>
         </SingleSlideContainer>
         <SingleSlideContainer>
-          <ImgHalf src={photosList[111]?.url} alt="" />
+          <ImgHalf src={photosList[113]?.url} alt="" />
           <TitleImgWrapper>
           <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/book-alt.png" />
             </ImgRoundedWrapper>
-            <SubtitleText>Client Contract3</SubtitleText>
+            <SubtitleText>Group norms</SubtitleText>
           </TitleImgWrapper>
           <SingleContentWrapper>
             <ImgAndTextWrapper>
               <SmallImg src="icons/book-alt.png" alt="" />
-              <Text>Client contract</Text>
+              <Text>Norms</Text>
               <DotImg src="icons/black-circle.png" alt="" />
               <SmallImg src="icons/people.png" alt="" />
-              <Text>25 Users</Text>
+              <Text>40 Users</Text>
             </ImgAndTextWrapper>
             <DatePulicationText> Last update 2 days ago</DatePulicationText>
           </SingleContentWrapper>
         </SingleSlideContainer>
         <SingleSlideContainer>
-          <ImgHalf src={photosList[111]?.url} alt="" />
+          <ImgHalf src={photosList[115]?.url} alt="" />
           <TitleImgWrapper>
           <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
+              <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
-            <SubtitleText>Client Contract4</SubtitleText>
+            <SubtitleText>Real estate contracts</SubtitleText>
           </TitleImgWrapper>
           <SingleContentWrapper>
             <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
+              <SmallImg src="icons/file-signature.png" alt="" />
               <Text>Client contract</Text>
               <DotImg src="icons/black-circle.png" alt="" />
               <SmallImg src="icons/people.png" alt="" />
-              <Text>25 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[111]?.url} alt="" />
-          <TitleImgWrapper>
-          <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
-            <SubtitleText>Client Contract5</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <Text>Client contract</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <Text>25 Users</Text>
+              <Text>75 Users</Text>
             </ImgAndTextWrapper>
             <DatePulicationText> Last update 2 days ago</DatePulicationText>
           </SingleContentWrapper>

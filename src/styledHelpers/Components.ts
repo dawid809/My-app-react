@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
 background: whitesmoke;
 margin-left: auto;
 margin-right: auto;
-border: 1px solid ${Colors.gray};
+/* border: 1px solid ${Colors.gray}; */
 width: auto;
 /* position:relative; */
 /* min-height:1200px; */
