@@ -43,7 +43,7 @@ margin: 10px;
 const UserContactWrapper = styled.div`
 display: flex;
 flex-direction: column;
-justify-self: flex-end;
+align-self: flex-end;
 `;
 
 const SmallIcons = styled.img`
@@ -106,6 +106,11 @@ color: gray;
 margin: 5px 0;
 `;
 
+const LinkText = styled.h3`
+color: blue;
+margin-top: 5px;
+`;
+
 export const CurrentUser: FC = () => {
 
     const dispatch = useDispatch();
@@ -121,10 +126,10 @@ export const CurrentUser: FC = () => {
 
     return (
        <CurrentUserWrapper>
-           <div style={{display: "flex", flexDirection: "row", borderBottom: "1px solid gray", paddingBottom: "20px", position: "relative"}}>
+           <div style={{display: "flex", flexDirection: "row", borderBottom: "1px solid gray", paddingBottom: "10px", position: "relative"}}>
            <PhotoWrapper>
             <UserPhoto src={photosList[1]?.url}/>
-            See profile
+            <LinkText> See profile </LinkText>
             </PhotoWrapper>
 
             <UserInfoWrapper>
@@ -162,7 +167,7 @@ export const CurrentUser: FC = () => {
                 <h1>610 PLN/Day(NoNegociated)</h1>
                 <GrayText>Terms&Conditions </GrayText>
                 <h1>Monthly cos tam </h1>
-               <input type="file" />
+               <input type="file"/>
             </PanelInformationWrapper>
 
             <ServicesAndProjectsWrapper>
@@ -179,7 +184,7 @@ export const CurrentUser: FC = () => {
             <h2>Operation Ti      Renault CO USA   #Tax    21/02/2018   Racine</h2>
             <h2>Op. Prometh       Renault HQ POL   #M&A    11/12/2019   Clifford chance</h2>
             <h2>Op. Latandre      Renault BR Italy #Social 01/01/2021   SVZ</h2>
-            <h1>See more Proposals</h1>
+            <LinkText>See more Proposals</LinkText>
             </ProposalsWrapper>
 
             <InternalReviewsWrapper>

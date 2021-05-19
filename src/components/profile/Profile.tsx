@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { CurrentUser } from "../profile/CurrentUser";
+import { ProfileHeader } from '../profile/ProfileHeader';
+import { PanelInformation } from '../profile/PanelInformations';
 
 const ContentContext = styled.div`
   width: 100%;
@@ -15,41 +17,16 @@ const ContentContext = styled.div`
 const ProfileWrapper = styled.div`
   margin: 0.5% 5%;
   border: 1px solid ${Colors.gray};
-  min-width: 600px;
-  max-width: 600px;
-`;
-
-const TopMenu = styled.div`
-  margin: 10px;
-  display: flex;
-  justify-content: flex-end;
-`;
-
-const CustomImg = styled.img`
-  width: 14px;
-  height: 14px;
-  align-self: center;
-  margin: 0 10px;
-  cursor: pointer;
-`;
-
-const BoldText = styled.h2`
-  font-weight: bold;
+  min-width: 800px;
+  width: 80%;
+  margin-left: 0%;
 `;
 
 export const Profile: FC = () => {
   return (
     <ContentContext>
       <ProfileWrapper>
-        <TopMenu>
-          <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
-          <BoldText>Message</BoldText>
-          <CustomImg src="icons/request.png" alt="zapytanie" />
-          <BoldText>Create a request</BoldText>
-          <CustomImg src="icons/suitcase.png" alt="grono" />
-          <BoldText>Add to a clauster</BoldText>
-          <CustomImg src="icons/close.png" alt="zamknij" />
-        </TopMenu>
+      <ProfileHeader/>
         {/* <CurrentUserWrapper>
 
         </CurrentUserWrapper> */}
