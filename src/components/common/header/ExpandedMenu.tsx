@@ -61,8 +61,8 @@ const ScrollWrapper = styled.div`
 const CustomPargraf = styled.p``;
 
 const CustomSubtitles = styled.h3`
-  color: ${Colors.gray};
-  margin: 5px;
+  color: ${Colors.darkerGray};
+  margin: 8px 5px;
 `;
 
 const CustomFilter = styled.input`

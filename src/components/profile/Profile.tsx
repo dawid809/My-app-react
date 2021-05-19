@@ -2,35 +2,33 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
-import { CurrentUser } from "../profile/CurrentUser";
-import { ProfileHeader } from '../profile/ProfileHeader';
-import { PanelInformation } from '../profile/PanelInformations';
+import { ProfileHeader } from "../profile/ProfileHeader";
+import { RestUserInfo } from "./RestUserInfo";
+import { MainUserData } from "./MainUserData";
 
 const ContentContext = styled.div`
   width: 100%;
-  min-height: 1000px;
-  position: relative;
-  display: flex;
-  justify-content: center;
 `;
 
 const ProfileWrapper = styled.div`
+  min-width: 600px;
   margin: 0.5% 5%;
-  border: 1px solid ${Colors.gray};
-  min-width: 800px;
-  width: 80%;
-  margin-left: 0%;
+  padding: 0 10%;
+`;
+
+const BorderWrapper = styled.div`
+  border: 1px solid ${Colors.lightGray};
 `;
 
 export const Profile: FC = () => {
   return (
     <ContentContext>
       <ProfileWrapper>
-      <ProfileHeader/>
-        {/* <CurrentUserWrapper>
-
-        </CurrentUserWrapper> */}
-        <CurrentUser></CurrentUser>
+        <BorderWrapper>
+          <ProfileHeader />
+          <MainUserData></MainUserData>
+          <RestUserInfo></RestUserInfo>
+        </BorderWrapper>
       </ProfileWrapper>
     </ContentContext>
   );

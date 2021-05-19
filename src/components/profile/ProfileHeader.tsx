@@ -1,17 +1,11 @@
-import React, { FC } from 'react';
-import styled from 'styled-components';
+import React, { FC } from "react";
+import styled from "styled-components";
 
 const ProfileHeaderWrapper = styled.div`
- margin: 10px;
+  margin: 10px;
   display: flex;
   justify-content: flex-end;
 `;
-
-// const TopMenu = styled.div`
-//   margin: 10px;
-//   display: flex;
-//   justify-content: flex-end;
-// `;
 
 const CustomImg = styled.img`
   width: 14px;
@@ -26,19 +20,15 @@ const BoldText = styled.h2`
 `;
 
 export const ProfileHeader: FC = () => {
-
-    return(
-        <ProfileHeaderWrapper>
-          
-          <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
-          <BoldText>Message</BoldText>
-          <CustomImg src="icons/request.png" alt="zapytanie" />
-          <BoldText>Create a request</BoldText>
-          <CustomImg src="icons/suitcase.png" alt="grono" />
-          <BoldText>Add to a clauster</BoldText>
-          <CustomImg src="icons/close.png" alt="zamknij" />
-       
-        </ProfileHeaderWrapper>
-    );
-
-}
+  return (
+    <ProfileHeaderWrapper>
+      <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
+      <BoldText>Message</BoldText>
+      <CustomImg src="icons/request.png" alt="zapytanie" />
+      <BoldText>Create a request</BoldText>
+      <CustomImg src="icons/suitcase.png" alt="grono" />
+      <BoldText>Add to a clauster</BoldText>
+      <CustomImg src="icons/close.png" alt="zamknij" />
+    </ProfileHeaderWrapper>
+  );
+};
