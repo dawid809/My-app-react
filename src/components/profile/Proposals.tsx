@@ -25,6 +25,7 @@ const LinkText = styled.h3`
   text-align: right;
   margin: 5px 10px;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 const Table = styled.table`

@@ -45,6 +45,12 @@ const Column = styled.td`
   white-space: nowrap;
 `;
 
+const CustomInput = styled.input.attrs({
+    type: "text",
+})`
+color: blue;
+`;
+
 export const AmountOfFees: FC = () => {
   return (
     <AmountOfFeesWrapper>
@@ -85,6 +91,9 @@ export const AmountOfFees: FC = () => {
           <Column>Linklaters</Column>
         </Row>
       </Table>
+      {/* <CustomInput></CustomInput> */}
     </AmountOfFeesWrapper>
+    // https://pl.reactjs.org/docs/forms.html
+    // https://blog.logrocket.com/8-awesome-features-of-styled-components/
   );
 };

@@ -1,6 +1,8 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+
 
 import { Colors } from "../../styledHelpers/Colors";
 import { PanelInformations } from "./PanelInformations";
@@ -75,8 +77,24 @@ export const RestUserInfo: FC = () => {
     ...globalState.photos,
   }));
 
+  const formik = useFormik({
+    initialValues: {
+      name: usersList[0]?.name,
+      companyName: usersList[0]?.company.name,
+      address: usersList[0]?.address.city,
+      username: usersList[0]?.username,
+      email: usersList[0]?.email,
+      phone: usersList[0]?.phone,
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      console.log("t");
+    },
+  });
+
   return (
     <UserWrapper>
+        <form onSubmit={formik.handleSubmit}>
       <UserExperienceWrapper>
         <EditIcon src="icons/pen.png" />
         <GrayText>Expertise</GrayText>
@@ -101,6 +119,7 @@ export const RestUserInfo: FC = () => {
       <InternalReviews></InternalReviews>
 
       <AmountOfFees></AmountOfFees>
+      </form>
     </UserWrapper>
   );
 };
