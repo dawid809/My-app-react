@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import { Colors } from '../../styledHelpers/Colors';
 import "../publications/index.css";
 
 import { Pagination} from "../publications/Pagination";
@@ -46,10 +47,21 @@ const SmallImgArrow = styled.img`
   margin: 0 5px;
 `;
 
-const CustomInput = styled.input`
-  border-color: gray;
-  padding: 3px;
+const CustomFilter = styled.input`
+  padding: 5px;
+  width: 100%;
   border-radius: 5px;
+  border: 1px solid ${Colors.lightGray};
+  outline: none;
+  :focus {
+    border-color: ${Colors.black};
+  }
+  ::placeholder {
+    color: ${Colors.gray};
+  }
+  &:hover {
+    background: ${Colors.whiteSmoke};
+  }
 `;
 
 const FilterContainer = styled.div`
@@ -77,7 +89,7 @@ export const ResumeWork: FC = () => {
         <Title>Resume your work </Title>
         <RightIconsAndTextWrapper>
           <FilterContainer>
-            <CustomInput type="text" placeholder="Filter by title..." />
+            <CustomFilter type="text" placeholder="Filter by title..." />
             <MediumImg
               src="icons/search.png"
               alt="filtrowanie"

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { fontSize } from '../../../styledHelpers/FontSizes';
 
 const CustomIcon = styled.img`
   width: 22px;
@@ -26,7 +27,7 @@ const WraperHome = styled.div`
 `;
 
 const TitleText = styled.h1`
-  font-size: 1.2rem;
+  font-size: ${fontSize[22]};
   margin-left: 20px;
   text-align: center;
 `;
@@ -38,11 +39,11 @@ const CustomArrowIcon = styled.img`
 export const LeftIconsContent: FC = () => {
   return (
     <LeftIconsWrapper>
-      <Logo src="icons/logo.png" />
+      <Logo src="icons/logo.png" alt="logo" />
       <WraperHome>
-        <CustomIcon src="icons/house2.png" />
+        <CustomIcon src="icons/house2.png" alt="home" />
         <TitleText>Home</TitleText>
-        <CustomArrowIcon src="icons/arrow-down.png" />
+        <CustomArrowIcon src="icons/arrow-down.png" alt="arrow down" />
       </WraperHome>
     </LeftIconsWrapper>
   );

@@ -14,9 +14,16 @@ const CustomFilter = styled.input`
   width: 100%;
   border-radius: 5px;
   border: 1px solid ${Colors.lightGray};
+  outline: none;
   text-align: center;
+  :focus {
+    border-color: ${Colors.black};
+  }
   ::placeholder {
-    color: ${Colors.lightGray};
+    color: ${Colors.gray};
+  }
+  &:hover {
+    background: ${Colors.whiteSmoke};
   }
 `;
 

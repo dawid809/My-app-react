@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Colors } from "../../../styledHelpers/Colors";
+import { fontSize } from "../../../styledHelpers/FontSizes";
 
 const RightIconsWrapper = styled.div`
   margin-right: 20px;
@@ -11,7 +12,7 @@ const RightIconsWrapper = styled.div`
 
 const RoundedWrapperForImage = styled.div`
   border-radius: 50%;
-  background: #e0dede;
+  background: ${Colors.lightGray};
   height: 35px;
   width: 35px;
   display: flex;
@@ -26,8 +27,8 @@ const CustomIconInsideWrapper = styled.img`
 `;
 
 const CustomImg = styled.img`
-  width: 21px;
-  height: 21px;
+  width: 22px;
+  height: 22px;
   align-self: center;
   margin-right: 5px;
 `;
@@ -35,16 +36,16 @@ const CustomImg = styled.img`
 const NotificationCounterWrapper = styled.div`
   height: 15px;
   width: 20px;
-  background: #0c8fdb;
+  background: ${Colors.lightBlue};
   position: absolute;
-  border-radius: 45%;
+  border-radius: 40%;
   display: flex;
   right: -6px;
   top: -3px;
   justify-content: center;
   align-items: center;
-  font-size: 11px;
-  color: ${Colors.white};
+  font-size: ${fontSize[11]};
+  color: ${Colors.whiteSmoke};
 `;
 
 export const RightIcons: FC = () => {
@@ -53,11 +54,11 @@ export const RightIcons: FC = () => {
       <CustomImg src="icons/house.png" />
       <RoundedWrapperForImage>
         <CustomIconInsideWrapper src="icons/comments.png" alt="Comments" />
-        <NotificationCounterWrapper>8</NotificationCounterWrapper>
+        <NotificationCounterWrapper>3</NotificationCounterWrapper>
       </RoundedWrapperForImage>
       <RoundedWrapperForImage>
         <CustomIconInsideWrapper src="icons/bell.png" alt="Bell" />
-        <NotificationCounterWrapper>11</NotificationCounterWrapper>
+        <NotificationCounterWrapper>3</NotificationCounterWrapper>
       </RoundedWrapperForImage>
     </RightIconsWrapper>
   );

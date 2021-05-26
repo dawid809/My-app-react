@@ -1,4 +1,4 @@
-import { ISinglePost } from "../components/entities/posts";
+import { ISinglePost } from "../components/entitiesData/posts";
 import * as actionTypes from "../actions/actionTypes/postTypes";
 
 export interface IPostsReducer {

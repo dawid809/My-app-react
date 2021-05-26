@@ -1,5 +1,5 @@
 
-import {ISinglePhoto} from '../../components/entities/photos'
+import {ISinglePhoto} from '../../components/entitiesData/photos'
 export const GET_PHOTOS = 'GET_PHOTOS';
 
 export interface IPhotoTypes {

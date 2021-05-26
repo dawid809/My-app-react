@@ -21,7 +21,7 @@ const PostsWrapper = styled.div`
 const SinglePostWrapper = styled.div`
   background: white;
   border-radius: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid ${Colors.lightGray};
   margin: 5px 0;
   padding: 5px;
 `;
@@ -34,7 +34,7 @@ const SmallImg = styled.img`
 `;
 
 const Subtititle = styled.h3`
-  color: blue;
+  color: ${Colors.blue};
   margin: 5px 0;
 `;
 

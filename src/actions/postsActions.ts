@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as actionTypes from '../actions/actionTypes/postTypes';
-import { ISinglePost } from '../components/entities/posts';
+import { ISinglePost } from '../components/entitiesData/posts';
 
 
 export const getPosts = (): Promise<ISinglePost[]> => ((dispatch: Dispatch) => {

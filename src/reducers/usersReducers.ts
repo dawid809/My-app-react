@@ -1,4 +1,4 @@
-import { ISingleUser } from "../components/entities/users";
+import { ISingleUser } from "../components/entitiesData/users";
 import * as actionTypes from "../actions/actionTypes/userTypes";
 
 export interface IUsersReducer {
@@ -18,7 +18,7 @@ export default (state = defaultState(), action: any) => {
       return {
         ...state,
         usersList: data.data.usersList,
-        currentUser: data.data.currentUser,
+        currentUser: data.data.currentUser
       };
     }
     default: {

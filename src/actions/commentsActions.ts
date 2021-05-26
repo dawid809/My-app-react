@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as actionTypes from '../actions/actionTypes/commentTypes';
-import { ISingleComment } from '../components/entities/comments';
+import { ISingleComment } from '../components/entitiesData/comments';
 
 
 export const getComments = (): Promise<ISingleComment[]> => ((dispatch: Dispatch) => {

@@ -29,7 +29,6 @@ export const Header: FC = () => {
   const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
   const menuHandler = () => {
-    console.log("click");
     toggleDropdown();
   };
 
@@ -37,12 +36,12 @@ export const Header: FC = () => {
     <InnerWrapper>
       <div ref={wrapperRef}>
         <LeftIcons onClick={menuHandler}>
-          <LeftIconsContent></LeftIconsContent>
+          <LeftIconsContent />
         </LeftIcons>
         {dropdownOpen && <ExpandedMenu />}
       </div>
-      <Search></Search>
-      <RightIcons></RightIcons>
+      <Search />
+      <RightIcons />
     </InnerWrapper>
   );
 };

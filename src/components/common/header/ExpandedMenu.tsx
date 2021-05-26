@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { Colors } from "../../../styledHelpers/Colors";
 import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { StyledLink } from "../../../styledHelpers/Components";
@@ -15,7 +16,7 @@ import { IPhotosReducer } from "../../../reducers/photosReducer";
 
 const ExpandedWrapper = styled.div`
   position: absolute;
-  min-width: 240px;
+  min-width: 250px;
   background: white;
   border: 1px solid ${Colors.gray};
   z-index: 100;
@@ -43,7 +44,8 @@ const LogoutWrapper = styled.div`
   justify-content: center;
   padding-right: 10px;
   margin-top: 10px;
-  color: ${Colors.gray};
+  color: ${Colors.darkerGray};
+  cursor: pointer;
 `;
 
 const ImgAndTextContainer = styled.div`
@@ -58,7 +60,9 @@ const ScrollWrapper = styled.div`
   overflow-y: scroll;
 `;
 
-const CustomPargraf = styled.p``;
+const CustomPargraf = styled.p`
+  font-size: ${fontSize[16]};
+`;
 
 const CustomSubtitles = styled.h3`
   color: ${Colors.darkerGray};
@@ -70,15 +74,22 @@ const CustomFilter = styled.input`
   width: 90%;
   border: 1px solid ${Colors.lightGray};
   border-radius: 4px;
+  outline: none;
+  :focus {
+    border-color: ${Colors.black};
+  }
   ::placeholder {
-    color: ${Colors.lightGray};
+    color: ${Colors.gray};
+  }
+  &:hover {
+    background: ${Colors.whiteSmoke};
   }
 `;
 
 const UserAvatar = styled.img`
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
+  height: 36px;
+  width: 36px;
 `;
 
 const RightProfileWrapper = styled.div`
@@ -91,7 +102,13 @@ const RightProfileWrapper = styled.div`
 
 const ShowProfileText = styled.p`
   color: ${Colors.blue};
-  font-size: 13px;
+  font-size: ${fontSize[14]};
+  margin: 2px 0;
+`;
+
+const Logout = styled(CustomPargraf)`
+  color: ${Colors.darkerGray};
+  font-size: ${fontSize[16]};
 `;
 
 type GetUsers = ReturnType<typeof getUsers>;
@@ -132,7 +149,7 @@ export const ExpandedMenu: FC = () => {
         <CustomSubtitles>Platfom</CustomSubtitles>
         {"Home".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house2.png" />
+            <CustomImgWithMargin src="icons/house2.png" alt="house2" />
             <StyledLink to="/">
               <CustomPargraf> Home </CustomPargraf>
             </StyledLink>
@@ -141,7 +158,10 @@ export const ExpandedMenu: FC = () => {
 
         {"Publications".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/publications.png" />
+            <CustomImgWithMargin
+              src="icons/publications.png"
+              alt="publications"
+            />
             <StyledLink to="/publications">
               <CustomPargraf> Publications </CustomPargraf>
             </StyledLink>
@@ -150,7 +170,7 @@ export const ExpandedMenu: FC = () => {
 
         {"People".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/people.png" />
+            <CustomImgWithMargin src="icons/people.png" alt="people" />
             <StyledLink to="/people">
               <CustomPargraf>People </CustomPargraf>
             </StyledLink>
@@ -159,7 +179,7 @@ export const ExpandedMenu: FC = () => {
 
         {"Entities".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities2.png" />
+            <CustomImgWithMargin src="icons/entities2.png" alt="entities2" />
             <StyledLink to="/entities">
               <CustomPargraf> Entities </CustomPargraf>
             </StyledLink>
@@ -168,7 +188,10 @@ export const ExpandedMenu: FC = () => {
 
         {"Administration".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/administration.png" />
+            <CustomImgWithMargin
+              src="icons/administration.png"
+              alt="administration"
+            />
             <StyledLink to="/administration">
               <CustomPargraf> Administration</CustomPargraf>
             </StyledLink>
@@ -179,8 +202,10 @@ export const ExpandedMenu: FC = () => {
 
         {"Client contract".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Client contract </CustomPargraf>
+            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+            <StyledLink to="/testPage">
+              <CustomPargraf> Client contract </CustomPargraf>
+            </StyledLink>
           </ImgAndTextContainer>
         )}
 
@@ -188,22 +213,28 @@ export const ExpandedMenu: FC = () => {
           .toLowerCase()
           .includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Supplier contract </CustomPargraf>
+            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+            <StyledLink to="/testPage">
+              <CustomPargraf> Supplier contract </CustomPargraf>
+            </StyledLink>
           </ImgAndTextContainer>
         )}
 
         {"Corporate".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities.png" />
-            <CustomPargraf> Corporate </CustomPargraf>
+            <CustomImgWithMargin src="icons/entities.png" alt="entities" />
+            <StyledLink to="/testPage">
+              <CustomPargraf> Corporate </CustomPargraf>
+            </StyledLink>
           </ImgAndTextContainer>
         )}
 
         {"Group Norms".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/book-alt.png" />
-            <CustomPargraf> Group Norms </CustomPargraf>
+            <CustomImgWithMargin src="icons/book-alt.png" alt="book" />
+            <StyledLink to="/testPage">
+              <CustomPargraf> Group Norms </CustomPargraf>
+            </StyledLink>
           </ImgAndTextContainer>
         )}
 
@@ -211,8 +242,10 @@ export const ExpandedMenu: FC = () => {
           .toLowerCase()
           .includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" />
-            <CustomPargraf> Real estate contracts </CustomPargraf>
+            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+            <StyledLink to="/testPage">
+              <CustomPargraf> Real estate contracts </CustomPargraf>
+            </StyledLink>
           </ImgAndTextContainer>
         )}
       </ScrollWrapper>
@@ -231,18 +264,22 @@ export const ExpandedMenu: FC = () => {
         </ProfileWrapper>
 
         <ImgAndTextContainer>
-          <CustomImgWithMargin src="icons/privacy.png" />
-          <CustomPargraf>Privacy </CustomPargraf>
+          <CustomImgWithMargin src="icons/privacy.png" alt="privacy" />
+          <StyledLink to="/testPage">
+            <CustomPargraf>Privacy </CustomPargraf>
+          </StyledLink>
         </ImgAndTextContainer>
 
         <ImgAndTextContainer>
-          <CustomImgWithMargin src="icons/settings.png" />
-          <CustomPargraf> Settings </CustomPargraf>
+          <CustomImgWithMargin src="icons/settings.png" alt="settings" />
+          <StyledLink to="/testPage">
+            <CustomPargraf> Settings </CustomPargraf>
+          </StyledLink>
         </ImgAndTextContainer>
       </AccountWraper>
       <LogoutWrapper>
-        <CustomImgWithMargin src="icons/logout.png" />
-        <CustomPargraf> Logout </CustomPargraf>
+        <CustomImgWithMargin src="icons/logout.png" alt="logout" />
+        <Logout> Logout </Logout>
       </LogoutWrapper>
     </ExpandedWrapper>
   );

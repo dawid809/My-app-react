@@ -4,9 +4,8 @@ import styled from  'styled-components';
 import {Header} from '../common/header/Header';
 import {LeftMenu} from '../common/LeftMenu/LeftMenu';
 import {Wrapper} from '../../styledHelpers/Components';
-import { Colors } from '../../styledHelpers/Colors';
 import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Home } from '../home/Home';
+import  TestPage from '../testPage/TestPage';
 import { Publications } from '../publications/Publications';
 import { Entities } from '../entities/Entities';
 import { Ecosystem } from '../ecosystem/Ecosystem';
@@ -25,30 +24,33 @@ const MainPage: FC = () =>{
     return(
         <Router>
             <Wrapper>
-                <Header></Header>
+                <Header/ >
                 <Content>
                     <LeftMenu/>
                         <Switch>
                             <Route path="/" exact>
-                                <Publications/>
+                                <Publications />
                             </Route>
                             <Route path="/publications" exact >
-                                <Publications/>
+                                <Publications />
                             </Route>
                             <Route path="/ecosystem" exact >
-                                <Ecosystem/>
+                                <Ecosystem />
                             </Route>
                             <Route path="/entities" exact >
-                                <Entities/>
+                                <Entities />
                             </Route>
                             <Route path="/people" exact >
-                                <People/>
+                                <People />
                             </Route>
                             <Route path="/administration" exact >
-                                <Administration/>
+                                <Administration />
                             </Route>
                             <Route path="/profile" exact >
-                                <Profile/>
+                                <Profile />
+                            </Route>
+                            <Route path="/testPage" exact >
+                               <TestPage />
                             </Route>
                         </Switch>
                 </Content>

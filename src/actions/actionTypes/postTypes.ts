@@ -1,5 +1,5 @@
 
-import {ISinglePost} from '../../components/entities/posts'
+import {ISinglePost} from '../../components/entitiesData/posts'
 export const GET_POSTS = 'GET_POSTS';
 
 export interface IPostTypes {

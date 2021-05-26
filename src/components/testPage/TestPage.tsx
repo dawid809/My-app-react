@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
@@ -9,8 +9,8 @@ const ContentContext = styled.div`
   min-height: 1000px;
 `;
 
-const EcosystemWrapper = styled.div`
-  background: whitesmoke;
+const TestPageWrapper = styled.div`
+  background: ${Colors.whiteSmoke};
   height: 400px;
   margin: 0.5% 5%;
   border: 1px solid ${Colors.gray};
@@ -31,13 +31,15 @@ const TestIcon = styled.img`
   margin-top: 50px;
 `;
 
-export const Ecosystem: FC = () => {
-  return (
-    <ContentContext>
-      <EcosystemWrapper>
-        <TestPageText>Ecosystem test page</TestPageText>
-        <TestIcon src="icons/repair.png" alt="repair tools" />
-      </EcosystemWrapper>
-    </ContentContext>
-  );
-};
+export default class TestPage extends Component {
+  render() {
+    return (
+      <ContentContext>
+        <TestPageWrapper>
+          <TestPageText>Strona testowa</TestPageText>
+          <TestIcon src="icons/repair.png" alt="repair tools" />
+        </TestPageWrapper>
+      </ContentContext>
+    );
+  }
+}

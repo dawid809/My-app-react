@@ -33,7 +33,7 @@ position: relative;
 const BigPhoto = styled.img`
 min-width: 250px;
 height: 100%;
-position: absolute;
+overflow: hidden;
 `;
 
 const OnPhotoContainer = styled.div`

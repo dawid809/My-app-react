@@ -1,5 +1,5 @@
 
-import {ISingleAlbum} from '../../components/entities/albums'
+import {ISingleAlbum} from '../../components/entitiesData/albums'
 export const GET_ALBUMS = 'GET_ALBUMS';
 
 export interface IAlbumTypes {
