@@ -71,6 +71,7 @@ const IconAndTextWrapper = styled.div`
   align-items: center;
   margin: 0 2px;
   color: ${Colors.darkerGray};
+  cursor: pointer;
 `;
 
 const CustomFilter = styled.input`
@@ -128,6 +129,7 @@ export const FunctionallIIconsComponent: FC = () => {
           style={{
             borderRight: `1px solid ${Colors.black}`,
             padding: "5px 10px",
+            cursor: "pointer"
           }}
         />
         <IconAndTextWrapper>
@@ -145,6 +147,7 @@ export const FunctionallIIconsComponent: FC = () => {
             borderRight: `1px solid ${Colors.black}`,
             borderLeft: `1px solid ${Colors.black}`,
             padding: "5px 10px",
+            cursor: "pointer"
           }}
         />
         <IconAndTextWrapper>

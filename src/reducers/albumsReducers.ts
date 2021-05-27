@@ -1,4 +1,4 @@
-import { ISingleAlbum } from '../components/entitiesData/albums';
+import { ISingleAlbum } from '../entities/albums';
 import * as actionTypes from '../actions/actionTypes/albumTypes'
 
 export interface IAlbumsReducer {

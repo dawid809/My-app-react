@@ -1,8 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { getUsers } from "../../actions/usersActions";
+import { getPhotos } from "../../actions/photosActions";
+
+import { useSelector } from "react-redux";
+import { IState } from "../../reducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
+import { IPhotosReducer } from "../../reducers/photosReducer";
 
 const InternalCorrespondantsWrapper = styled.div`
   margin: 10px;

@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 5px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   align-items: center;
 `;
 

@@ -1,4 +1,4 @@
-import {ISingleUser} from '../../components/entitiesData/users'
+import {ISingleUser} from '../../entities/users'
 export const GET_USERS = 'GET_USERS';
 
 export interface IUserTypes {

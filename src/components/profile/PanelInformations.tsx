@@ -16,11 +16,19 @@ const TitleText = styled.h1`
 
 const CustomText = styled.h3`
   margin: 10px 0;
+  font-size: 15px;
+   line-height: 1.3;
 `;
 
 const GrayText = styled(CustomText)`
   color: ${Colors.darkerGray};
   font-size: 1.1em;
+`;
+
+const AttachmentWrapper = styled.div`
+display: flex;
+align-items: center;
+background: ${Colors.lazure};
 `;
 
 const CustomAttachment = styled.input.attrs({
@@ -53,68 +61,123 @@ const CustomInput = styled.input.attrs({
   }
 `;
 
+const CustomImg = styled.img`
+  width: 14px;
+  height: 14px;
+  align-self: center;
+  margin: 0 10px;
+  cursor: pointer;
+`;
+
+const ServicesAndProjectsWrapper = styled.div`
+  margin: 10px 0;
+`;
+
+const EditButton = styled.button`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+`;
+
+const EditWrapper = styled.div`
+  width: 22px;
+  height: 22px;
+
+  right: 15px;
+  top: 15px;
+  display: flex;
+`;
+
+const EditIcon = styled.img`
+  width: 18px;
+  height: 18px;
+  align-self: center;
+  display: flex;
+`;
+
 export const PanelInformations: FC = () => {
 
-  const [formikDatasEnabled, setFormikDatasEnabled] = useState(false);
-  const [formikOptionsEnabled, setFormikOptionsEnabled] = useState(false);
+  const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] = useState(true);
 
-  const editUserDatasHandle = () => {
-    const disable = formikDatasEnabled;
-    setFormikDatasEnabled(!disable);
+  const editPanelInformationsHandle = () => {
+    const disable = formikPanelInformationsEnabled;
+    setformikPanelInformationsEnabled(!disable);
   };
-  const editOptionsHandle = () => {
-    const disable = formikOptionsEnabled;
-    setFormikOptionsEnabled(!disable);
-  };
+  
 
   const formik = useFormik({
     initialValues: {
-      hourly: '310 PLN/Day (No Negociated!)',
-      monthly: 'Monthly 10$ reatiner - see with Jeennn'
+      hourly: '310 PLN/Day (No Negociated!)a',
+      monthly: 'Monthly 10$ reatiner - see with Jeennna',
+      servicesAndProjects: 'Corporate M&A and international acquisitions '
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log("t");
+      console.log(values);
     },
   });
 
-  const formikOptions = useFormik({
-    initialValues: {
-      expertise: "",
-    },
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log("t");
-    },
-  });
+  const [attachmentValue, setAttachmentValue] = useState('')
 
   return (
+    <form onSubmit={formik.handleSubmit}>
     <PanelInformationWrapper>
+      <EditWrapper>
+            <EditButton onClick={editPanelInformationsHandle} type="submit">
+              <EditIcon src="icons/pen.png" />
+            </EditButton>
+          </EditWrapper>
       <TitleText>Panel Informations</TitleText>
 
       <GrayText>Hourly fee</GrayText>
-      <CustomText>{formik.values.hourly}</CustomText>
-      {/* {formikDatasEnabled ? (
+      {formikPanelInformationsEnabled ? (
       <CustomText>{formik.values.hourly}</CustomText>
       ) : (
-        <CustomInput
+        <CustomInput style={{marginBottom: '10px', width: '50%'}}
         name="hourly"
         value={formik.values.hourly}
         onChange={formik.handleChange}
       />
-      )} */}
+      )}
       <GrayText>Terms & conditions </GrayText>
-      <CustomText>Monthly 10$ reatiner - see with Jeennn </CustomText>
-      {/* {formikDatasEnabled ? (
-      <CustomText>Monthly 10$ reatiner - see with Jeennn </CustomText>
+      {formikPanelInformationsEnabled ? (
+         <CustomText>{formik.values.monthly}</CustomText>
       ) : (
-        <CustomInput
+        <CustomInput style={{marginBottom: '10px', width: '50%'}}
         name="monthly"
         value={formik.values.monthly}
         onChange={formik.handleChange}
       />
-      )} */}
-      <CustomAttachment />
+      )}
+         {formikPanelInformationsEnabled ? (
+           <AttachmentWrapper>
+                <CustomImg src="icons/request.png" alt="zapytanie" />
+               <CustomText>Attachment name: {attachmentValue}</CustomText>
+               </AttachmentWrapper>
+               ) : (
+      <CustomAttachment onChange={event => setAttachmentValue(event.target.files[0].name)} />
+      )}
+         {formikPanelInformationsEnabled ? (
+        <ServicesAndProjectsWrapper>
+      <TitleText>Services&Projects </TitleText>
+      <CustomText>{formik.values.servicesAndProjects}</CustomText>
+    </ServicesAndProjectsWrapper>
+       ) : (
+        <ServicesAndProjectsWrapper>
+      <TitleText>Services&Projects </TitleText>
+      <CustomInput style={{marginBottom: '10px', width: '50%'}}
+        name="servicesAndProjects"
+        value={formik.values.servicesAndProjects}
+        onChange={formik.handleChange}
+      />
+    </ServicesAndProjectsWrapper>
+        )}
     </PanelInformationWrapper>
+    </form>
   );
 };

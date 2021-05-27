@@ -1,4 +1,4 @@
-import { ISinglePhoto } from '../components/entitiesData/photos';
+import { ISinglePhoto } from '../entities/photos';
 import * as actionTypes from '../actions/actionTypes/photoTypes'
 
 export interface IPhotosReducer {

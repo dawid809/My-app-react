@@ -1,4 +1,4 @@
-import { ISingleUser } from "../components/entitiesData/users";
+import { ISingleUser } from "../entities/users";
 import * as actionTypes from "../actions/actionTypes/userTypes";
 
 export interface IUsersReducer {

@@ -1,4 +1,4 @@
-import { ISingleComment } from '../components/entitiesData/comments';
+import { ISingleComment } from '../entities/comments';
 import * as actionTypes from '../actions/actionTypes/commentTypes'
 
 export interface ICommentsReducer {

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as actionTypes from '../actions/actionTypes/albumTypes';
-import { ISingleAlbum } from '../components/entitiesData/albums';
+import { ISingleAlbum } from '../entities/albums';
 
 
 export const getAlbums = (): Promise<ISingleAlbum[]> => ((dispatch: Dispatch) => {

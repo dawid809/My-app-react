@@ -134,17 +134,11 @@ export const MainUserData: FC = () => {
     ...globalState.photos,
   }));
 
-  //
-  const [formikDatasEnabled, setFormikDatasEnabled] = useState(false);
-  const [formikOptionsEnabled, setFormikOptionsEnabled] = useState(false);
+  const [formikDatasEnabled, setFormikDatasEnabled] = useState(true);
 
   const editUserDatasHandle = () => {
     const disable = formikDatasEnabled;
     setFormikDatasEnabled(!disable);
-  };
-  const editOptionsHandle = () => {
-    const disable = formikOptionsEnabled;
-    setFormikOptionsEnabled(!disable);
   };
 
   const formik = useFormik({
@@ -158,31 +152,16 @@ export const MainUserData: FC = () => {
     },
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log("t");
+      console.log(values);
     },
   });
-
-  const formikOptions = useFormik({
-    initialValues: {
-      expertise: "",
-    },
-    enableReinitialize: true,
-    onSubmit: (values) => {
-      console.log("t");
-    },
-  });
-
-  const changeIcon = {
-    edited: "icons/pen.png",
-    noEdited: "icons/user.png",
-  };
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <UserDataWrapper>
         <EditWrapper>
           <EditButton onClick={editUserDatasHandle} type="submit">
-            {" "}
+            {/* {" "} */}
             <EditIcon src="icons/pen.png" />
           </EditButton>
         </EditWrapper>

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import * as actionTypes from '../actions/actionTypes/userTypes';
-import { ISingleUser } from '../components/entitiesData/users';
+import { ISingleUser } from '../entities/users';
 
 
 export const getUsers = (): Promise<ISingleUser[]> => ((dispatch: Dispatch) => {
