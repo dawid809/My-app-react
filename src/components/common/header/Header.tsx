@@ -15,8 +15,8 @@ const InnerWrapper = styled.div`
   align-items: center;
   height: 30px;
   padding: 10px;
-  box-shadow: 0 5px 5px ${Colors.lightGray};
-  margin-bottom: 5px;
+  box-shadow: 0 3px 3px ${Colors.lightGray};
+  margin-bottom: 10px;
 `;
 
 const LeftIcons = styled.div`

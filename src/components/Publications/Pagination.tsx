@@ -9,26 +9,29 @@ import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
 import { getComments } from "../../actions/commentsActions";
 import { getUsers } from "../../actions/usersActions";
+import { getPosts } from "../../actions/postsActions";
 import { ICommentsReducer } from "../../reducers/commentsReducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
+import { IPostsReducer } from "../../reducers/postsReducer";
 
 type GetComments = ReturnType<typeof getComments>;
 type GetUsers = ReturnType<typeof getUsers>;
+type GetPosts = ReturnType<typeof getPosts>;
 
 const PostsWrapper = styled.div`
 `;
 
 const SinglePostWrapper = styled.div`
-  background: white;
+  background: ${Colors.white};
   border-radius: 5px;
   border: 1px solid ${Colors.lightGray};
   margin: 5px 0;
-  padding: 5px;
+  padding: 10px;
 `;
 
 const SmallImg = styled.img`
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   margin: 0 5px;
   align-self: center;
 `;
@@ -36,6 +39,7 @@ const SmallImg = styled.img`
 const Subtititle = styled.h3`
   color: ${Colors.blue};
   margin: 5px 0;
+  font-weight: bold;
 `;
 
 const PostText = styled.a`
@@ -49,7 +53,7 @@ const ImgAndTextWrapper = styled.div`
 `;
 
 const PublicationDate = styled.a`
-  color: gray;
+  color: ${Colors.darkerGray};
   font-size: 12px;
   align-self: center;
 `;
@@ -66,12 +70,15 @@ export const Pagination: FC = () => {
   useEffect(() => {
     dispatch<GetComments>(getComments());
     dispatch<GetUsers>(getUsers());
+    dispatch<GetPosts>(getPosts());
   }, []);
 
-  const { commentsList, usersList } = useSelector<IState, ICommentsReducer & IUsersReducer>((globalState) => ({
+  const { commentsList, usersList, postsList, currentUser } = useSelector<IState, ICommentsReducer & IUsersReducer & IPostsReducer>((globalState) => ({
     ...globalState.comments,
     ...globalState.users,
+    ...globalState.posts,
   }));
+  console.log('cuurUserId', currentUser?.id);
 
   const [comments, setComments] = useState(commentsList.slice(0, 500));
   const [pageNumber, setPageNumber] = useState(0);
@@ -94,7 +101,7 @@ export const Pagination: FC = () => {
               <SmallImg src="icons/people.png" alt="" />
               <PostText>Client contract</PostText>
               <DotImg src="icons/black-circle.png" alt="" />
-              <PublicationDate> Updated 2 days ago by {usersList[0]?.name}</PublicationDate>
+              <PublicationDate> Updated 2 days ago by  {usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PublicationDate>
             </ImgAndTextWrapper>
           </SinglePostWrapper>
         </PostsWrapper>

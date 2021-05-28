@@ -27,7 +27,7 @@ const WraperHome = styled.div`
 `;
 
 const TitleText = styled.h1`
-  font-size: ${fontSize[22]};
+  font-size: ${fontSize[20]};
   margin-left: 20px;
   text-align: center;
 `;

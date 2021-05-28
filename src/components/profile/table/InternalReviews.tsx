@@ -1,8 +1,8 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
 
-import { Colors } from "../../styledHelpers/Colors";
-import { fontSize } from "../../styledHelpers/FontSizes";
+import { Colors } from "../../../styledHelpers/Colors";
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { useFormik } from "formik";
 
 const InternalReviewsWrapper = styled.div`

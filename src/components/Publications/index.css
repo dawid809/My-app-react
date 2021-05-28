@@ -17,17 +17,16 @@
  .slick-slider {
     width: 100%;
     position: absolute;
+  display: inline-flexbox;
 } 
 
 .slick-slide {
     z-index: 100;
     margin: 0 0.15%;
-    min-width: 200px !important;
 }
 
 
 .slick-list {
-  max-height: 192px !important;
 }
 
 /* .slick-track {

@@ -1,14 +1,16 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
 
-import { Colors } from "../../styledHelpers/Colors";
-import { fontSize } from "../../styledHelpers/FontSizes";
+import { Colors } from "../../../styledHelpers/Colors";
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { useFormik } from "formik";
 
-const AmountOfFeesWrapper = styled.div`
-  padding: 10px;
+const ProposalsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  border-top: 1px solid ${Colors.lightGray};
+  border-bottom: 1px solid ${Colors.lightGray};
+  padding: 10px;
 `;
 
 const TitleText = styled.h1`
@@ -16,6 +18,15 @@ const TitleText = styled.h1`
   font-size: 1.1em;
   padding: 5px 0;
   margin-bottom: 15px;
+`;
+
+const LinkText = styled.h3`
+  margin-top: 5px;
+  color: ${Colors.lightBlue};
+  text-align: right;
+  margin: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 const Table = styled.table`
@@ -95,33 +106,36 @@ const CustomInput = styled.input.attrs({
   }
 `;
 
-export const AmountOfFees: FC = () => {
-
+interface IProps {
+  formikSelectOptionsEnabled?: boolean
+}
+export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
+  
   const formikTable = useFormik({
     initialValues: {
       rowone: {
-        year: ["2019"],
-        costCenter: ["CS 153"],
-        totalAmount: ["3500 PLN"],
-        lawFirm: ["Clifford"],
+        name: ["Operation Tictac"],
+        entity: ["Renault"],
+        location: ["USA"],
+        expertise: ["#Tax"],
+        date: ["21/02/2018"],
+        firm: ["Racine"],
       },
       rowtwo: {
-        year: ["2018"],
-        costCenter: ["CS 153"],
-        totalAmount: ["9500 PLN"],
-        lawFirm: ["Linklaters"],
+        name: ["Operation Prometheus"],
+        entity: ["Gulf"],
+        location: ["France"],
+        expertise: ["#M&A"],
+        date: ["19/02/2018"],
+        firm: ["Racine"],
       },
       rowthree: {
-        year: ["2017"],
-        costCenter: ["CS 47"],
-        totalAmount: ["1100 PLN"],
-        lawFirm: ["Lidll"],
-      },
-      rowfour: {
-        year: [""],
-        costCenter: ["CS 666"],
-        totalAmount: ["2 złote"],
-        lawFirm: ["Zapka"],
+        name: ["Operation Titan"],
+        entity: ["Szkoda"],
+        location: ["Italy"],
+        expertise: ["#Socical"],
+        date: ["12/02/2018"],
+        firm: ["Racine"],
       },
     },
     enableReinitialize: true,
@@ -130,37 +144,44 @@ export const AmountOfFees: FC = () => {
     },
   });
 
-  const [amountOfFeesEnabled, setAmountOfFeesEnabled] = useState(false);
-
-  const editAmountOfFeesTable = () => {
-    const disable = amountOfFeesEnabled;
-    setAmountOfFeesEnabled(!disable);
+  const zmiennaBool = formikSelectOptionsEnabled.formikSelectOptionsEnabled;
+  const [proposalsEnabled, setProposalsEnabled] = useState(false);
+{console.log('zmiena',zmiennaBool)}
+  const editProposalsTable = () => {
+    const disable = proposalsEnabled;
+    console.log('disable', formikSelectOptionsEnabled.formikSelectOptionsEnabled);
+    setProposalsEnabled(!disable);
   };
 
+  
+
+  // <EditButton onClick={editProposalsTable} type="submit">
   return (
-    <AmountOfFeesWrapper>
-       <EditWrapper>
-      <EditButton onClick={editAmountOfFeesTable} type="submit">
+    <ProposalsWrapper>
+      <EditWrapper>
+      <EditButton onClick={editProposalsTable} type="submit">
           <EditIcon src="icons/pen.png" />
         </EditButton>
       </EditWrapper>
-      <TitleText>Amount of fees</TitleText>
+      <TitleText>Proposals</TitleText>
       <form onSubmit={formikTable.handleSubmit}>
         <Table>
           <Row>
-            <TableHeader>Year</TableHeader>
-            <TableHeader>Cost center</TableHeader>
-            <TableHeader>Total amount</TableHeader>
-            <TableHeader>Law firm</TableHeader>
+            <TableHeader>Name</TableHeader>
+            <TableHeader>Entity</TableHeader>
+            <TableHeader>Location</TableHeader>
+            <TableHeader>Expertise</TableHeader>
+            <TableHeader>Date</TableHeader>
+            <TableHeader>Firm</TableHeader>
           </Row>
-          {amountOfFeesEnabled? (
+          {proposalsEnabled? (
             <>
               <Row>
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowone.year"
-                    defaultValue={formikTable.values.rowone.year}
+                    name="rowone.name"
+                    defaultValue={formikTable.values.rowone.name}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -168,8 +189,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowone.costCenter"
-                    defaultValue={formikTable.values.rowone.costCenter}
+                    name="rowone.entity"
+                    defaultValue={formikTable.values.rowone.entity}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -177,8 +198,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowone.totalAmount"
-                    defaultValue={formikTable.values.rowone.totalAmount}
+                    name="rowone.location"
+                    defaultValue={formikTable.values.rowone.location}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -186,20 +207,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowone.lawFirm"
-                    defaultValue={formikTable.values.rowone.lawFirm}
-                    type="text"
-                    onChange={formikTable.handleChange}
-                  />
-                </Column>
-              </Row>
-
-              <Row>
-                <Column>
-                  {" "}
-                  <CustomInput
-                    name="rowtwo.year"
-                    defaultValue={formikTable.values.rowtwo.year}
+                    name="rowone.expertise"
+                    defaultValue={formikTable.values.rowone.expertise}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -207,8 +216,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowtwo.costCenter"
-                    defaultValue={formikTable.values.rowtwo.costCenter}
+                    name="rowone.date"
+                    defaultValue={formikTable.values.rowone.date}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -216,17 +225,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowtwo.totalAmount"
-                    defaultValue={formikTable.values.rowtwo.totalAmount}
-                    type="text"
-                    onChange={formikTable.handleChange}
-                  />
-                </Column>
-                <Column>
-                  {" "}
-                  <CustomInput
-                    name="rowtwo.lawFirm"
-                    defaultValue={formikTable.values.rowtwo.lawFirm}
+                    name="rowone.firm"
+                    defaultValue={formikTable.values.rowone.firm}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -237,8 +237,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowthree.year"
-                    defaultValue={formikTable.values.rowthree.year}
+                    name="rowtwo.name"
+                    defaultValue={formikTable.values.rowtwo.name}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -246,8 +246,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowthree.costCenter"
-                    defaultValue={formikTable.values.rowthree.costCenter}
+                    name="rowtwo.entity"
+                    defaultValue={formikTable.values.rowtwo.entity}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -255,8 +255,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowthree.totalAmount"
-                    defaultValue={formikTable.values.rowthree.totalAmount}
+                    name="rowtwo.location"
+                    defaultValue={formikTable.values.rowtwo.location}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -264,8 +264,26 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowthree.lawFirm"
-                    defaultValue={formikTable.values.rowthree.lawFirm}
+                    name="rowtwo.expertise"
+                    defaultValue={formikTable.values.rowtwo.expertise}
+                    type="text"
+                    onChange={formikTable.handleChange}
+                  />
+                </Column>
+                <Column>
+                  {" "}
+                  <CustomInput
+                    name="rowtwo.date"
+                    defaultValue={formikTable.values.rowtwo.date}
+                    type="text"
+                    onChange={formikTable.handleChange}
+                  />
+                </Column>
+                <Column>
+                  {" "}
+                  <CustomInput
+                    name="rowtwo.firm"
+                    defaultValue={formikTable.values.rowtwo.firm}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -276,8 +294,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowfour.year"
-                    defaultValue={formikTable.values.rowfour.year}
+                    name="rowthree.name"
+                    defaultValue={formikTable.values.rowthree.name}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -285,8 +303,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowfour.costCenter"
-                    defaultValue={formikTable.values.rowfour.costCenter}
+                    name="rowthree.entity"
+                    defaultValue={formikTable.values.rowthree.entity}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -294,8 +312,8 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowfour.totalAmount"
-                    defaultValue={formikTable.values.rowfour.totalAmount}
+                    name="rowthree.location"
+                    defaultValue={formikTable.values.rowthree.location}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -303,8 +321,26 @@ export const AmountOfFees: FC = () => {
                 <Column>
                   {" "}
                   <CustomInput
-                    name="rowfour.lawFirm"
-                    defaultValue={formikTable.values.rowfour.lawFirm}
+                    name="rowthree.expertise"
+                    defaultValue={formikTable.values.rowthree.expertise}
+                    type="text"
+                    onChange={formikTable.handleChange}
+                  />
+                </Column>
+                <Column>
+                  {" "}
+                  <CustomInput
+                    name="rowthree.date"
+                    defaultValue={formikTable.values.rowthree.date}
+                    type="text"
+                    onChange={formikTable.handleChange}
+                  />
+                </Column>
+                <Column>
+                  {" "}
+                  <CustomInput
+                    name="rowthree.firm"
+                    defaultValue={formikTable.values.rowthree.firm}
                     type="text"
                     onChange={formikTable.handleChange}
                   />
@@ -314,34 +350,36 @@ export const AmountOfFees: FC = () => {
           ) : (
             <>
               <Row>
-                <Column>{formikTable.values.rowone.year}</Column>
-                <Column>{formikTable.values.rowone.costCenter}</Column>
-                <Column>{formikTable.values.rowone.totalAmount}</Column>
-                <Column>{formikTable.values.rowone.lawFirm}</Column>
+                <Column>{formikTable.values.rowone.name}</Column>
+                <Column>{formikTable.values.rowone.entity}</Column>
+                <Column>{formikTable.values.rowone.location}</Column>
+                <Column>{formikTable.values.rowone.expertise}</Column>
+                <Column>{formikTable.values.rowone.date}</Column>
+                <Column>{formikTable.values.rowone.firm}</Column>
               </Row>
               <Row>
-                <Column>{formikTable.values.rowtwo.year}</Column>
-                <Column>{formikTable.values.rowtwo.costCenter}</Column>
-                <Column>{formikTable.values.rowtwo.totalAmount}</Column>
-                <Column>{formikTable.values.rowtwo.lawFirm}</Column>
+                <Column>{formikTable.values.rowtwo.name}</Column>
+                <Column>{formikTable.values.rowtwo.entity}</Column>
+                <Column>{formikTable.values.rowtwo.location}</Column>
+                <Column>{formikTable.values.rowtwo.expertise}</Column>
+                <Column>{formikTable.values.rowtwo.date}</Column>
+                <Column>{formikTable.values.rowtwo.firm}</Column>
               </Row>
               <Row>
-                <Column>{formikTable.values.rowthree.year}</Column>
-                <Column>{formikTable.values.rowthree.costCenter}</Column>
-                <Column>{formikTable.values.rowthree.totalAmount}</Column>
-                <Column>{formikTable.values.rowthree.lawFirm}</Column>
-              </Row>
-              <Row>
-                <Column>{formikTable.values.rowfour.year}</Column>
-                <Column>{formikTable.values.rowfour.costCenter}</Column>
-                <Column>{formikTable.values.rowfour.totalAmount}</Column>
-                <Column>{formikTable.values.rowfour.lawFirm}</Column>
+                <Column>{formikTable.values.rowthree.name}</Column>
+                <Column>{formikTable.values.rowthree.entity}</Column>
+                <Column>{formikTable.values.rowthree.location}</Column>
+                <Column>{formikTable.values.rowthree.expertise}</Column>
+                <Column>{formikTable.values.rowthree.date}</Column>
+                <Column>{formikTable.values.rowthree.firm}</Column>
               </Row>
             </>
           )}
         </Table>
       </form>
-    </AmountOfFeesWrapper>
+      <LinkText>See more proposals</LinkText>
+    </ProposalsWrapper>
   );
 };
+
 

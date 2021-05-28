@@ -10,26 +10,29 @@ import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
 import { getPhotos } from "../../actions/photosActions";
 import { IPhotosReducer } from "../../reducers/photosReducer";
-import { GET_PHOTOS } from "../../actions/actionTypes/photoTypes";
+import { fontSize } from "../../styledHelpers/FontSizes";
 
 type GetPhotos = ReturnType<typeof getPhotos>;
 
 const WorkspacesWrapper = styled.div`
   margin: 0.5% 5%;
   position: relative;
-  min-height: 210px;
+  min-height: 230px;
+  z-index: 5;
 `;
 
 const SingleSlideContainer = styled.div`
-  border: 1px solid gray;
-  border-radius: 5px;
+  border-radius: 4px;
   z-index: 5;
   cursor: pointer;
+  overflow: hidden;
+  box-shadow: ${Colors.shadow};
 `;
 
 const TitleText = styled.h2`
   margin: 10px;
   font-weight: bold;
+  font-size: ${fontSize[20]};
 `;
 
 const ImgHalf = styled.img`
@@ -44,8 +47,9 @@ const SingleContentWrapper = styled.div`
 `;
 
 const SubtitleText = styled.h3`
-align-self: center;
-margin: 0 10px;
+  align-self: center;
+  margin: 0 10px;
+  font-weight: bold;
 `;
 
 const ImgInsideDiv = styled.img`
@@ -54,21 +58,21 @@ const ImgInsideDiv = styled.img`
 `;
 
 const TitleImgWrapper = styled.div`
-display: flex;
-flex-direction: row;
-padding: 10px;
-position: relative;
-top: -25px;
-margin-bottom: -25px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  position: relative;
+  top: -25px;
+  margin-bottom: -25px;
 `;
 
 const ImgRoundedWrapper = styled.div`
   display: flex;
   justify-content: center;
-  background: white;
+  background: ${Colors.white};
   width: 60px;
   height: 60px;
-  border: 1px solid gray;
+  border: ${Colors.border};
   border-radius: 5px;
 `;
 
@@ -77,17 +81,18 @@ const ImgAndTextWrapper = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   margin: 5px 0px;
+  align-items: center;
 `;
 
 const DatePulicationText = styled.a`
-  color: gray;
-  font-size: 12px;
+  color: ${Colors.gray};
+  font-size: ${fontSize[10]};
   margin: 0 5px;
 `;
 
 const SmallImg = styled.img`
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   margin: 0 5px;
 `;
 
@@ -129,7 +134,7 @@ export const Workspaces: FC = () => {
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
           <TitleImgWrapper>
-          <ImgRoundedWrapper>
+            <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
             <SubtitleText>Client Contract</SubtitleText>
@@ -148,7 +153,7 @@ export const Workspaces: FC = () => {
         <SingleSlideContainer>
           <ImgHalf src={photosList[111]?.url} alt="" />
           <TitleImgWrapper>
-          <ImgRoundedWrapper>
+            <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
             <SubtitleText>Supplier contract</SubtitleText>
@@ -167,7 +172,7 @@ export const Workspaces: FC = () => {
         <SingleSlideContainer>
           <ImgHalf src={photosList[112]?.url} alt="" />
           <TitleImgWrapper>
-          <ImgRoundedWrapper>
+            <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/entities.png" />
             </ImgRoundedWrapper>
             <SubtitleText>Corporate</SubtitleText>
@@ -186,7 +191,7 @@ export const Workspaces: FC = () => {
         <SingleSlideContainer>
           <ImgHalf src={photosList[113]?.url} alt="" />
           <TitleImgWrapper>
-          <ImgRoundedWrapper>
+            <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/book-alt.png" />
             </ImgRoundedWrapper>
             <SubtitleText>Group norms</SubtitleText>
@@ -205,7 +210,7 @@ export const Workspaces: FC = () => {
         <SingleSlideContainer>
           <ImgHalf src={photosList[115]?.url} alt="" />
           <TitleImgWrapper>
-          <ImgRoundedWrapper>
+            <ImgRoundedWrapper>
               <ImgInsideDiv src="icons/file-signature.png" />
             </ImgRoundedWrapper>
             <SubtitleText>Real estate contracts</SubtitleText>

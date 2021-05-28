@@ -13,9 +13,6 @@ import { People } from '../people/People';
 import { Administration } from '../administration/Administration';
 import { Profile } from '../profile/Profile';
 
-
-//const Wrapper = styled.div``;
-
 const Content = styled.div`
     display: flex;
 `;

@@ -17,8 +17,9 @@ import { IPhotosReducer } from "../../../reducers/photosReducer";
 const ExpandedWrapper = styled.div`
   position: absolute;
   min-width: 250px;
-  background: white;
-  border: 1px solid ${Colors.gray};
+  background: ${Colors.white};
+  border: ${Colors.border};
+  border-radius: 4px;
   z-index: 100;
   padding: 10px;
   padding-right: 0px;
@@ -29,8 +30,8 @@ const ExpandedWrapper = styled.div`
 const AccountWraper = styled.div`
   margin-left: -10px;
   padding-left: 10px;
-  border-bottom: 1px solid ${Colors.gray};
-  border-top: 1px solid ${Colors.gray};
+  border-bottom: ${Colors.border};
+  border-top: ${Colors.border};
 `;
 
 const ProfileWrapper = styled.div`
@@ -100,10 +101,14 @@ const RightProfileWrapper = styled.div`
   justify-content: center;
 `;
 
-const ShowProfileText = styled.p`
+const ProfileLinkText = styled.p`
   color: ${Colors.blue};
   font-size: ${fontSize[14]};
   margin: 2px 0;
+
+  &:hover{
+    color: ${Colors.darkerGray};
+  }
 `;
 
 const Logout = styled(CustomPargraf)`
@@ -122,7 +127,7 @@ export const ExpandedMenu: FC = () => {
     dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { usersList, photosList } = useSelector<
+  const { usersList, photosList, currentUser } = useSelector<
     IState,
     IUsersReducer & IPhotosReducer
   >((globalState) => ({
@@ -254,11 +259,11 @@ export const ExpandedMenu: FC = () => {
         <CustomSubtitles>Account</CustomSubtitles>
 
         <ProfileWrapper>
-          <UserAvatar src={photosList[0]?.url} alt="User photo" />
+          <UserAvatar src={photosList[currentUser?.id]?.url} alt="User photo" />
           <RightProfileWrapper>
-            {usersList[0]?.name}
+            {usersList[currentUser?.id]?.name}
             <StyledLink to="/profile">
-              <ShowProfileText>See profile</ShowProfileText>
+              <ProfileLinkText>See profile</ProfileLinkText>
             </StyledLink>
           </RightProfileWrapper>
         </ProfileWrapper>

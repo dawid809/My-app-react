@@ -126,7 +126,7 @@ export const MainUserData: FC = () => {
     dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { usersList, photosList } = useSelector<
+  const { usersList, photosList, currentUser } = useSelector<
     IState,
     IUsersReducer & IPhotosReducer
   >((globalState) => ({
@@ -143,12 +143,12 @@ export const MainUserData: FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: usersList[0]?.name,
-      companyName: usersList[0]?.company.name,
-      address: usersList[0]?.address.city,
-      username: usersList[0]?.username,
-      email: usersList[0]?.email,
-      phone: usersList[0]?.phone,
+      name: usersList[currentUser?.id]?.name,
+      companyName: usersList[currentUser?.id]?.company.name,
+      address: usersList[currentUser?.id]?.address.city,
+      username: usersList[currentUser?.id]?.username,
+      email: usersList[currentUser?.id]?.email,
+      phone: usersList[currentUser?.id]?.phone,
     },
     enableReinitialize: true,
     onSubmit: (values) => {
@@ -161,13 +161,12 @@ export const MainUserData: FC = () => {
       <UserDataWrapper>
         <EditWrapper>
           <EditButton onClick={editUserDatasHandle} type="submit">
-            {/* {" "} */}
             <EditIcon src="icons/pen.png" />
           </EditButton>
         </EditWrapper>
         <UserInfoAndPhotoWrapper>
           <PhotoWrapper>
-            <UserPhoto src={photosList[1]?.url} />
+            <UserPhoto src={photosList[currentUser?.id]?.url} />
 
             <LinkText> See profile </LinkText>
           </PhotoWrapper>

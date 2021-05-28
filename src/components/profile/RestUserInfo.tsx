@@ -5,17 +5,20 @@ import { useFormik } from "formik";
 import { Select, Descriptions, Upload, Button } from "antd";
 //import "antd/dist/antd.css";
 //import "antd/dist/antd.css";
-import 'antd/lib/style/dark.less';
-import "antd/lib/select/style/index.css";
-import "antd/lib/dropdown/style/index.css";
-import "antd/lib/descriptions/style/index.css";
+
+// import 'antd/lib/style/dark.less';
+// import "antd/lib/select/style/index.css";
+// import "antd/lib/dropdown/style/index.css";
+// import "antd/lib/descriptions/style/index.css";
+//import "antd/dist/antd.less";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { PanelInformations } from "./PanelInformations";
 import { InternalCorrespondants } from "./InternalCorrespondants";
-import { Proposals } from "./Proposals";
-import { InternalReviews } from "./InternalReviews";
-import { AmountOfFees } from "./AmountOfFees";
+import { Proposals } from "./table/Proposals";
+import { InternalReviews } from "./table/InternalReviews";
+import { AmountOfFees } from "./table/AmountOfFees";
+import { fontSize } from "../../styledHelpers/FontSizes";
 // import { getUsers } from "../../actions/usersActions";
 // import { getPhotos } from "../../actions/photosActions";
 
@@ -48,17 +51,18 @@ const UserExperienceWrapper = styled.div`
 const TextWithBackground = styled.h3`
   background: ${Colors.lightBlueBackground};
   color: ${Colors.lightBlue};
-  padding: 5px 10px;
+  padding: 10px 10px;
   border-radius: 5px;
   margin-left: 8px;
   margin-bottom: 8px;
   display: table;
   display: inline-block;
+  font-size: ${fontSize[14]};
 `;
 
 const GrayText = styled.h3`
   color: ${Colors.darkerGray};
-  margin: 8px 5px;
+  margin: 10px 5px;
   font-size: 1.1em;
 `;
 

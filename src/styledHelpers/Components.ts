@@ -9,7 +9,10 @@ export const Wrapper = styled.div`
   width: auto;
 `;
 
-export const CustomImg = styled.img``;
+export const CustomImg = styled.img`
+  height: 21px;
+  width: 21px;
+`;
 
 export const CustomImgWithMargin = styled.img`
   margin-right: 15px;
@@ -17,7 +20,7 @@ export const CustomImgWithMargin = styled.img`
 `;
 
 export const CustomImageWithBorder = styled.img`
-  border: 1px solid ${Colors.black};
+  border: 1px solid ${Colors.darkerGray};
   padding: 3px 4px;
   border-radius: 5px;
   position: absolute;
@@ -25,6 +28,9 @@ export const CustomImageWithBorder = styled.img`
   height: 16px;
   width: 16px;
   cursor: pointer;
+  &:hover {
+    background-color: ${Colors.lazure};
+  }
 `;
 
 export const StyledLink = styled(Link)`

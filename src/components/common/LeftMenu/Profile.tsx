@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Colors } from "../../../styledHelpers/Colors";
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { CustomImg } from "../../../styledHelpers/Components";
 import { CustomImageWithBorder } from "../../../styledHelpers/Components";
 import { getUsers } from "../../../actions/usersActions";
@@ -17,7 +18,8 @@ type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
 
 const ProfileWrapper = styled.div`
-  box-shadow: -1px 2px 10px -1px #9e9696;
+  box-shadow: ${Colors.shadow};
+  border: ${Colors.border};
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -25,21 +27,25 @@ const ProfileWrapper = styled.div`
 `;
 
 const NameText = styled.h2`
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: ${fontSize[18]};
+  font-weight: bold;
   color: ${Colors.blue};
   text-align: center;
 `;
 
 const SubtitleText = styled.a`
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: ${fontSize[15]};
+  font-weight: bold;
   margin: 5px;
   margin-left: 10px;
+  &:hover {
+    color: ${Colors.blue};
+    cursor: pointer;
+  }
 `;
 
 const GrayText = styled.h4`
-  font-size: 0.8rem;
+  font-size: ${fontSize[14]};
   color: ${Colors.gray};
   text-align: center;
   margin: 10px;
@@ -52,7 +58,7 @@ const SubtitleWrapper = styled.div`
 `;
 
 const AboutMe = styled.div`
-  border-top: 1px solid lightgray;
+  border-top: 1px solid ${Colors.lightGray};
   margin-top: 8px;
   display: flex;
   flex-direction: column;
@@ -73,7 +79,7 @@ export const Profile: FC = () => {
     dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { usersList, photosList } = useSelector<
+  const { usersList, photosList, currentUser } = useSelector<
     IState,
     IUsersReducer & IPhotosReducer
   >((globalState) => ({
@@ -86,9 +92,11 @@ export const Profile: FC = () => {
       {console.log({ usersList })}
       {console.log({ photosList })}
 
-      <UserAvatar src={photosList[0]?.url} alt="User photo" />
-      <NameText>{usersList[0]?.name}</NameText>
-      <GrayText>Job title - {usersList[0]?.company.name}</GrayText>
+      <UserAvatar src={photosList?.[currentUser?.id]?.url} alt="User photo" />
+      <NameText>{usersList?.[currentUser?.id]?.name}</NameText>
+      <GrayText>
+        Job title - {usersList[currentUser?.id]?.company.name}
+      </GrayText>
 
       <AboutMe>
         <SubtitleWrapper>
@@ -99,7 +107,7 @@ export const Profile: FC = () => {
 
         <SubtitleWrapper>
           <CustomImg src="icons/publications.png" alt="Publications" />
-          <SubtitleText>Your publications</SubtitleText>
+          <SubtitleText>Your Publications</SubtitleText>
           <CustomImageWithBorder src="icons/plus.png" alt="Icons" />
         </SubtitleWrapper>
       </AboutMe>

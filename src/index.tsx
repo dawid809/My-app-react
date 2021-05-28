@@ -5,6 +5,7 @@ import { Provider} from 'react-redux'
 
 import MainPage from './components/mainPage/MainPage';
 import store from './tools/store';
+import '../src/index.css';
 
 
 

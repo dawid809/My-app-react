@@ -99,7 +99,7 @@ const FilterContainer = styled.div`
 `;
 
 const Text = styled.h4`
-  color: black;
+  color: ${Colors.black};
   margin-left: -4px;
 `;
 

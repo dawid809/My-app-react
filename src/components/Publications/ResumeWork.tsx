@@ -1,14 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Colors } from '../../styledHelpers/Colors';
+import { fontSize } from "../../styledHelpers/FontSizes";
 import "../publications/index.css";
 
 import { Pagination} from "../publications/Pagination";
 
 const ResumeWorkWrapper = styled.div`
   position: relative;
-  background: whitesmoke;
-  height: 400px;
   margin: 0.5% 5%;
 `;
 
@@ -22,6 +21,7 @@ const TopContainer = styled.div`
 const Title = styled.h2`
   align-self: center;
   font-weight: bold;
+  font-size: ${fontSize[20]};
 `;
 
 const RightIconsAndTextWrapper = styled.div`
@@ -36,15 +36,25 @@ const SmallImg = styled.img`
   align-self: center;
 `;
 
-const MediumImg = styled(SmallImg)`
+const SearchImg = styled(SmallImg)`
   width: 16px;
-  height: 16px;;
+  height: 16px;
+  margin-left: -23px;
+`;
+
+const MediumImg = styled(SmallImg)`
+  width: 20px;
+  height: 20px;
+  filter: invert(16%) sepia(62%) saturate(3838%) hue-rotate(237deg)
+    brightness(78%) contrast(106%);
 `;
 
 const SmallImgArrow = styled.img`
-  width: 8px;
-  height: 5px;
+  width: 9px;
+  height: 6px;
   margin: 0 5px;
+  filter: invert(16%) sepia(62%) saturate(3838%) hue-rotate(237deg)
+    brightness(78%) contrast(106%);
 `;
 
 const CustomFilter = styled.input`
@@ -77,7 +87,7 @@ const FollowedContainer = styled.div`
 `;
 
 const Subtititle = styled.h3`
-  color: blue;
+  color: ${Colors.blue};
   margin: 5px 0;
 `;
 
@@ -90,10 +100,9 @@ export const ResumeWork: FC = () => {
         <RightIconsAndTextWrapper>
           <FilterContainer>
             <CustomFilter type="text" placeholder="Filter by title..." />
-            <MediumImg
+            <SearchImg
               src="icons/search.png"
               alt="filtrowanie"
-              style={{ marginLeft: "-20px" }}
             />
           </FilterContainer>
           <FollowedContainer>

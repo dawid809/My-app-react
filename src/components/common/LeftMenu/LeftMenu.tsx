@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { Profile } from "../LeftMenu/Profile";
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { StyledLink } from "../../../styledHelpers/Components";
 
 const LeftWrapper = styled.div`
@@ -25,8 +26,7 @@ const SubtitleWrapper = styled.div`
 `;
 
 const SubtitleText = styled.a`
-  font-size: 0.9rem;
-  font-weight: 500;
+ font-size:${fontSize[15]};
   margin: 5px;
 `;
 
