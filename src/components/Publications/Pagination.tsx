@@ -122,12 +122,12 @@ export const Pagination: FC = () => {
       {console.log("Comments", displayComments)}
       {displayComments}
       <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
+        previousLabel={"PREVIOUS"}
+        nextLabel={"NEXT"}
         pageCount={pageCount}
         onPageChange={changePage}
         marginPagesDisplayed={1}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={3}
         containerClassName={"pagination-bttns"}
         previousLinkClassName={"previous-bttn"}
         nextLinkClassName={"next-bttn"}

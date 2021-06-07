@@ -26,7 +26,7 @@ const SubtitleWrapper = styled.div`
 `;
 
 const SubtitleText = styled.a`
- font-size:${fontSize[15]};
+  font-size: ${fontSize[15]};
   margin: 5px;
 `;
 

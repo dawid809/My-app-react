@@ -16,15 +16,18 @@ import { IPhotosReducer } from "../../../reducers/photosReducer";
 
 const ExpandedWrapper = styled.div`
   position: absolute;
-  min-width: 250px;
+  width: 100%;
   background: ${Colors.white};
   border: ${Colors.border};
   border-radius: 4px;
   z-index: 100;
+  top: 30px;
+`;
+
+const ExpandedContent = styled.div`
   padding: 10px;
   padding-right: 0px;
-  margin: 5px;
-  left: 30px;
+  z-index: 100;
 `;
 
 const AccountWraper = styled.div`
@@ -144,6 +147,7 @@ export const ExpandedMenu: FC = () => {
 
   return (
     <ExpandedWrapper>
+      <ExpandedContent>
       <CustomFilter
         type="text"
         placeholder="Filter ..."
@@ -286,6 +290,7 @@ export const ExpandedMenu: FC = () => {
         <CustomImgWithMargin src="icons/logout.png" alt="logout" />
         <Logout> Logout </Logout>
       </LogoutWrapper>
+      </ExpandedContent>
     </ExpandedWrapper>
   );
 };

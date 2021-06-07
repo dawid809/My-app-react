@@ -3,6 +3,7 @@ import styled from "styled-components";
 import useDropdown from "react-dropdown-hook";
 
 import { Colors } from "../../../styledHelpers/Colors";
+import { StyledLink } from "../../../styledHelpers/Components";
 import { ExpandedMenu } from "../header/ExpandedMenu";
 import { Search } from "../header/Search";
 import { RightIcons } from "../header/RightIcons";
@@ -20,9 +21,15 @@ const InnerWrapper = styled.div`
 `;
 
 const LeftIcons = styled.div`
-  margin-left: 20px;
   width: 100%;
   display: flex;
+`;
+
+const Logo = styled.img`
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
 
 export const Header: FC = () => {
@@ -34,11 +41,22 @@ export const Header: FC = () => {
 
   return (
     <InnerWrapper>
-      <div ref={wrapperRef}>
-        <LeftIcons onClick={menuHandler}>
-          <LeftIconsContent />
-        </LeftIcons>
-        {dropdownOpen && <ExpandedMenu />}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
+        <StyledLink to="/">
+          <Logo src="icons/logo.png" alt="logo" />
+        </StyledLink>
+        <div ref={wrapperRef} style={{position: "relative"}}>
+          <LeftIcons onClick={menuHandler}>
+            <LeftIconsContent />
+          </LeftIcons>
+          {dropdownOpen && <ExpandedMenu />}
+        </div>
       </div>
       <Search />
       <RightIcons />

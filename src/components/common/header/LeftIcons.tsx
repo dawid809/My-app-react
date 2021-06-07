@@ -8,11 +8,6 @@ const CustomIcon = styled.img`
   align-self: center;
 `;
 
-const Logo = styled(CustomIcon)`
-  width: 32px;
-  height: 32px;
-`;
-
 const LeftIconsWrapper = styled.div`
   margin-left: 10px;
   width: 100%;
@@ -33,13 +28,12 @@ const TitleText = styled.h1`
 `;
 
 const CustomArrowIcon = styled.img`
-  margin-left: 100px;
+  margin-left: 120px;
 `;
 
 export const LeftIconsContent: FC = () => {
   return (
     <LeftIconsWrapper>
-      <Logo src="icons/logo.png" alt="logo" />
       <WraperHome>
         <CustomIcon src="icons/house2.png" alt="home" />
         <TitleText>Home</TitleText>

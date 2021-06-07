@@ -1,10 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import useDropdown from "react-dropdown-hook";
+
 import { Colors } from '../../styledHelpers/Colors';
 import { fontSize } from "../../styledHelpers/FontSizes";
 import "../publications/index.css";
 
-import { Pagination} from "../publications/Pagination";
+import { Pagination } from "../publications/Pagination";
+import  Followed  from "../publications/Followed";
 
 const ResumeWorkWrapper = styled.div`
   position: relative;
@@ -84,6 +87,12 @@ const FollowedContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
+
+  :hover {
+    background-color: ${Colors.lazure};
+    border-radius: 4px;
+  }
 `;
 
 const Subtititle = styled.h3`
@@ -92,6 +101,12 @@ const Subtititle = styled.h3`
 `;
 
 export const ResumeWork: FC = () => {
+
+  const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
+
+  const menuHandler = () => {
+    toggleDropdown();
+  };
 
   return (
     <ResumeWorkWrapper>
@@ -105,11 +120,15 @@ export const ResumeWork: FC = () => {
               alt="filtrowanie"
             />
           </FilterContainer>
-          <FollowedContainer>
+
+          <div ref={wrapperRef} style={{position: "relative"}}>
+          <FollowedContainer onClick={menuHandler}>
             <MediumImg src="icons/broadcast.png" alt="transmitowanie" />
             <Subtititle>Followed</Subtititle>
             <SmallImgArrow src="icons/arrow-down.png" alt="strzałka-dół" />
           </FollowedContainer>
+          {dropdownOpen && <Followed />}
+          </div>
         </RightIconsAndTextWrapper>
       </TopContainer>
       <Pagination/>

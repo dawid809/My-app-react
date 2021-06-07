@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Colors } from "../../styledHelpers/Colors";
-
+import { StyledLink } from "../../styledHelpers/Components";
 import { getUsers } from "../../actions/usersActions";
 import { getPhotos } from "../../actions/photosActions";
 import { getPosts } from "../../actions/postsActions";
@@ -78,8 +78,12 @@ const DateAndUserContainer = styled.div`
   display: flex;
   align-items: center;
   align-self: flex-start;
-  color: ${Colors.black};
+  color: ${Colors.white};
   margin: 5px;
+
+  h3{
+    color: ${Colors.black};
+  }
 `;
 
 const Date = styled.h6`
@@ -136,7 +140,7 @@ export const LatestPublications: FC = () => {
           <DateAndUserContainer>
             <Date>7.07.2012</Date>
             <UserPhoto src={photosList[currentUser?.id]?.url} />
-            <Date style={{ color: `${Colors.darkerGray}` }}>{usersList[currentUser?.id]?.name}</Date>
+            <Date style={{ color: `${Colors.gray}` }}>{usersList[currentUser?.id]?.name}</Date>
           </DateAndUserContainer>
         </ContentContainer>
       </OnPhotoContainer>
@@ -150,9 +154,9 @@ export const LatestPublications: FC = () => {
               {postsList[currentUser?.id]?.title}
             </SinglePublication>
             <DateAndUserContainer>
-              <Date style={{ color: "black" }}>7.07.2012</Date>
+              <h3>7.07.2012</h3>
               <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <Date style={{ color: "black" }}>{usersList[currentUser?.id]?.name}</Date>
+              <h3>{usersList[currentUser?.id]?.name}</h3>
             </DateAndUserContainer>
           </div>
         </SinglePublicationWrapper>
@@ -164,9 +168,9 @@ export const LatestPublications: FC = () => {
               {postsList[currentUser?.id]?.title}
             </SinglePublication>
             <DateAndUserContainer>
-              <Date style={{ color: "black" }}>7.07.2012</Date>
+            <h3>7.07.2012</h3>
               <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <Date style={{ color: "black" }}>{usersList[currentUser?.id]?.name}</Date>
+              <h3>{usersList[currentUser?.id]?.name}</h3>
             </DateAndUserContainer>
           </div>
         </SinglePublicationWrapper>
@@ -178,13 +182,15 @@ export const LatestPublications: FC = () => {
               {postsList[currentUser?.id]?.title}
             </SinglePublication>
             <DateAndUserContainer>
-              <Date style={{ color: "black" }}>7.07.2012</Date>
+            <h3>7.07.2012</h3>
               <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <Date style={{ color: "black" }}>{usersList[currentUser?.id]?.name}</Date>
+              <h3>{usersList[currentUser?.id]?.name}</h3>
             </DateAndUserContainer>
           </div>
         </SinglePublicationWrapper>
+        <StyledLink to="/testPage">
         <LinkText>See more publications</LinkText>
+        </StyledLink>
       </LatestPublicationsWrapper>
     </PublicationsWrapper>
   );

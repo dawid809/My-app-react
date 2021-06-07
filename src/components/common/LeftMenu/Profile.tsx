@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { Colors } from "../../../styledHelpers/Colors";
 import { fontSize } from "../../../styledHelpers/FontSizes";
+import { StyledLink } from "../../../styledHelpers/Components";
 import { CustomImg } from "../../../styledHelpers/Components";
 import { CustomImageWithBorder } from "../../../styledHelpers/Components";
 import { getUsers } from "../../../actions/usersActions";
@@ -55,6 +56,7 @@ const SubtitleWrapper = styled.div`
   margin: 8px 10px;
   display: flex;
   position: relative;
+  align-items: center;
 `;
 
 const AboutMe = styled.div`
@@ -101,13 +103,17 @@ export const Profile: FC = () => {
       <AboutMe>
         <SubtitleWrapper>
           <CustomImg src="icons/network.png" alt="Network" />
-          <SubtitleText>Your network</SubtitleText>
-          <CustomImageWithBorder src="icons/user-plus.png" alt="Add user" />
+          <StyledLink to="/testPage">
+            <SubtitleText>Your network</SubtitleText>
+            <CustomImageWithBorder src="icons/user-plus.png" alt="Add user" />
+          </StyledLink>
         </SubtitleWrapper>
 
         <SubtitleWrapper>
           <CustomImg src="icons/publications.png" alt="Publications" />
-          <SubtitleText>Your Publications</SubtitleText>
+          <StyledLink to="/testPage">
+            <SubtitleText>Your Publications</SubtitleText>
+          </StyledLink>
           <CustomImageWithBorder src="icons/plus.png" alt="Icons" />
         </SubtitleWrapper>
       </AboutMe>
