@@ -3,6 +3,10 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import useDropdown from "react-dropdown-hook";
+import Followed from "../publications/Followed";
+import { Filter } from "../entities/Filter";
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 const BlueText = styled.h2`
   font-size: ${fontSize[16]};
@@ -59,6 +63,7 @@ const BlueWrapper = styled.div`
   border-radius: 4px;
   padding: 5px 0;
   background-color: #bde1f6;
+  cursor: pointer;
 `;
 
 const BlueIcon = styled(CustomIcon)`
@@ -92,7 +97,7 @@ const CustomFilter = styled.input`
   }
 `;
 
-const FilterContainer = styled.div`
+const SearchContainer = styled.div`
   margin: 0 10px;
   display: flex;
   align-items: center;
@@ -103,12 +108,51 @@ const Text = styled.h4`
   margin-left: -4px;
 `;
 
+const FilterContainer = styled.div`
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  :hover {
+    background-color: ${Colors.lazure};
+    border-radius: 4px;
+  }
+`;
+
+const FollowedContainer = styled(FilterContainer)``;
+
 // const GrayIcons = styled(CustomIcon)`
 // filter: invert(63%) sepia(14%) saturate(22%) hue-rotate(71deg) brightness(91%) contrast(95%);
 // `;
 
 export const FunctionallIIconsComponent: FC = () => {
+
+  const [filterRef, filterDropdownOpen, filterToggleDropdown] = useDropdown();
+
+  const filterMenuHandler = () => {
+    filterToggleDropdown();
+  };
+
+  const [followedRef, followedDropdownOpen, followedToggleDropdown] = useDropdown();
+
+  const followeMenudHandler = () => {
+    followedToggleDropdown();
+  };
+
+  const setFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  const url = window.location.href;
+
   return (
+    <div style={{ margin: '5px 20px'}}>
     <HeaderWrapper>
       <LeftWrapper>
         <BlueWrapper>
@@ -120,7 +164,7 @@ export const FunctionallIIconsComponent: FC = () => {
           <BlueIcon
             src="icons/arrow-down.png"
             alt="Arrow down icon"
-            style={{ height: "10px", width: "10px" }}
+            style={{ height: "7px", width: "10px" }}
           />
         </BlueWrapper>
         <CustomIcon
@@ -136,11 +180,16 @@ export const FunctionallIIconsComponent: FC = () => {
           <CustomIcon src="icons/sort.png" alt="Sort icon" />
           <Text>Sort</Text>
         </IconAndTextWrapper>
+        <div ref={filterRef} style={{position: "relative"}}>
+        <FilterContainer  onClick={filterMenuHandler}>
         <IconAndTextWrapper>
           <CustomIcon src="icons/filter.png" alt="Filter icon" />
           <Text>Filters</Text>
         </IconAndTextWrapper>
-        <CustomIcon
+        </FilterContainer>
+        </div>
+        <IconAndTextWrapper>
+        <CustomIcon onClick={setFullScreen}
           src="icons/expand.png"
           alt="Expand icon"
           style={{
@@ -150,37 +199,47 @@ export const FunctionallIIconsComponent: FC = () => {
             cursor: "pointer"
           }}
         />
+             </IconAndTextWrapper>
+       <CopyToClipboard text={url}>
         <IconAndTextWrapper>
           <CustomIcon src="icons/share.png" alt="Share icon" />
           <Text>Share</Text>
         </IconAndTextWrapper>
+        </CopyToClipboard>
       </LeftWrapper>
 
       <RightWrapper>
-        <FilterContainer>
+        <SearchContainer>
           <CustomFilter type="text" placeholder="Search..." />
           <CustomIcon
             src="icons/search.png"
             alt="Search icon"
             style={{ marginLeft: "-30px", width: "16px", height: "16px" }}
           />
-        </FilterContainer>
+        </SearchContainer>
         <div
           style={{
             borderRight: `1px solid ${Colors.lightGray}`,
             margin: "0 15px 0 -5px",
           }}
         ></div>
-        <IconWrapper>
+         <div ref={followedRef} style={{position: "relative"}}>
+         <FollowedContainer onClick={followeMenudHandler}>
+        <IconWrapper style={{height: '25px'}}>
           <BlueIcon src="icons/broadcast.png" alt="Broadcast icon" />
           <BlueText>Followed</BlueText>
           <BlueIcon
             src="icons/arrow-down.png"
             alt="Arrow down icon"
-            style={{ height: "10px", width: "10px" }}
+            style={{ height: "7px", width: "10px" }}
           />
         </IconWrapper>
+        </FollowedContainer>
+        {followedDropdownOpen && <Followed />}
+        </div>
       </RightWrapper>
     </HeaderWrapper>
+    {filterDropdownOpen && <Filter />}
+    </div>
   );
 };

@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 import { Colors } from "../../../styledHelpers/Colors";
 import { fontSize } from "../../../styledHelpers/FontSizes";
+import { StyledLink } from "../../../styledHelpers/Components";
+import DatePicker from "react-datepicker";
 import { useFormik } from "formik";
+import "react-datepicker/dist/react-datepicker.css";
 
 const ProposalsWrapper = styled.div`
   display: flex;
@@ -20,13 +23,22 @@ const TitleText = styled.h1`
   margin-bottom: 15px;
 `;
 
-const LinkText = styled.h3`
-  margin-top: 5px;
-  color: ${Colors.lightBlue};
-  text-align: right;
-  margin: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
+const LinkText = styled(StyledLink)`
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    margin-top: 5px;
+    color: ${Colors.blue};
+    text-align: right;
+    margin: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  :hover {
+    color: ${Colors.darkerGray};
+  }
 `;
 
 const Table = styled.table`
@@ -106,11 +118,41 @@ const CustomInput = styled.input.attrs({
   }
 `;
 
+const CustomDatePicker = styled(DatePicker)`
+  font-size: 15px;
+  line-height: 1.3;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid ${Colors.gray};
+  color: ${Colors.black};
+  &:focus {
+    background: #f3eaea;
+    outline: none;
+  }
+  &:hover {
+    transform: 1.2;
+    background: #e4d0d0;
+    outline: none;
+  }
+`;
+
+const CustomDatePickerDisabled = styled(CustomDatePicker)`
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: ${Colors.whiteSmoke};
+    outline: none;
+  }
+`;
+
 interface IProps {
-  formikSelectOptionsEnabled?: boolean
+  formikSelectOptionsEnabled?: boolean;
 }
 export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
-  
   const formikTable = useFormik({
     initialValues: {
       rowone: {
@@ -118,7 +160,6 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
         entity: ["Renault"],
         location: ["USA"],
         expertise: ["#Tax"],
-        date: ["21/02/2018"],
         firm: ["Racine"],
       },
       rowtwo: {
@@ -126,7 +167,6 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
         entity: ["Gulf"],
         location: ["France"],
         expertise: ["#M&A"],
-        date: ["19/02/2018"],
         firm: ["Racine"],
       },
       rowthree: {
@@ -134,7 +174,6 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
         entity: ["Szkoda"],
         location: ["Italy"],
         expertise: ["#Socical"],
-        date: ["12/02/2018"],
         firm: ["Racine"],
       },
     },
@@ -144,22 +183,24 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
     },
   });
 
-  const zmiennaBool = formikSelectOptionsEnabled.formikSelectOptionsEnabled;
+  const [startDate1, setStartDate1] = useState(null);
+  const [startDate2, setStartDate2] = useState(null);
+  const [startDate3, setStartDate3] = useState(null);
+
   const [proposalsEnabled, setProposalsEnabled] = useState(false);
-{console.log('zmiena',zmiennaBool)}
   const editProposalsTable = () => {
     const disable = proposalsEnabled;
-    console.log('disable', formikSelectOptionsEnabled.formikSelectOptionsEnabled);
+    console.log(
+      "disable",
+      formikSelectOptionsEnabled.formikSelectOptionsEnabled
+    );
     setProposalsEnabled(!disable);
   };
 
-  
-
-  // <EditButton onClick={editProposalsTable} type="submit">
   return (
     <ProposalsWrapper>
       <EditWrapper>
-      <EditButton onClick={editProposalsTable} type="submit">
+        <EditButton onClick={editProposalsTable} type="submit">
           <EditIcon src="icons/pen.png" />
         </EditButton>
       </EditWrapper>
@@ -174,7 +215,7 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
             <TableHeader>Date</TableHeader>
             <TableHeader>Firm</TableHeader>
           </Row>
-          {proposalsEnabled? (
+          {proposalsEnabled ? (
             <>
               <Row>
                 <Column>
@@ -215,11 +256,11 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowone.date"
-                    defaultValue={formikTable.values.rowone.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate1}
+                    onChange={(date: Date) => setStartDate1(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="01/02/2018"
                   />
                 </Column>
                 <Column>
@@ -272,11 +313,11 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowtwo.date"
-                    defaultValue={formikTable.values.rowtwo.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate2}
+                    onChange={(date: Date) => setStartDate2(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="09/09/2012"
                   />
                 </Column>
                 <Column>
@@ -329,11 +370,11 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowthree.date"
-                    defaultValue={formikTable.values.rowthree.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate3}
+                    onChange={(date: Date) => setStartDate3(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="12/12/2012"
                   />
                 </Column>
                 <Column>
@@ -354,7 +395,15 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 <Column>{formikTable.values.rowone.entity}</Column>
                 <Column>{formikTable.values.rowone.location}</Column>
                 <Column>{formikTable.values.rowone.expertise}</Column>
-                <Column>{formikTable.values.rowone.date}</Column>
+                <Column>
+                  <CustomDatePickerDisabled
+                    selected={startDate1}
+                    onChange={(date: Date) => setStartDate1(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="01/02/2018"
+                  />
+                </Column>
                 <Column>{formikTable.values.rowone.firm}</Column>
               </Row>
               <Row>
@@ -362,7 +411,15 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 <Column>{formikTable.values.rowtwo.entity}</Column>
                 <Column>{formikTable.values.rowtwo.location}</Column>
                 <Column>{formikTable.values.rowtwo.expertise}</Column>
-                <Column>{formikTable.values.rowtwo.date}</Column>
+                <Column>
+                  <CustomDatePickerDisabled
+                    selected={startDate2}
+                    onChange={(date: Date) => setStartDate2(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="09/09/2012"
+                  />
+                </Column>
                 <Column>{formikTable.values.rowtwo.firm}</Column>
               </Row>
               <Row>
@@ -370,16 +427,24 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
                 <Column>{formikTable.values.rowthree.entity}</Column>
                 <Column>{formikTable.values.rowthree.location}</Column>
                 <Column>{formikTable.values.rowthree.expertise}</Column>
-                <Column>{formikTable.values.rowthree.date}</Column>
+                <Column>
+                  {" "}
+                  <CustomDatePickerDisabled
+                    selected={startDate3}
+                    onChange={(date: Date) => setStartDate3(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="12/12/2012"
+                  />
+                </Column>
                 <Column>{formikTable.values.rowthree.firm}</Column>
               </Row>
             </>
           )}
         </Table>
       </form>
-      <LinkText>See more proposals</LinkText>
+
+      <LinkText to="/testPage">See more proposals</LinkText>
     </ProposalsWrapper>
   );
 };
-
-

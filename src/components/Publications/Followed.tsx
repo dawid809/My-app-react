@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   top: 25px;
   overflow: hidden;
-
+  z-index:100;
   h2 {
     text-align: center;
     align-self: center;

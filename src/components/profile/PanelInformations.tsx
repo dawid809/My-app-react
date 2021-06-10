@@ -100,7 +100,11 @@ const EditIcon = styled.img`
   display: flex;
 `;
 
-export const PanelInformations: FC = () => {
+interface IPanelInformationsProps {
+  editSelectOptionHandle(): void;
+}
+
+export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
 
   const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] = useState(true);
 
@@ -122,13 +126,17 @@ export const PanelInformations: FC = () => {
     },
   });
 
+
   const [attachmentValue, setAttachmentValue] = useState('')
 
   return (
     <form onSubmit={formik.handleSubmit}>
     <PanelInformationWrapper>
       <EditWrapper>
-            <EditButton onClick={editPanelInformationsHandle} type="submit">
+            <EditButton onClick={() => {
+          editPanelInformationsHandle();
+          props.editSelectOptionHandle();
+        }} type="submit">
               <EditIcon src="icons/pen.png" />
             </EditButton>
           </EditWrapper>

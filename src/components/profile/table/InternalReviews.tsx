@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 import { Colors } from "../../../styledHelpers/Colors";
 import { fontSize } from "../../../styledHelpers/FontSizes";
+import { StyledLink } from "../../../styledHelpers/Components";
+import DatePicker from "react-datepicker";
 import { useFormik } from "formik";
+import "react-datepicker/dist/react-datepicker.css";
 
 const InternalReviewsWrapper = styled.div`
   border-bottom: 1px solid ${Colors.lightGray};
@@ -48,13 +51,22 @@ const Column = styled.td`
   white-space: nowrap;
 `;
 
-const LinkText = styled.h3`
+const LinkText = styled(StyledLink)`
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
   margin-top: 5px;
-  color: ${Colors.lightBlue};
+  color: ${Colors.blue};
   text-align: right;
   margin: 5px 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+  :hover{
+    color: ${Colors.darkerGray};
+  }
 `;
 
 const EditButton = styled.button`
@@ -104,6 +116,38 @@ const CustomInput = styled.input.attrs({
   }
 `;
 
+const CustomDatePicker = styled(DatePicker)`
+  font-size: 15px;
+  line-height: 1.3;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid ${Colors.gray};
+  color: ${Colors.black};
+  &:focus {
+    background: #f3eaea;
+    outline: none;
+  }
+  &:hover {
+    transform: 1.2;
+    background: #e4d0d0;
+    outline: none;
+  }
+`;
+
+const CustomDatePickerDisabled = styled(CustomDatePicker)`
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: ${Colors.whiteSmoke};
+    outline: none;
+  }
+`;
+
+
 export const InternalReviews: FC = () => {
 
   const formikTable = useFormik({
@@ -113,21 +157,18 @@ export const InternalReviews: FC = () => {
         entity: ["Renault"],
         location: ["USA"],
         expertise: ["#Tax"],
-        date: ["21/02/2018"],
       },
       rowtwo: {
         name: ["Operation Prometheus"],
         entity: ["Audi"],
         location: ["France"],
         expertise: ["#M&A"],
-        date: ["18/02/2019"],
       },
       rowthree: {
         name: ["Operation Latandre"],
         entity: ["BMW"],
         location: ["Italia"],
         expertise: ["#Social"],
-        date: ["18/02/2019"],
       },
     },
     enableReinitialize: true,
@@ -135,6 +176,10 @@ export const InternalReviews: FC = () => {
       console.log(values);
     },
   });
+
+  const [startDate1, setStartDate1] = useState(null);
+  const [startDate2, setStartDate2] = useState(null);
+  const [startDate3, setStartDate3] = useState(null);
 
   const [internalReviewsEnabled, setInternalReviewsEnabled] = useState(false);
 
@@ -201,11 +246,11 @@ export const InternalReviews: FC = () => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowone.date"
-                    defaultValue={formikTable.values.rowone.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate1}
+                    onChange={(date: Date) => setStartDate1(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="01/02/2018"
                   />
                 </Column>
               </Row>
@@ -249,11 +294,11 @@ export const InternalReviews: FC = () => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowtwo.date"
-                    defaultValue={formikTable.values.rowtwo.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate2}
+                    onChange={(date: Date) => setStartDate2(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="09/09/2012"
                   />
                 </Column>
               </Row>
@@ -297,11 +342,11 @@ export const InternalReviews: FC = () => {
                 </Column>
                 <Column>
                   {" "}
-                  <CustomInput
-                    name="rowthree.date"
-                    defaultValue={formikTable.values.rowthree.date}
-                    type="text"
-                    onChange={formikTable.handleChange}
+                  <CustomDatePicker
+                    selected={startDate3}
+                    onChange={(date: Date) => setStartDate3(date)}
+                    showDisabledMonthNavigation
+                    placeholderText="12/12/2012"
                   />
                 </Column>
               </Row>
@@ -313,27 +358,45 @@ export const InternalReviews: FC = () => {
                 <Column>{formikTable.values.rowone.entity}</Column>
                 <Column>{formikTable.values.rowone.location}</Column>
                 <Column>{formikTable.values.rowone.expertise}</Column>
-                <Column>{formikTable.values.rowone.date}</Column>
+                <Column> <CustomDatePickerDisabled
+                    selected={startDate1}
+                    onChange={(date: Date) => setStartDate1(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="01/02/2018"
+                  /></Column>
               </Row>
               <Row>
                 <Column>{formikTable.values.rowtwo.name}</Column>
                 <Column>{formikTable.values.rowtwo.entity}</Column>
                 <Column>{formikTable.values.rowtwo.location}</Column>
                 <Column>{formikTable.values.rowtwo.expertise}</Column>
-                <Column>{formikTable.values.rowtwo.date}</Column>
+                <Column> <CustomDatePickerDisabled
+                    selected={startDate2}
+                    onChange={(date: Date) => setStartDate2(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="09/09/2012"
+                  /></Column>
               </Row>
               <Row>
                 <Column>{formikTable.values.rowthree.name}</Column>
                 <Column>{formikTable.values.rowthree.entity}</Column>
                 <Column>{formikTable.values.rowthree.location}</Column>
                 <Column>{formikTable.values.rowthree.expertise}</Column>
-                <Column>{formikTable.values.rowthree.date}</Column>
+                <Column> <CustomDatePickerDisabled
+                    selected={startDate3}
+                    onChange={(date: Date) => setStartDate3(date)}
+                    showDisabledMonthNavigation
+                    disabled
+                    placeholderText="12/12/2012"
+                  /></Column>
               </Row>
             </>
           )}
         </Table>
       </form>
-      <LinkText>See more reviews</LinkText>
+      <LinkText to="/testPage">See more reviews</LinkText>
     </InternalReviewsWrapper>
   );
 };

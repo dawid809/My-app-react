@@ -29,7 +29,7 @@
 .pagination-bttns a {
   padding: 10px;
   margin: 8px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   color: rgb(51, 131, 235);
 }
@@ -52,7 +52,7 @@
 
 .pagination-active a:hover {
   color: black;
-  background-color: rgb(236, 236, 236);
+  background-color: rgb(230, 230, 230);
   cursor: default;
 }
 

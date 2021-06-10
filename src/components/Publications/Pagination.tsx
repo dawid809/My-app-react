@@ -80,7 +80,20 @@ export const Pagination: FC = () => {
   }));
   console.log('cuurUserId', currentUser?.id);
 
+  
+  const [searchTitle, setSearchTitle] = useState("");
   const [comments, setComments] = useState(commentsList.slice(0, 500));
+  const [filteredData, setFilteredData] = useState(comments);
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.toLowerCase();
+let result = [];
+console.log('input',value);
+result = comments.filter((comm) => {
+return comm.name.search(value) != -1;
+});
+setFilteredData(result);
+}
+
   const [pageNumber, setPageNumber] = useState(0);
 
   const commentsPerPage = 10;
@@ -115,6 +128,7 @@ export const Pagination: FC = () => {
   };
   return (
     <div>
+      <input type="text" onChange={(event) =>handleSearch(event)} />
       {/* {commentsList.filter(elem => elem.name.
         toLowerCase()
         .includes)}

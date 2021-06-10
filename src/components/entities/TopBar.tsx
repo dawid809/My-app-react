@@ -52,6 +52,7 @@ flex-direction: row;
 border: 1px solid ${Colors.lightGray};
 border-radius: 4px;
 border-left:none;
+cursor: pointer;
 `;
 
 const BlueText = styled.h4`
