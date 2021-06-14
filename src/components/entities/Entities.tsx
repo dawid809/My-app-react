@@ -1,10 +1,26 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
-import { TopBar } from "../entities/TopBar";
-import { FunctionallIIconsComponent } from "../entities/FunctionallIIconsComponent";
+import { SingleEntity } from "./SingleEntity";
+import { FunctionallIIconsComponent } from "./TopBar";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { getUsers } from "../../actions/usersActions";
+import { getPhotos } from "../../actions/photosActions";
+import { getPosts } from "../../actions/postsActions";
+import { useSelector } from "react-redux";
+import { IState } from "../../reducers";
+import { IUsersReducer } from "../../reducers/usersReducers";
+import { IPhotosReducer } from "../../reducers/photosReducer";
+import { IPostsReducer } from "../../reducers/postsReducer";
+
+import "../entities/index.css";
+
+type GetUsers = ReturnType<typeof getUsers>;
+type GetPhotos = ReturnType<typeof getPhotos>;
+type GetPosts = ReturnType<typeof getPosts>;
 
 const EntitiesWrapper = styled.div`
   width: 100%;
@@ -13,83 +29,94 @@ const EntitiesWrapper = styled.div`
 
 const EntitiesContent = styled.div`
   background: ${Colors.whiteSmoke};
-  height: 400px;
   margin: 1% 5%;
 `;
 
 const CompanyWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-auto-rows: minmax(100px, auto); */
   grid-gap: 5px;
   margin: 10px 20px;
   position: relative;
 `;
 
-const SingleEntity = styled.div`
-  border: 1px solid ${Colors.lightGray};
-  border-radius: 4px;
-  margin-right: 5px;
-  padding: 10px;
-  img {
-    float: left;
-    height: 100px;
-    width: 100px;
-    margin-right: 10px;
-  }
-
-  h2 {
-    color: ${Colors.blue};
-    font-size: ${fontSize[20]};
-  }
-
-  p {
-  }
-`;
-
 export const Entities: FC = () => {
+  const handleFullScreen = useFullScreenHandle();
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch<GetUsers>(getUsers());
+    dispatch<GetPhotos>(getPhotos());
+    dispatch<GetPosts>(getPosts());
+  }, []);
+
+  const { usersList, photosList, currentUser, postsList } = useSelector<
+    IState,
+    IUsersReducer & IPhotosReducer & IPostsReducer
+  >((globalState) => ({
+    ...globalState.users,
+    ...globalState.photos,
+    ...globalState.posts,
+  }));
+
+  const [searchState, setSearchState] = useState("");
+ 
+
+  function handleChange(newValue: string) {
+    setSearchState(newValue);
+  }
+
+  const [isMosaicActive, setMosaicActive] = useState(false);
+
+  const toggleMosaicClass = () => {
+    if(isMosaicActive == true)
+    setMosaicActive(!isMosaicActive);
+    else (toggleListClass);
+  };
+
+  const toggleListClass = () => {
+    if(isMosaicActive == false)
+    setMosaicActive(!isMosaicActive);
+    else return;
+  };
+
+
   return (
     <EntitiesWrapper>
-      <EntitiesContent>
-        <TopBar />
-        <FunctionallIIconsComponent />
-
-        <CompanyWrapper>
-          <SingleEntity>
-            <img src="icons/repair.png" alt="" />
-            <div>
-              <h2>Title</h2>
-
-              <p>Jakis tam textr asdasd dasasd</p>
-            </div>
-          </SingleEntity>
-          <SingleEntity>
-            <img src="icons/repair.png" alt="" />
-            <div>
-              <h2>Title</h2>
-
-              <p>Jakis tam textr asdasd dasasd</p>
-            </div>
-          </SingleEntity>
-          <SingleEntity>
-            <img src="icons/repair.png" alt="" />
-            <div>
-              <h2>Title</h2>
-
-              <p>Jakis tam textr asdasd dasasd</p>
-            </div>
-          </SingleEntity>
-          <SingleEntity>
-            <img src="icons/repair.png" alt="" />
-            <div>
-              <h2>Title</h2>
-
-              <p>Jakis tam textr asdasd dasasd</p>
-            </div>
-          </SingleEntity>
-        </CompanyWrapper>
-      </EntitiesContent>
+      <FullScreen handle={handleFullScreen}>
+        <EntitiesContent>
+          <FunctionallIIconsComponent
+            handleFullScreen={handleFullScreen}
+            value={searchState}
+            onChange={handleChange}
+            toggleMosaicClass={toggleMosaicClass}
+            toggleListClass={toggleListClass}
+          />
+          <CompanyWrapper className={isMosaicActive? 'mosaic' : null} >
+            {photosList
+              .slice(0, 32)
+              .filter((val) => {
+                if (searchState == "") {
+                  return val;
+                } else if (
+                  val.title.toLowerCase().includes(searchState.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((val) => {
+                return (
+                  <SingleEntity
+                    key={val.id}
+                    url={val.url}
+                    title={val.title}
+                    id={val.id}
+                  />
+                );
+              })}
+          </CompanyWrapper>
+        </EntitiesContent>
+      </FullScreen>
     </EntitiesWrapper>
   );
 };

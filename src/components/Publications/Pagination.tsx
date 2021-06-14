@@ -10,13 +10,16 @@ import { IState } from "../../reducers";
 import { getComments } from "../../actions/commentsActions";
 import { getUsers } from "../../actions/usersActions";
 import { getPosts } from "../../actions/postsActions";
+import { getPhotos } from "../../actions/photosActions";
 import { ICommentsReducer } from "../../reducers/commentsReducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPostsReducer } from "../../reducers/postsReducer";
+import { IPhotosReducer } from "../../reducers/photosReducer";
 
 type GetComments = ReturnType<typeof getComments>;
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPosts = ReturnType<typeof getPosts>;
+type GetPhotos = ReturnType<typeof getPhotos>;
 
 const PostsWrapper = styled.div`
 `;
@@ -24,7 +27,7 @@ const PostsWrapper = styled.div`
 const SinglePostWrapper = styled.div`
   background: ${Colors.white};
   border-radius: 5px;
-  border: 1px solid ${Colors.lightGray};
+  box-shadow: ${Colors.shadow};
   margin: 5px 0;
   padding: 10px;
 `;
@@ -71,12 +74,14 @@ export const Pagination: FC = () => {
     dispatch<GetComments>(getComments());
     dispatch<GetUsers>(getUsers());
     dispatch<GetPosts>(getPosts());
+    dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { commentsList, usersList, postsList, currentUser } = useSelector<IState, ICommentsReducer & IUsersReducer & IPostsReducer>((globalState) => ({
+  const { commentsList, usersList, postsList, currentUser, photosList } = useSelector<IState, ICommentsReducer & IUsersReducer & IPostsReducer & IPhotosReducer>((globalState) => ({
     ...globalState.comments,
     ...globalState.users,
     ...globalState.posts,
+    ...globalState.photos,
   }));
   console.log('cuurUserId', currentUser?.id);
 
@@ -108,12 +113,12 @@ setFilteredData(result);
             <Subtititle>{comments?.name}</Subtititle>
             <PostText> {comments?.body}</PostText>
             <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <PostText>{comments?.name}</PostText>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
+              <SmallImg src={photosList?.[postsList?.[comments?.postId-1]?.userId-1]?.url} alt="photo"  style={{ borderRadius: "50%"}}/>
+              <PostText>{usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PostText>
+              <DotImg src="icons/black-circle.png" alt="circle" />
+              <SmallImg src="icons/suitcase.png" alt="suitcase" />
               <PostText>Client contract</PostText>
-              <DotImg src="icons/black-circle.png" alt="" />
+              <DotImg src="icons/black-circle.png" alt="cirlce" />
               <PublicationDate> Updated 2 days ago by  {usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PublicationDate>
             </ImgAndTextWrapper>
           </SinglePostWrapper>
@@ -123,7 +128,7 @@ setFilteredData(result);
 
   const pageCount = Math.ceil(commentsList.length / commentsPerPage);
 
-  const changePage = ({ selected }: { selected: any }) => {
+  const changePage = ({ selected }: { selected: number }) => {
     setPageNumber(selected);
   };
   return (

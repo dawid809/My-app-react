@@ -7,7 +7,7 @@ body, html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Sans-Serif !important; 
-  
+  background-color: whitesmoke !important;
 }
 
 code {

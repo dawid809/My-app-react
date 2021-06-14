@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { CustomImgWithMargin } from "../../../styledHelpers/Components";
-import { Profile } from "../LeftMenu/Profile";
+import { Profile } from "./Profile";
 import { fontSize } from "../../../styledHelpers/FontSizes";
 import { StyledLink } from "../../../styledHelpers/Components";
 

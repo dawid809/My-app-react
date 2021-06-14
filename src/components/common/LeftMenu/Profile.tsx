@@ -20,7 +20,6 @@ type GetPhotos = ReturnType<typeof getPhotos>;
 
 const ProfileWrapper = styled.div`
   box-shadow: ${Colors.shadow};
-  border: ${Colors.border};
   padding: 10px 10px;
   display: flex;
   flex-direction: column;
@@ -91,14 +90,18 @@ export const Profile: FC = () => {
 
   return (
     <ProfileWrapper>
-      {console.log({ usersList })}
-      {console.log({ photosList })}
-
-      <UserAvatar src={photosList?.[currentUser?.id]?.url} alt="User photo" />
-      <NameText>{usersList?.[currentUser?.id]?.name}</NameText>
-      <GrayText>
-        Job title - {usersList[currentUser?.id]?.company.name}
-      </GrayText>
+      <StyledLink to="/profile">
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <UserAvatar
+            src={photosList?.[currentUser?.id-1]?.url}
+            alt="User photo"
+          />
+          <NameText>{usersList?.[currentUser?.id-1]?.name}</NameText>
+          <GrayText>
+            Job title - {usersList[currentUser?.id-1]?.company.name}
+          </GrayText>
+        </div>
+      </StyledLink>
 
       <AboutMe>
         <SubtitleWrapper>

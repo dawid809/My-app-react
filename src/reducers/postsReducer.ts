@@ -14,10 +14,10 @@ const defaultState = (): IPostsReducer => ({
 export default (state = defaultState(), action: any) => {
   switch (action.type) {
     case actionTypes.GET_POSTS: {
-      const data: actionTypes.IPostTypes["GET_POSTS"] = action;
+      const payload: actionTypes.IPostTypes["GET_POSTS"] = action;
       return {
         ...state,
-        postsList: data.postsList,
+        postsList: payload.postsList,
       };
     }
     default: {

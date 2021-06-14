@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from  'styled-components';
 
 import {Header} from '../common/header/Header';
-import {LeftMenu} from '../common/LeftMenu/LeftMenu';
+import {LeftMenu} from '../common/leftMenu/LeftMenu';
 import {Wrapper} from '../../styledHelpers/Components';
 import  {BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import  TestPage from '../testPage/TestPage';

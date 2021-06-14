@@ -14,10 +14,10 @@ const defaultState = (): IAlbumsReducer => ({
 export default (state = defaultState(), action: any) => {
     switch (action.type) {
         case actionTypes.GET_ALBUMS: {
-            const data: actionTypes.IAlbumTypes['GET_ALBUMS'] = action;
+            const payload: actionTypes.IAlbumTypes['GET_ALBUMS'] = action;
             return {
                 ...state,
-                albumsList: data.albumsList
+                albumsList: payload.albumsList
             }
         }
         default: {

@@ -61,10 +61,10 @@ const EditButton = styled.button`
 const EditWrapper = styled.div`
   width: 22px;
   height: 22px;
-
   right: 15px;
-  top: 15px;
+  top: 5px;
   display: flex;
+  position: absolute;
 `;
 
 const EditIcon = styled.img`
@@ -96,7 +96,6 @@ const CustomInput = styled.input.attrs({
 `;
 
 export const AmountOfFees: FC = () => {
-
   const formikTable = useFormik({
     initialValues: {
       rowone: {
@@ -139,12 +138,16 @@ export const AmountOfFees: FC = () => {
 
   return (
     <AmountOfFeesWrapper>
-       <EditWrapper>
-      <EditButton onClick={editAmountOfFeesTable} type="submit">
-          <EditIcon src="icons/pen.png" />
-        </EditButton>
-      </EditWrapper>
-      <TitleText>Amount of fees</TitleText>
+      <div
+        style={{ display: "flex", flexDirection: "row", position: "relative" }}
+      >
+        <TitleText>Amount of fees</TitleText>
+        <EditWrapper>
+          <EditButton onClick={editAmountOfFeesTable} type="submit">
+            <EditIcon src="icons/pen.png" />
+          </EditButton>
+        </EditWrapper>
+      </div>
       <form onSubmit={formikTable.handleSubmit}>
         <Table>
           <Row>
@@ -153,7 +156,7 @@ export const AmountOfFees: FC = () => {
             <TableHeader>Total amount</TableHeader>
             <TableHeader>Law firm</TableHeader>
           </Row>
-          {amountOfFeesEnabled? (
+          {amountOfFeesEnabled ? (
             <>
               <Row>
                 <Column>
@@ -344,4 +347,3 @@ export const AmountOfFees: FC = () => {
     </AmountOfFeesWrapper>
   );
 };
-

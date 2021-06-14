@@ -1,0 +1,20 @@
+.my-component {
+  background: whitesmoke !important;
+}
+
+.fullscreen-enabled .my-component {
+  background: whitesmoke !important;
+}
+
+.fullscreen {
+  background: whitesmoke !important;
+}
+
+.list {
+display: list-item !important;
+}
+
+.mosaic {
+  display: block !important;
+}
+

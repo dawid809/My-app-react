@@ -14,10 +14,10 @@ const defaultState = (): ICommentsReducer => ({
 export default (state = defaultState(), action: any) => {
     switch (action.type) {
         case actionTypes.GET_COMMENTS: {
-            const data: actionTypes.ICommentTypes['GET_COMMENTS'] = action;
+            const payload: actionTypes.ICommentTypes['GET_COMMENTS'] = action;
             return {
                 ...state,
-                commentsList: data.commentsList
+                commentsList: payload.commentsList
             }
         }
         default: {

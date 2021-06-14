@@ -72,7 +72,7 @@ const ImgRoundedWrapper = styled.div`
   background: ${Colors.white};
   width: 60px;
   height: 60px;
-  border: ${Colors.border};
+  box-shadow: ${Colors.shadow};
   border-radius: 5px;
 `;
 
@@ -125,6 +125,8 @@ export const Workspaces: FC = () => {
   const { photosList } = useSelector<IState, IPhotosReducer>((globalState) => ({
     ...globalState.photos,
   }));
+
+  
 
   return (
     <WorkspacesWrapper>

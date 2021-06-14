@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 //import "antd/dist/antd.css";
 //import "antd/es/style/index.css";
 import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+
 //import { colourOptions } from '../data';
 // import 'antd/lib/style/dark.less';
 // import "antd/lib/select/style/index.css";

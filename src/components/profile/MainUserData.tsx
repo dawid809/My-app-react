@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { StyledLink } from "../../styledHelpers/Components";
 import { getUsers } from "../../actions/usersActions";
 import { getPhotos } from "../../actions/photosActions";
 
@@ -73,9 +74,22 @@ const BoldText = styled.h2`
   line-height: 1.3;
 `;
 
-const LinkText = styled.h3`
-  margin-top: 5px;
-  color: ${Colors.lightBlue};
+const LinkText = styled(StyledLink)`
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    margin-top: 5px;
+    color: ${Colors.blue};
+    text-align: right;
+    margin: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  :hover {
+    color: ${Colors.darkerGray};
+  }
 `;
 
 const CustomInput = styled.input.attrs({
@@ -143,12 +157,12 @@ export const MainUserData: FC = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: usersList[currentUser?.id]?.name,
-      companyName: usersList[currentUser?.id]?.company.name,
-      address: usersList[currentUser?.id]?.address.city,
-      username: usersList[currentUser?.id]?.username,
-      email: usersList[currentUser?.id]?.email,
-      phone: usersList[currentUser?.id]?.phone,
+      name: usersList[currentUser?.id-1]?.name,
+      companyName: usersList[currentUser?.id-1]?.company.name,
+      address: usersList[currentUser?.id-1]?.address.city,
+      username: usersList[currentUser?.id-1]?.username,
+      email: usersList[currentUser?.id-1]?.email,
+      phone: usersList[currentUser?.id-1]?.phone,
     },
     enableReinitialize: true,
     onSubmit: (values) => {
@@ -166,9 +180,8 @@ export const MainUserData: FC = () => {
         </EditWrapper>
         <UserInfoAndPhotoWrapper>
           <PhotoWrapper>
-            <UserPhoto src={photosList[currentUser?.id]?.url} />
-
-            <LinkText> See profile </LinkText>
+            <UserPhoto src={photosList[currentUser?.id-1]?.url} />
+            <LinkText to="/profile"> See profile </LinkText>
           </PhotoWrapper>
           {formikDatasEnabled ? (
             <UserInfoWrapper>

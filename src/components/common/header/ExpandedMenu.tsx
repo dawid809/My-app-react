@@ -109,7 +109,7 @@ const ProfileLinkText = styled.p`
   font-size: ${fontSize[14]};
   margin: 2px 0;
 
-  &:hover{
+  &:hover {
     color: ${Colors.darkerGray};
   }
 `;
@@ -148,148 +148,155 @@ export const ExpandedMenu: FC = () => {
   return (
     <ExpandedWrapper>
       <ExpandedContent>
-      <CustomFilter
-        type="text"
-        placeholder="Filter ..."
-        value={inputText}
-        onChange={inputHandler}
-      />
-      <ScrollWrapper>
-        <CustomSubtitles>Platfom</CustomSubtitles>
-        {"Home".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/house2.png" alt="house2" />
-            <StyledLink to="/">
-              <CustomPargraf> Home </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
+        <CustomFilter
+          type="text"
+          placeholder="Filter ..."
+          value={inputText}
+          onChange={inputHandler}
+        />
+        <ScrollWrapper>
+          <CustomSubtitles>Platfom</CustomSubtitles>
+          {"Home".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/house2.png" alt="house2" />
+              <StyledLink to="/">
+                <CustomPargraf> Home </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
 
-        {"Publications".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin
-              src="icons/publications.png"
-              alt="publications"
+          {"Publications".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin
+                src="icons/publications.png"
+                alt="publications"
+              />
+              <StyledLink to="/publications">
+                <CustomPargraf> Publications </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"People".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/people.png" alt="people" />
+              <StyledLink to="/people">
+                <CustomPargraf>People </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Entities".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/entities2.png" alt="entities2" />
+              <StyledLink to="/entities">
+                <CustomPargraf> Entities </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Administration".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin
+                src="icons/administration.png"
+                alt="administration"
+              />
+              <StyledLink to="/administration">
+                <CustomPargraf> Administration</CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          <CustomSubtitles>Workspaces</CustomSubtitles>
+
+          {"Client contract"
+            .toLowerCase()
+            .includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+              <StyledLink to="/testPage">
+                <CustomPargraf> Client contract </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Supplier contract"
+            .toLowerCase()
+            .includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+              <StyledLink to="/testPage">
+                <CustomPargraf> Supplier contract </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Corporate".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/entities.png" alt="entities" />
+              <StyledLink to="/testPage">
+                <CustomPargraf> Corporate </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Group Norms".toLowerCase().includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/book-alt.png" alt="book" />
+              <StyledLink to="/testPage">
+                <CustomPargraf> Group Norms </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+          {"Real estate contracts"
+            .toLowerCase()
+            .includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+              <StyledLink to="/testPage">
+                <CustomPargraf> Real estate contracts </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+        </ScrollWrapper>
+
+        <AccountWraper>
+          <CustomSubtitles>Account</CustomSubtitles>
+
+          <ProfileWrapper>
+            <UserAvatar
+              src={photosList[currentUser?.id - 1]?.url}
+              alt="User photo"
             />
-            <StyledLink to="/publications">
-              <CustomPargraf> Publications </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
+            <RightProfileWrapper>
+              {usersList[currentUser?.id - 1]?.name}
+              <StyledLink to="/profile">
+                <ProfileLinkText>See profile</ProfileLinkText>
+              </StyledLink>
+            </RightProfileWrapper>
+          </ProfileWrapper>
 
-        {"People".toLowerCase().includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/people.png" alt="people" />
-            <StyledLink to="/people">
-              <CustomPargraf>People </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-
-        {"Entities".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities2.png" alt="entities2" />
-            <StyledLink to="/entities">
-              <CustomPargraf> Entities </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-
-        {"Administration".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin
-              src="icons/administration.png"
-              alt="administration"
-            />
-            <StyledLink to="/administration">
-              <CustomPargraf> Administration</CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-
-        <CustomSubtitles>Workspaces</CustomSubtitles>
-
-        {"Client contract".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+            <CustomImgWithMargin src="icons/privacy.png" alt="privacy" />
             <StyledLink to="/testPage">
-              <CustomPargraf> Client contract </CustomPargraf>
+              <CustomPargraf>Privacy </CustomPargraf>
             </StyledLink>
           </ImgAndTextContainer>
-        )}
 
-        {"Supplier contract"
-          .toLowerCase()
-          .includes(inputText.toLowerCase()) && (
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+            <CustomImgWithMargin src="icons/settings.png" alt="settings" />
             <StyledLink to="/testPage">
-              <CustomPargraf> Supplier contract </CustomPargraf>
+              <CustomPargraf> Settings </CustomPargraf>
             </StyledLink>
           </ImgAndTextContainer>
-        )}
-
-        {"Corporate".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/entities.png" alt="entities" />
-            <StyledLink to="/testPage">
-              <CustomPargraf> Corporate </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-
-        {"Group Norms".toLowerCase().includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/book-alt.png" alt="book" />
-            <StyledLink to="/testPage">
-              <CustomPargraf> Group Norms </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-
-        {"Real estate contracts"
-          .toLowerCase()
-          .includes(inputText.toLowerCase()) && (
-          <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-            <StyledLink to="/testPage">
-              <CustomPargraf> Real estate contracts </CustomPargraf>
-            </StyledLink>
-          </ImgAndTextContainer>
-        )}
-      </ScrollWrapper>
-
-      <AccountWraper>
-        <CustomSubtitles>Account</CustomSubtitles>
-
-        <ProfileWrapper>
-          <UserAvatar src={photosList[currentUser?.id]?.url} alt="User photo" />
-          <RightProfileWrapper>
-            {usersList[currentUser?.id]?.name}
-            <StyledLink to="/profile">
-              <ProfileLinkText>See profile</ProfileLinkText>
-            </StyledLink>
-          </RightProfileWrapper>
-        </ProfileWrapper>
-
-        <ImgAndTextContainer>
-          <CustomImgWithMargin src="icons/privacy.png" alt="privacy" />
+        </AccountWraper>
+        <LogoutWrapper>
+          <CustomImgWithMargin src="icons/logout.png" alt="logout" />
           <StyledLink to="/testPage">
-            <CustomPargraf>Privacy </CustomPargraf>
+            <Logout> Logout </Logout>
           </StyledLink>
-        </ImgAndTextContainer>
-
-        <ImgAndTextContainer>
-          <CustomImgWithMargin src="icons/settings.png" alt="settings" />
-          <StyledLink to="/testPage">
-            <CustomPargraf> Settings </CustomPargraf>
-          </StyledLink>
-        </ImgAndTextContainer>
-      </AccountWraper>
-      <LogoutWrapper>
-        <CustomImgWithMargin src="icons/logout.png" alt="logout" />
-        <Logout> Logout </Logout>
-      </LogoutWrapper>
+        </LogoutWrapper>
       </ExpandedContent>
     </ExpandedWrapper>
   );

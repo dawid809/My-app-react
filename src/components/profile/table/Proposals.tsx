@@ -84,10 +84,10 @@ const EditButton = styled.button`
 const EditWrapper = styled.div`
   width: 22px;
   height: 22px;
-
   right: 15px;
-  top: 15px;
+  top: 5px;
   display: flex;
+  position: absolute;
 `;
 
 const EditIcon = styled.img`
@@ -199,12 +199,16 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
 
   return (
     <ProposalsWrapper>
-      <EditWrapper>
-        <EditButton onClick={editProposalsTable} type="submit">
-          <EditIcon src="icons/pen.png" />
-        </EditButton>
-      </EditWrapper>
-      <TitleText>Proposals</TitleText>
+      <div
+        style={{ display: "flex", flexDirection: "row", position: "relative" }}
+      >
+        <TitleText>Proposals</TitleText>
+        <EditWrapper>
+          <EditButton onClick={editProposalsTable} type="submit">
+            <EditIcon src="icons/pen.png" />
+          </EditButton>
+        </EditWrapper>
+      </div>
       <form onSubmit={formikTable.handleSubmit}>
         <Table>
           <Row>

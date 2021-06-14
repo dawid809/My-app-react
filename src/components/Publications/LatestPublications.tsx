@@ -21,97 +21,103 @@ type GetPosts = ReturnType<typeof getPosts>;
 
 const PublicationsWrapper = styled.div`
   display: flex;
-  height: 260px;
   margin: 0.5% 5%;
   box-shadow: ${Colors.shadow};
   border-radius: 4px;
   position: relative;
   overflow: hidden;
-`;
-
-const BigPhoto = styled.img`
-  height: 100%;
-`;
-
-const OnPhotoContainer = styled.div`
-  height: 100%;
-  width: 260px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-`;
-
-const ContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  position: absolute;
-  z-index: 6;
-  bottom: 10px;
+  min-height: 300px;
 `;
 
 const LatestPublicationsWrapper = styled.div`
-  height: 100%;
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  margin: 10px;
-`;
-
-const SinglePublication = styled.a`
-  display: flex;
-  width: 100%;
-  color: ${Colors.white};
-  margin: 0 10px 0 5px;
-  font-size: ${fontSize[14]};
-  line-height: 1.4;
-`;
-
-const SinglePublicationWrapper = styled.div`
-  z-index: 5;
-  display: flex;
-  margin: 5px;
 `;
 
 const DateAndUserContainer = styled.div`
-  font-size: 12px;
   display: flex;
   align-items: center;
-  align-self: flex-start;
-  color: ${Colors.white};
   margin: 5px;
-
-  h3{
-    color: ${Colors.black};
-  }
-`;
-
-const Date = styled.h6`
-  color: ${Colors.white};
-`;
-
-const UserPhoto = styled.img`
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  margin: 0 5px;
 `;
 
 const TitleText = styled.h2`
-  margin: 2px 5px;
+  margin: 2px 10px;
   font-size: ${fontSize[20]};
   font-weight: bold;
 `;
 
 const LinkText = styled.h3`
   color: ${Colors.blue};
-  margin: 3px 5px;
+  margin: 10px 10px;
   cursor: pointer;
+  font-weight: bold;
 `;
 
-const SmallPhoto = styled.img`
-  max-height: 55px;
-  max-width: 55px;
+const PhotoBackgroundWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 0px -50px 50px -10px rgba(0, 0, 0, 0.75);
+  background-image: url("icons/skyscrapers.png");
+  width: 35%;
+  background-size: cover;
+  img {
+    width: 20px;
+    border-radius: 50%;
+  }
+
+  h2 {
+    font-weight: bold;
+    color: ${Colors.whiteSmoke};
+  }
+
+  h3 {
+    color: ${Colors.lightGray};
+    margin-right: 10px;
+  }
+
+  h4 {
+    color: ${Colors.gray};
+    margin-left: 10px;
+  }
+`;
+
+const SinglePublication = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 5px 10px;
+
+  div {
+    width: 100%;
+    padding: 5px;
+  }
+
+  img {
+    filter: grayscale(40%) sepia(10%) brightness(105%) saturate(150%)
+      opacity(85%) contrast(100%) invert(10%);
+    height: 100%;
+
+    width: 70px;
+    max-width: 100px;
+
+    object-fit: cover;
+  }
+  h2 {
+    font-weight: bold;
+    width: 100%;
+  }
+
+  h3 {
+    color: ${Colors.gray};
+    margin-right: 10px;
+  }
+
+  h4 {
+    color: ${Colors.darkerGray};
+    margin-left: 10px;
+  }
 `;
 
 export const LatestPublications: FC = () => {
@@ -133,63 +139,66 @@ export const LatestPublications: FC = () => {
 
   return (
     <PublicationsWrapper>
-      <OnPhotoContainer>
-        <BigPhoto src={photosList[currentUser?.id]?.url} alt="Big photo" />
-        <ContentContainer>
-          <SinglePublication>{postsList[currentUser?.id]?.title}</SinglePublication>
-          <DateAndUserContainer>
-            <Date>7.07.2012</Date>
-            <UserPhoto src={photosList[currentUser?.id]?.url} />
-            <Date style={{ color: `${Colors.gray}` }}>{usersList[currentUser?.id]?.name}</Date>
-          </DateAndUserContainer>
-        </ContentContainer>
-      </OnPhotoContainer>
+      <PhotoBackgroundWrapper>
+        <div
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              margin: "10px 15px",
+            }}
+          >
+            <h2>{postsList[currentUser?.id-1]?.body}</h2>
+            <DateAndUserContainer>
+              <h3>7 jan. 2020</h3>
+              <img src={photosList[currentUser?.id-1]?.url} alt="photo" />
+              <h4>{usersList[currentUser?.id-1]?.name}</h4>
+            </DateAndUserContainer>
+          </div>
+        </div>
+      </PhotoBackgroundWrapper>
 
       <LatestPublicationsWrapper>
         <TitleText>Latest publications</TitleText>
-        <SinglePublicationWrapper>
-          <SmallPhoto src={photosList[currentUser?.id]?.url} alt="photo" />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <SinglePublication style={{ color: "black" }}>
-              {postsList[currentUser?.id]?.title}
-            </SinglePublication>
-            <DateAndUserContainer>
-              <h3>7.07.2012</h3>
-              <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <h3>{usersList[currentUser?.id]?.name}</h3>
-            </DateAndUserContainer>
-          </div>
-        </SinglePublicationWrapper>
-
-        <SinglePublicationWrapper>
-          <SmallPhoto src={photosList[currentUser?.id]?.url} alt="photo" />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <SinglePublication style={{ color: "black" }}>
-              {postsList[currentUser?.id]?.title}
-            </SinglePublication>
-            <DateAndUserContainer>
-            <h3>7.07.2012</h3>
-              <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <h3>{usersList[currentUser?.id]?.name}</h3>
-            </DateAndUserContainer>
-          </div>
-        </SinglePublicationWrapper>
-
-        <SinglePublicationWrapper>
-          <SmallPhoto src={photosList[currentUser?.id]?.url} alt="photo" />
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <SinglePublication style={{ color: "black" }}>
-              {postsList[currentUser?.id]?.title}
-            </SinglePublication>
-            <DateAndUserContainer>
-            <h3>7.07.2012</h3>
-              <UserPhoto src={photosList[currentUser?.id]?.url} />
-              <h3>{usersList[currentUser?.id]?.name}</h3>
-            </DateAndUserContainer>
-          </div>
-        </SinglePublicationWrapper>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: "repeat(3, 1fr)",
+          }}
+        >
+          {postsList.slice(1, 4).map((val) => {
+            return (
+              <SinglePublication key={val.id}>
+                <img src="icons/writing-contract.png" alt="writing-man" />
+                <div>
+                  <h2>{val.body}</h2>
+                  <div
+                    style={{
+                      display: "flex",
+                      marginTop: "5px",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h3>7 jan. 2020</h3>
+                    <img
+                      src={photosList[currentUser?.id-1]?.url}
+                      style={{ width: "20px", borderRadius: "50%" }}
+                    ></img>
+                    <h4>{usersList[currentUser?.id-1]?.name}</h4>
+                  </div>
+                </div>
+              </SinglePublication>
+            );
+          })}
+        </div>
         <StyledLink to="/testPage">
-        <LinkText>See more publications</LinkText>
+          <LinkText>See more publications</LinkText>
         </StyledLink>
       </LatestPublicationsWrapper>
     </PublicationsWrapper>

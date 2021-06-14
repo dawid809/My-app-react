@@ -23,7 +23,7 @@ const TitleText = styled.h1`
 `;
 
 const Table = styled.table`
-width: 100%;
+  width: 100%;
   text-align: left;
   border-radius: 12px 12px 0 0;
   border-collapse: collapse;
@@ -56,15 +56,15 @@ const LinkText = styled(StyledLink)`
   &:visited,
   &:link,
   &:active {
-  margin-top: 5px;
-  color: ${Colors.blue};
-  text-align: right;
-  margin: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    margin-top: 5px;
+    color: ${Colors.blue};
+    text-align: right;
+    margin: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-  :hover{
+  :hover {
     color: ${Colors.darkerGray};
   }
 `;
@@ -84,8 +84,9 @@ const EditWrapper = styled.div`
   width: 22px;
   height: 22px;
   right: 15px;
-  top: 15px;
+  top: 5px;
   display: flex;
+  position: absolute;
 `;
 
 const EditIcon = styled.img`
@@ -147,9 +148,7 @@ const CustomDatePickerDisabled = styled(CustomDatePicker)`
   }
 `;
 
-
 export const InternalReviews: FC = () => {
-
   const formikTable = useFormik({
     initialValues: {
       rowone: {
@@ -190,12 +189,16 @@ export const InternalReviews: FC = () => {
 
   return (
     <InternalReviewsWrapper>
-      <EditWrapper>
-      <EditButton onClick={editInternalReviewsTable} type="submit">
-          <EditIcon src="icons/pen.png" />
-        </EditButton>
-      </EditWrapper>
-      <TitleText>Internal reviews</TitleText>
+      <div
+        style={{ display: "flex", flexDirection: "row", position: "relative" }}
+      >
+        <TitleText>Internal reviews</TitleText>
+        <EditWrapper>
+          <EditButton onClick={editInternalReviewsTable} type="submit">
+            <EditIcon src="icons/pen.png" />
+          </EditButton>
+        </EditWrapper>
+      </div>
       <form onSubmit={formikTable.handleSubmit}>
         <Table>
           <Row>
@@ -205,7 +208,7 @@ export const InternalReviews: FC = () => {
             <TableHeader>Expertise</TableHeader>
             <TableHeader>Date</TableHeader>
           </Row>
-          {internalReviewsEnabled? (
+          {internalReviewsEnabled ? (
             <>
               <Row>
                 <Column>
@@ -358,39 +361,48 @@ export const InternalReviews: FC = () => {
                 <Column>{formikTable.values.rowone.entity}</Column>
                 <Column>{formikTable.values.rowone.location}</Column>
                 <Column>{formikTable.values.rowone.expertise}</Column>
-                <Column> <CustomDatePickerDisabled
+                <Column>
+                  {" "}
+                  <CustomDatePickerDisabled
                     selected={startDate1}
                     onChange={(date: Date) => setStartDate1(date)}
                     showDisabledMonthNavigation
                     disabled
                     placeholderText="01/02/2018"
-                  /></Column>
+                  />
+                </Column>
               </Row>
               <Row>
                 <Column>{formikTable.values.rowtwo.name}</Column>
                 <Column>{formikTable.values.rowtwo.entity}</Column>
                 <Column>{formikTable.values.rowtwo.location}</Column>
                 <Column>{formikTable.values.rowtwo.expertise}</Column>
-                <Column> <CustomDatePickerDisabled
+                <Column>
+                  {" "}
+                  <CustomDatePickerDisabled
                     selected={startDate2}
                     onChange={(date: Date) => setStartDate2(date)}
                     showDisabledMonthNavigation
                     disabled
                     placeholderText="09/09/2012"
-                  /></Column>
+                  />
+                </Column>
               </Row>
               <Row>
                 <Column>{formikTable.values.rowthree.name}</Column>
                 <Column>{formikTable.values.rowthree.entity}</Column>
                 <Column>{formikTable.values.rowthree.location}</Column>
                 <Column>{formikTable.values.rowthree.expertise}</Column>
-                <Column> <CustomDatePickerDisabled
+                <Column>
+                  {" "}
+                  <CustomDatePickerDisabled
                     selected={startDate3}
                     onChange={(date: Date) => setStartDate3(date)}
                     showDisabledMonthNavigation
                     disabled
                     placeholderText="12/12/2012"
-                  /></Column>
+                  />
+                </Column>
               </Row>
             </>
           )}
