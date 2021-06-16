@@ -12,6 +12,7 @@ import { Ecosystem } from '../ecosystem/Ecosystem';
 import { People } from '../people/People';
 import { Administration } from '../administration/Administration';
 import { Profile } from '../profile/Profile';
+import { Workspace } from '../workspace/Workspace';
 
 const Content = styled.div`
     display: flex;
@@ -48,6 +49,9 @@ const MainPage: FC = () =>{
                             </Route>
                             <Route path="/testPage" exact >
                                <TestPage />
+                            </Route>
+                            <Route path="/workspace" exact >
+                               <Workspace />
                             </Route>
                         </Switch>
                 </Content>

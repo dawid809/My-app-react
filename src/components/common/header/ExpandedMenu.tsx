@@ -214,7 +214,7 @@ export const ExpandedMenu: FC = () => {
             .includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-              <StyledLink to="/testPage">
+              <StyledLink to="/workspace">
                 <CustomPargraf> Client contract </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
@@ -225,7 +225,7 @@ export const ExpandedMenu: FC = () => {
             .includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-              <StyledLink to="/testPage">
+              <StyledLink to="/workspace">
                 <CustomPargraf> Supplier contract </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
@@ -234,7 +234,7 @@ export const ExpandedMenu: FC = () => {
           {"Corporate".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin src="icons/entities.png" alt="entities" />
-              <StyledLink to="/testPage">
+              <StyledLink to="/workspace">
                 <CustomPargraf> Corporate </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
@@ -243,7 +243,7 @@ export const ExpandedMenu: FC = () => {
           {"Group Norms".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin src="icons/book-alt.png" alt="book" />
-              <StyledLink to="/testPage">
+              <StyledLink to="/workspace">
                 <CustomPargraf> Group Norms </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
