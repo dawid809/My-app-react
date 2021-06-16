@@ -2,8 +2,9 @@
   background: whitesmoke !important;
 }
 
-.fullscreen-enabled .my-component {
+.fullscreen-enabled  {
   background: whitesmoke !important;
+  overflow-x: scroll !important;
 }
 
 .fullscreen {
@@ -11,10 +12,10 @@
 }
 
 .list {
-display: list-item !important;
+  display: grid !important;
+  grid-template-columns: none !important;
+  grid-template-rows: repeat(1, 1fr) !important;
+  grid-gap: 5px !important;
+  margin: 10px 20px !important;
+  position: relative !important;
 }
-
-.mosaic {
-  display: block !important;
-}
-

@@ -108,13 +108,32 @@ export const ResumeWork: FC = () => {
     toggleDropdown();
   };
 
+  
+const [searchValue, setSearchValue] = useState("");
+
+const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setSearchValue(event.target.value);
+};
+
+const [isFollowed, setFollowed] = useState(false);
+
+  const handleIsFollowed = () => {
+    if (isFollowed == false) setFollowed(!isFollowed);
+    else setAllFollowed;
+  };
+
+  const setAllFollowed = () => {
+    if (isFollowed == true) setFollowed(!isFollowed);
+    else return;
+  };
+ 
   return (
     <ResumeWorkWrapper>
       <TopContainer>
         <Title>Resume your work </Title>
         <RightIconsAndTextWrapper>
           <FilterContainer>
-            <CustomFilter type="text" placeholder="Filter by title..." />
+            <CustomFilter type="text" placeholder="Filter by title..." onChange={onSearchChange}/>
             <SearchImg
               src="icons/search.png"
               alt="filtrowanie"
@@ -127,11 +146,11 @@ export const ResumeWork: FC = () => {
             <Subtititle>Followed</Subtititle>
             <SmallImgArrow src="icons/arrow-down.png" alt="strzałka-dół" />
           </FollowedContainer>
-          {dropdownOpen && <Followed />}
+          {dropdownOpen &&  <Followed handleIsFollowed={handleIsFollowed} setAllFollowed={setAllFollowed}/>}
           </div>
         </RightIconsAndTextWrapper>
       </TopContainer>
-      <Pagination/>
+      <Pagination searchValue={searchValue} isFollowed={isFollowed}/>
     </ResumeWorkWrapper>
   );
 };

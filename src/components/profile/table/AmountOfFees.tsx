@@ -13,7 +13,7 @@ const AmountOfFeesWrapper = styled.div`
 
 const TitleText = styled.h1`
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: ${fontSize[18]};
   padding: 5px 0;
   margin-bottom: 15px;
 `;
@@ -160,7 +160,6 @@ export const AmountOfFees: FC = () => {
             <>
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.year"
                     defaultValue={formikTable.values.rowone.year}
@@ -169,7 +168,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.costCenter"
                     defaultValue={formikTable.values.rowone.costCenter}
@@ -178,7 +176,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.totalAmount"
                     defaultValue={formikTable.values.rowone.totalAmount}
@@ -187,7 +184,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.lawFirm"
                     defaultValue={formikTable.values.rowone.lawFirm}
@@ -199,7 +195,6 @@ export const AmountOfFees: FC = () => {
 
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.year"
                     defaultValue={formikTable.values.rowtwo.year}
@@ -208,7 +203,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.costCenter"
                     defaultValue={formikTable.values.rowtwo.costCenter}
@@ -217,7 +211,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.totalAmount"
                     defaultValue={formikTable.values.rowtwo.totalAmount}
@@ -226,7 +219,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.lawFirm"
                     defaultValue={formikTable.values.rowtwo.lawFirm}
@@ -238,7 +230,6 @@ export const AmountOfFees: FC = () => {
 
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.year"
                     defaultValue={formikTable.values.rowthree.year}
@@ -247,7 +238,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.costCenter"
                     defaultValue={formikTable.values.rowthree.costCenter}
@@ -256,7 +246,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.totalAmount"
                     defaultValue={formikTable.values.rowthree.totalAmount}
@@ -265,7 +254,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.lawFirm"
                     defaultValue={formikTable.values.rowthree.lawFirm}
@@ -277,7 +265,6 @@ export const AmountOfFees: FC = () => {
 
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowfour.year"
                     defaultValue={formikTable.values.rowfour.year}
@@ -286,7 +273,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowfour.costCenter"
                     defaultValue={formikTable.values.rowfour.costCenter}
@@ -295,7 +281,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowfour.totalAmount"
                     defaultValue={formikTable.values.rowfour.totalAmount}
@@ -304,7 +289,6 @@ export const AmountOfFees: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowfour.lawFirm"
                     defaultValue={formikTable.values.rowfour.lawFirm}

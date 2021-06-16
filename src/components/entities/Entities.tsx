@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
 import { SingleEntity } from "./SingleEntity";
-import { FunctionallIIconsComponent } from "./TopBar";
+import { FunctionalTopBar } from "./FunctionalTopBar";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { getUsers } from "../../actions/usersActions";
 import { getPhotos } from "../../actions/photosActions";
@@ -34,15 +34,13 @@ const EntitiesContent = styled.div`
 
 const CompanyWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 5px;
   margin: 10px 20px;
   position: relative;
 `;
 
 export const Entities: FC = () => {
-  const handleFullScreen = useFullScreenHandle();
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<GetUsers>(getUsers());
@@ -59,45 +57,78 @@ export const Entities: FC = () => {
     ...globalState.posts,
   }));
 
-  const [searchState, setSearchState] = useState("");
- 
+  const handleFullScreen = useFullScreenHandle();
 
-  function handleChange(newValue: string) {
+  const [searchState, setSearchState] = useState("");
+
+  function handleSearchChange(newValue: string) {
     setSearchState(newValue);
   }
 
-  const [isMosaicActive, setMosaicActive] = useState(false);
+  const [isListActive, setListActive] = useState(false);
 
-  const toggleMosaicClass = () => {
-    if(isMosaicActive == true)
-    setMosaicActive(!isMosaicActive);
-    else (toggleListClass);
+  const setMosaicClass = () => {
+    if (isListActive == true) setListActive(!isListActive);
+    else setListClass;
   };
 
-  const toggleListClass = () => {
-    if(isMosaicActive == false)
-    setMosaicActive(!isMosaicActive);
+  const setListClass = () => {
+    if (isListActive == false) setListActive(!isListActive);
     else return;
   };
 
+  const [isSorted, setIsSorted] = useState(true);
+
+  const toggleIsSorted = () => {
+    setIsSorted(!isSorted);
+  };
+
+  const [isFollowed, setFollowed] = useState(false);
+
+  const handleIsFollowed = () => {
+    if (isFollowed == false) setFollowed(!isFollowed);
+    else setAllFollowed;
+  };
+
+  const setAllFollowed = () => {
+    if (isFollowed == true) setFollowed(!isFollowed);
+    else return;
+  };
 
   return (
     <EntitiesWrapper>
       <FullScreen handle={handleFullScreen}>
         <EntitiesContent>
-          <FunctionallIIconsComponent
+          <FunctionalTopBar
             handleFullScreen={handleFullScreen}
             value={searchState}
-            onChange={handleChange}
-            toggleMosaicClass={toggleMosaicClass}
-            toggleListClass={toggleListClass}
+            handleSearchChange={handleSearchChange}
+            setMosaicClass={setMosaicClass}
+            setListClass={setListClass}
+            toggleIsSorted={toggleIsSorted}
+            handleIsFollowed={handleIsFollowed}
+            setAllFollowed={setAllFollowed}
           />
-          <CompanyWrapper className={isMosaicActive? 'mosaic' : null} >
+          <CompanyWrapper className={isListActive ? "list" : null}>
             {photosList
-              .slice(0, 32)
+              .slice(0, 33)
+              .sort((a, b) =>
+                isSorted
+                  ? a.title.localeCompare(b.title)
+                  : b.title.localeCompare(a.title)
+              )
               .filter((val) => {
                 if (searchState == "") {
                   return val;
+                } else if (
+                  val.title.toLowerCase().includes(searchState.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .filter((val) => {
+                if (isFollowed == true) {
+                  return val.id == 1;
                 } else if (
                   val.title.toLowerCase().includes(searchState.toLowerCase())
                 ) {

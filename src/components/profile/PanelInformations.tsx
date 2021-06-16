@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { useFormik } from "formik";
@@ -72,47 +72,11 @@ const CustomImg = styled.img`
 const ServicesAndProjectsWrapper = styled.div`
   margin: 10px 0;
 `;
-
-const EditButton = styled.button`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: none;
-  background: none;
-`;
-
-const EditWrapper = styled.div`
-  width: 22px;
-  height: 22px;
-
-  right: 15px;
-  top: 15px;
-  display: flex;
-`;
-
-const EditIcon = styled.img`
-  width: 18px;
-  height: 18px;
-  align-self: center;
-  display: flex;
-`;
-
 interface IPanelInformationsProps {
-  editSelectOptionHandle(): void;
+  formikPanelInformationsEnabled: boolean;
 }
 
 export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
-
-  const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] = useState(true);
-
-  const editPanelInformationsHandle = () => {
-    const disable = formikPanelInformationsEnabled;
-    setformikPanelInformationsEnabled(!disable);
-  };
-  
 
   const formik = useFormik({
     initialValues: {
@@ -132,18 +96,10 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
   return (
     <form onSubmit={formik.handleSubmit}>
     <PanelInformationWrapper>
-      <EditWrapper>
-            <EditButton onClick={() => {
-          editPanelInformationsHandle();
-          props.editSelectOptionHandle();
-        }} type="submit">
-              <EditIcon src="icons/pen.png" />
-            </EditButton>
-          </EditWrapper>
       <TitleText>Panel Informations</TitleText>
 
       <GrayText>Hourly fee</GrayText>
-      {formikPanelInformationsEnabled ? (
+      {props.formikPanelInformationsEnabled ? (
       <CustomText>{formik.values.hourly}</CustomText>
       ) : (
         <CustomInput style={{marginBottom: '10px', width: '50%'}}
@@ -153,7 +109,7 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
       />
       )}
       <GrayText>Terms & conditions </GrayText>
-      {formikPanelInformationsEnabled ? (
+      {props.formikPanelInformationsEnabled ? (
          <CustomText>{formik.values.monthly}</CustomText>
       ) : (
         <CustomInput style={{marginBottom: '10px', width: '50%'}}
@@ -162,7 +118,7 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
         onChange={formik.handleChange}
       />
       )}
-         {formikPanelInformationsEnabled ? (
+         {props.formikPanelInformationsEnabled ? (
            <AttachmentWrapper>
                 <CustomImg src="icons/request.png" alt="zapytanie" />
                <CustomText>Attachment name: {attachmentValue}</CustomText>
@@ -170,7 +126,7 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
                ) : (
       <CustomAttachment onChange={event => setAttachmentValue(event.target.files[0].name)} />
       )}
-         {formikPanelInformationsEnabled ? (
+         {props.formikPanelInformationsEnabled ? (
         <ServicesAndProjectsWrapper>
       <TitleText>Services&Projects </TitleText>
       <CustomText>{formik.values.servicesAndProjects}</CustomText>

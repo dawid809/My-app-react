@@ -1,20 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-//import { Select, Descriptions, Upload, Button } from "antd";
-//import "antd/dist/antd.css";
-//import "antd/es/style/index.css";
-import Select from 'react-select';
-
-//import { colourOptions } from '../data';
-// import 'antd/lib/style/dark.less';
-// import "antd/lib/select/style/index.css";
-// import "antd/lib/dropdown/style/index.css";
-// import "antd/lib/descriptions/style/index.css";
-// import "antd/dist/antd.less";
-
-
+import { Select, Descriptions, Upload, Button } from "antd";
+import "antd/dist/antd.css";
 import { Colors } from "../../styledHelpers/Colors";
 import { PanelInformations } from "./PanelInformations";
 import { InternalCorrespondants } from "./InternalCorrespondants";
@@ -22,6 +11,7 @@ import { Proposals } from "./table/Proposals";
 import { InternalReviews } from "./table/InternalReviews";
 import { AmountOfFees } from "./table/AmountOfFees";
 import { fontSize } from "../../styledHelpers/FontSizes";
+
 // import { getUsers } from "../../actions/usersActions";
 // import { getPhotos } from "../../actions/photosActions";
 
@@ -88,62 +78,7 @@ const EditWrapper = styled.div`
   top: 15px;
   display: flex;
 `;
-
-interface IProps {
-  formikSelectOptionsEnabled?: boolean
-}
-
-
-// interface ColourOption {
-//   readonly value: string;
-//    label: string;
-// }
-
-//  const colourOptions:  ColourOption[] = [
-//   { value: 'cybersecurity', label: 'Cybersecurity'},
-//   { value: 'cloudComputing', label: 'Cloud computing'},
-//   { value: 'projectManagement', label: 'Project management'},
-//   { value: 'softwareDevelopment', label: 'Software development'},
-//   { value: 'networkingAndWireless', label: 'Networking and wireless'},
-//   { value: 'mergers', label: 'Mergers',},
-// ];
-
-
- interface ColourOption {
-   label: string;
-}
-
-const options = [
-  { value: 1, label: 'Chocolate' },
-  { value: 2, label: 'Strawberry' },
-  { value: 3, label: 'Vanilla' }
-]
-
-
- const colourOptions:  string[] = [
-  'Cybersecurity',
-    'Cloud computing',
-   'Project management',
-    'Software development',
-     'Networking and wireless',
-    'Mergers',
-];
-export const RestUserInfo: FC<IProps> = (props) => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch<GetUsers>(getUsers());
-  //   dispatch<GetPhotos>(getPhotos());
-  // }, []);
-
-  // const { usersList, photosList } = useSelector<
-  //   IState,
-  //   IUsersReducer & IPhotosReducer
-  // >((globalState) => ({
-  //   ...globalState.users,
-  //   ...globalState.photos,
-  // }));
-{console.log(props)}
-
+export const RestUserInfo: FC = () => {
   const expertise: string[] = [
     "Cybersecurity",
     "Cloud computing",
@@ -189,18 +124,22 @@ export const RestUserInfo: FC<IProps> = (props) => {
   const [formikSelectOptionsEnabled, setFormikSelectOptionsEnabled] =
     useState<boolean>(false);
 
-    console.log('formiksele',formikSelectOptionsEnabled)
-    console.log('setformik',setFormikSelectOptionsEnabled);
-
   const editSelectOptionHandle = () => {
     const disable = formikSelectOptionsEnabled;
     setFormikSelectOptionsEnabled(!disable);
   };
 
+  const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] = useState(true);
+
+  const editPanelInformationsHandle = () => {
+    const disable = formikPanelInformationsEnabled;
+    setformikPanelInformationsEnabled(!disable);
+  };
+
   const formikSelectOption = useFormik({
     initialValues: {
-      colourOptions:  ["Cybersecurity"],
-      options: ["Chocolate","asdasd"],
+      expertise: ["Cybersecurity"],
+      specialities: ["Computer programmer"],
       admission: ["Paris bar association"],
       countries: ["Poland"],
     },
@@ -212,96 +151,149 @@ export const RestUserInfo: FC<IProps> = (props) => {
 
   const Option = Select;
 
-  // const state = {
-  //  selectedItems: arr = [];
-  // };
- 
-  
-  const [state, setState] = useState({ selectedOption: null });
-const [displaySelectedValue, setValue] = useState<any | null>(null);
-
-const DisplayValueHandle = (e: any) => {
- setValue(Array.isArray(e) ? e.map ( x => x.label):[])
-}
-  //  state = {
-  //   selectedOption: null,
-  // };
-   const handleChange = (selectedOption: any) => {
-    setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-  };
-  // function onSelectedItemsChange = (selectedItems: []) => {
-  //  setState({ selectedItems });
-  // };
-
   return (
     <UserWrapper>
       <form onSubmit={formikSelectOption.handleSubmit}>
         <UserExperienceWrapper>
           <EditWrapper>
-            <EditButton onClick={editSelectOptionHandle} type="submit">
+            <EditButton onClick={() => {
+              editSelectOptionHandle();
+          editPanelInformationsHandle();
+        }} type="submit">
               <EditIcon src="icons/pen.png" />
             </EditButton>
           </EditWrapper>
 
           <GrayText>Expertise</GrayText>
           {formikSelectOptionsEnabled ? (
-      <div>
-          <Select
-          isMulti
-          closeMenuOnSelect={false}
-          options={options}
-          placeholder={'Select options'}
-         
-          // value={formikSelectOption.values.options}
-          onChange={handleChange}
-          
-          // onChange={(values) => {
-          //   formikSelectOption.setFieldValue("options", values);
-          // }}
-          defaultValue={options[0]}
-         
-          >
-          
-   </Select>
-   <div>
-   <TextWithBackground> {displaySelectedValue} </TextWithBackground>
-   </div>
-   </div>
-   
-    ) : (
-      
-      <div>
-           {/* {selectedValue && <div style={{ marginTop: 20, lineHeight: '25px' }}> */}
-        {/* {options.map((option) => ( */}
-      
-          {/* // <TextWithBackground key={option.value}>{option.label}</TextWithBackground>
-          <TextWithBackground key={options.length}>{selectedValue}</TextWithBackground>} */}
-      {/* {formikSelectOption.values.options.map((item) => (
-                <TextWithBackground key={i++}>{item}</TextWithBackground>
-              ))} */}
-     <TextWithBackground> {displaySelectedValue} </TextWithBackground>
-        </div>
-
-
-      )}
-         
+            <Descriptions.Item label="Expertise">
+              <Select
+                id="expertise"
+                size="small"
+                mode="multiple"
+                showArrow
+                defaultActiveFirstOption
+                value={formikSelectOption.values.expertise}
+                onChange={(values) => {
+                  formikSelectOption.setFieldValue("expertise", values);
+                }}
+              >
+                {expertise.map((item: string) => (
+                  <Option key={item} value={item}>
+                    <TextWithBackground style={{ padding: "0" }}>
+                      {item}
+                    </TextWithBackground>
+                  </Option>
+                ))}
+              </Select>
+            </Descriptions.Item>
+          ) : (
+            <div>
+              {formikSelectOption.values.expertise.map((item) => (
+                <TextWithBackground key={item}>{item}</TextWithBackground>
+              ))}
+            </div>
+          )}
+          <GrayText>Specialities</GrayText>
+          {formikSelectOptionsEnabled ? (
+            <Descriptions.Item label="Specialities">
+              <Select
+                id="specialities"
+                size="small"
+                mode="multiple"
+                showArrow
+                defaultActiveFirstOption
+                value={formikSelectOption.values.specialities}
+                onChange={(values) => {
+                  formikSelectOption.setFieldValue("specialities", values);
+                }}
+              >
+                {specialities.map((item: string) => (
+                  <Option key={item} value={item}>
+                    <TextWithBackground style={{ padding: "0" }}>
+                      {item}
+                    </TextWithBackground>
+                  </Option>
+                ))}
+              </Select>
+            </Descriptions.Item>
+          ) : (
+            <div>
+              {formikSelectOption.values.specialities.map((item: string) => (
+                <TextWithBackground key={item}>{item}</TextWithBackground>
+              ))}
+            </div>
+          )}
+          <GrayText>Admission to practice law</GrayText>
+          {formikSelectOptionsEnabled ? (
+            <Descriptions.Item label="Admission">
+              <Select
+                id="admission"
+                size="small"
+                mode="multiple"
+                showArrow
+                defaultActiveFirstOption
+                value={formikSelectOption.values.admission}
+                onChange={(values) => {
+                  formikSelectOption.setFieldValue("admission", values);
+                }}
+              >
+                {admission.map((item: string) => (
+                  <Option key={item} value={item}>
+                    <TextWithBackground style={{ padding: "0" }}>
+                      {item}
+                    </TextWithBackground>
+                  </Option>
+                ))}
+              </Select>
+            </Descriptions.Item>
+          ) : (
+            <div>
+              {formikSelectOption.values.admission.map((item: string) => (
+                <TextWithBackground key={item}>{item}</TextWithBackground>
+              ))}
+            </div>
+          )}
+          <GrayText>Countries</GrayText>
+          {formikSelectOptionsEnabled ? (
+            <Descriptions.Item label="Specialities">
+              <Select
+                id="specialities"
+                size="small"
+                mode="multiple"
+                showArrow
+                defaultActiveFirstOption
+                value={formikSelectOption.values.countries}
+                onChange={(values) => {
+                  formikSelectOption.setFieldValue("countries", values);
+                }}
+              >
+                {countries.map((item: string) => (
+                  <Option key={item} value={item}>
+                    <TextWithBackground style={{ padding: "0" }}>
+                      {item}
+                    </TextWithBackground>
+                  </Option>
+                ))}
+              </Select>
+            </Descriptions.Item>
+          ) : (
+            <div>
+              {formikSelectOption.values.countries.map((item: string) => (
+                <TextWithBackground key={item}>{item}</TextWithBackground>
+              ))}
+            </div>
+          )}
         </UserExperienceWrapper>
       </form>
-      {/* <PanelInformations /> */}
-      <PanelInformations editSelectOptionHandle={editSelectOptionHandle}
-    />
+      <PanelInformations  formikPanelInformationsEnabled={formikPanelInformationsEnabled} />
       <InternalCorrespondants />
+
       <Proposals />
 
       <InternalReviews />
 
-      <AmountOfFees/>
+      <AmountOfFees />
     </UserWrapper>
   );
 };
-{/* <div>
- {formikSelectOption.values.expertise.map((item) => (
- <TextWithBackground key={item}>{item}</TextWithBackground>
-))}
-</div>  */}

@@ -68,7 +68,15 @@ const DotImg = styled(SmallImg)`
   margin: 0 10px;
 `;
 
-export const Pagination: FC = () => {
+interface IPaginationProps {
+  searchValue: string;
+  isFollowed: boolean;
+}
+
+export const Pagination: FC<IPaginationProps> = (props) => {
+
+  const {isFollowed, searchValue} = props;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch<GetComments>(getComments());
@@ -83,28 +91,29 @@ export const Pagination: FC = () => {
     ...globalState.posts,
     ...globalState.photos,
   }));
-  console.log('cuurUserId', currentUser?.id);
-
-  
-  const [searchTitle, setSearchTitle] = useState("");
-  const [comments, setComments] = useState(commentsList.slice(0, 500));
-  const [filteredData, setFilteredData] = useState(comments);
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value.toLowerCase();
-let result = [];
-console.log('input',value);
-result = comments.filter((comm) => {
-return comm.name.search(value) != -1;
-});
-setFilteredData(result);
-}
 
   const [pageNumber, setPageNumber] = useState(0);
 
   const commentsPerPage = 10;
   const pagesVisited = pageNumber * commentsPerPage;
-
-  const displayComments = commentsList
+  
+  const displayComments = commentsList.filter((val) => {
+    if (searchValue == "") {
+      return val;
+    } else if (
+    val.name.toLowerCase().includes(searchValue.toLowerCase())
+    ) {
+      return val;
+    }
+  }).filter((val) => {
+    if (isFollowed == true) {
+      return val.id  == 1;
+    } else if (
+      val.name.toLowerCase().includes(searchValue.toLowerCase())
+    ) {
+      return val;
+    }
+  })              
     .slice(pagesVisited, pagesVisited + commentsPerPage)
     .map((comments) => {
       return (
@@ -119,25 +128,22 @@ setFilteredData(result);
               <SmallImg src="icons/suitcase.png" alt="suitcase" />
               <PostText>Client contract</PostText>
               <DotImg src="icons/black-circle.png" alt="cirlce" />
-              <PublicationDate> Updated 2 days ago by  {usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PublicationDate>
+              <PublicationDate> Updated 2 days ago by {usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PublicationDate>
             </ImgAndTextWrapper>
           </SinglePostWrapper>
         </PostsWrapper>
       );
     });
 
-  const pageCount = Math.ceil(commentsList.length / commentsPerPage);
+  
+ const pageCount = Math.ceil(commentsList.length / commentsPerPage);
+
 
   const changePage = ({ selected }: { selected: number }) => {
     setPageNumber(selected);
   };
   return (
     <div>
-      <input type="text" onChange={(event) =>handleSearch(event)} />
-      {/* {commentsList.filter(elem => elem.name.
-        toLowerCase()
-        .includes)}
-        input.toLowerCase() */}
       {console.log("Comments", displayComments)}
       {displayComments}
       <ReactPaginate

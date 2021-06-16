@@ -17,7 +17,7 @@ const InternalReviewsWrapper = styled.div`
 
 const TitleText = styled.h1`
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: ${fontSize[18]};
   padding: 5px 0;
   margin-bottom: 15px;
 `;
@@ -212,7 +212,6 @@ export const InternalReviews: FC = () => {
             <>
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.name"
                     defaultValue={formikTable.values.rowone.name}
@@ -221,7 +220,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.entity"
                     defaultValue={formikTable.values.rowone.entity}
@@ -230,7 +228,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.location"
                     defaultValue={formikTable.values.rowone.location}
@@ -239,7 +236,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowone.expertise"
                     defaultValue={formikTable.values.rowone.expertise}
@@ -248,7 +244,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomDatePicker
                     selected={startDate1}
                     onChange={(date: Date) => setStartDate1(date)}
@@ -260,7 +255,6 @@ export const InternalReviews: FC = () => {
 
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.name"
                     defaultValue={formikTable.values.rowtwo.name}
@@ -269,7 +263,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.entity"
                     defaultValue={formikTable.values.rowtwo.entity}
@@ -278,7 +271,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.location"
                     defaultValue={formikTable.values.rowtwo.location}
@@ -287,7 +279,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowtwo.expertise"
                     defaultValue={formikTable.values.rowtwo.expertise}
@@ -296,7 +287,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomDatePicker
                     selected={startDate2}
                     onChange={(date: Date) => setStartDate2(date)}
@@ -308,7 +298,6 @@ export const InternalReviews: FC = () => {
 
               <Row>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.name"
                     defaultValue={formikTable.values.rowthree.name}
@@ -317,7 +306,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.entity"
                     defaultValue={formikTable.values.rowthree.entity}
@@ -326,7 +314,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.location"
                     defaultValue={formikTable.values.rowthree.location}
@@ -335,7 +322,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomInput
                     name="rowthree.expertise"
                     defaultValue={formikTable.values.rowthree.expertise}
@@ -344,7 +330,6 @@ export const InternalReviews: FC = () => {
                   />
                 </Column>
                 <Column>
-                  {" "}
                   <CustomDatePicker
                     selected={startDate3}
                     onChange={(date: Date) => setStartDate3(date)}
@@ -362,7 +347,6 @@ export const InternalReviews: FC = () => {
                 <Column>{formikTable.values.rowone.location}</Column>
                 <Column>{formikTable.values.rowone.expertise}</Column>
                 <Column>
-                  {" "}
                   <CustomDatePickerDisabled
                     selected={startDate1}
                     onChange={(date: Date) => setStartDate1(date)}
@@ -378,7 +362,6 @@ export const InternalReviews: FC = () => {
                 <Column>{formikTable.values.rowtwo.location}</Column>
                 <Column>{formikTable.values.rowtwo.expertise}</Column>
                 <Column>
-                  {" "}
                   <CustomDatePickerDisabled
                     selected={startDate2}
                     onChange={(date: Date) => setStartDate2(date)}
@@ -394,7 +377,6 @@ export const InternalReviews: FC = () => {
                 <Column>{formikTable.values.rowthree.location}</Column>
                 <Column>{formikTable.values.rowthree.expertise}</Column>
                 <Column>
-                  {" "}
                   <CustomDatePickerDisabled
                     selected={startDate3}
                     onChange={(date: Date) => setStartDate3(date)}

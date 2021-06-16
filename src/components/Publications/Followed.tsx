@@ -30,12 +30,18 @@ const Wrapper = styled.div`
   }
 `;
 
-class Followed extends Component {
+interface IFollowedProps {
+  handleIsFollowed: VoidFunction;
+  setAllFollowed: VoidFunction;
+}
+
+class Followed extends Component<IFollowedProps> {
   render() {
+    const {handleIsFollowed, setAllFollowed} = this.props;
     return (
       <Wrapper>
-        <h2>All</h2>
-        <h2>Mine</h2>
+        <h2 onClick={setAllFollowed}>All</h2>
+        <h2 onClick={handleIsFollowed}>Mine</h2>
       </Wrapper>
     );
   }
