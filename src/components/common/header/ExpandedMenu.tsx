@@ -8,16 +8,12 @@ import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { StyledLink } from "../../../styledHelpers/Components";
 import { getUsers } from "../../../actions/usersActions";
 import { getPhotos } from "../../../actions/photosActions";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { linkSmart } from "../smartLink/SmartLink";
 
 import { useSelector } from "react-redux";
 import { IState } from "../../../reducers";
 import { IUsersReducer } from "../../../reducers/usersReducers";
 import { IPhotosReducer } from "../../../reducers/photosReducer";
-
-import { Workspace } from "../../workspace/Workspace";
-//import Workspace from "../../workspace/Workspace";
 
 const ExpandedWrapper = styled.div`
   position: absolute;
@@ -151,11 +147,36 @@ export const ExpandedMenu: FC = () => {
   };
 
   const workspaces = [
-    { name: "ClientContract", id: 1, imgUrl: "icons/file-signature.png" },
-    { name: "SupplierContract", id: 2, imgUrl: "icons/file-signature.png" },
-    { name: "Corporate", id: 3, imgUrl: "icons/entities.png" },
-    { name: "GroupNorms", id: 4, imgUrl: "icons/book-alt.png" },
-    { name: "RealEstateContracts", id: 5, imgUrl: "icons/request.png" },
+    {
+      id: 1,
+      name: "Client Contract",
+      pathName: "ClientContract",
+      imgUrl: "icons/file-signature.png",
+    },
+    {
+      id: 2,
+      name: "Supplier Contract",
+      pathName: "SupplierContract",
+      imgUrl: "icons/file-signature.png",
+    },
+    {
+      id: 3,
+      name: "Corporate",
+      pathName: "Corporate",
+      imgUrl: "icons/entities.png",
+    },
+    {
+      id: 4,
+      name: "Group Norms",
+      pathName: "GroupNorms",
+      imgUrl: "icons/book-alt.png",
+    },
+    {
+      id: 5,
+      name: "Real Estate Contracts",
+      pathName: "RealEstateContracts",
+      imgUrl: "icons/request.png",
+    },
   ];
 
   return (
@@ -231,78 +252,21 @@ export const ExpandedMenu: FC = () => {
 
           <CustomSubtitles>Workspaces</CustomSubtitles>
 
-          {/* {"Client contract"
-            .toLowerCase()
-            .includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src={linkSmart("icons/file-signature.png")} alt="file" />
-              <StyledLink to="/workspace">
-                <CustomPargraf> Client contract </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )} */}
-
           {workspaces.map((item) => (
             <div key={item.id}>
-              <StyledLink to={"/workspaces/" + item.name}>
-              <ImgAndTextContainer>
-                <CustomImgWithMargin src={linkSmart(item.imgUrl)} alt="icon" />
-                <CustomPargraf>{item.name}</CustomPargraf>
-                </ImgAndTextContainer>
-              </StyledLink>
+              {item.name.toLowerCase().includes(inputText.toLowerCase()) && (
+                <StyledLink to={"/workspaces/" + item.pathName}>
+                  <ImgAndTextContainer>
+                    <CustomImgWithMargin
+                      src={linkSmart(item.imgUrl)}
+                      alt="icon"
+                    />
+                    <CustomPargraf>{item.name}</CustomPargraf>
+                  </ImgAndTextContainer>
+                </StyledLink>
+              )}
             </div>
           ))}
-
-          {/* {"Client contract"
-            .toLowerCase()
-            .includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-              <StyledLink to="/workspace">
-                <CustomPargraf> Client contract </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )}
-
-          {"Supplier contract"
-            .toLowerCase()
-            .includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-              <StyledLink to="/workspace">
-                <CustomPargraf> Supplier contract </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )}
-
-          {"Corporate".toLowerCase().includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/entities.png" alt="entities" />
-              <StyledLink to="/workspace">
-                <CustomPargraf> Corporate </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )}
-
-          {"Group Norms".toLowerCase().includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/book-alt.png" alt="book" />
-              <StyledLink to="/workspace">
-                <CustomPargraf> Group Norms </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )}
-
-          {"Real estate contracts"
-            .toLowerCase()
-            .includes(inputText.toLowerCase()) && (
-            <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
-              <StyledLink to="/testPage">
-                <CustomPargraf> Real estate contracts </CustomPargraf>
-              </StyledLink>
-            </ImgAndTextContainer>
-          )} */}
         </ScrollWrapper>
 
         <AccountWraper>

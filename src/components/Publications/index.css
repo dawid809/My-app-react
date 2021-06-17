@@ -7,12 +7,12 @@
 
 .slick-slide {
   height: inherit !important;
-  margin: 0 0.15%;
+  margin: 0 0.15% !important;
 }
 
 .slick-slider {
-  width: 100%;
-  position: absolute;
+  width: 100% !important;
+  position: absolute !important;
 }
 
 .pagination-bttns {

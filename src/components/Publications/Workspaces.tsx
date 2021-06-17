@@ -11,6 +11,7 @@ import { IState } from "../../reducers";
 import { getPhotos } from "../../actions/photosActions";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { StyledLink } from "../../styledHelpers/Components";
 import { linkSmart } from "../common/smartLink/SmartLink";
 
 type GetPhotos = ReturnType<typeof getPhotos>;
@@ -18,7 +19,7 @@ type GetPhotos = ReturnType<typeof getPhotos>;
 const WorkspacesWrapper = styled.div`
   margin: 0.5% 5%;
   position: relative;
-  min-height: 230px;
+  min-height: 290px;
   z-index: 5;
 `;
 
@@ -28,6 +29,23 @@ const SingleSlideContainer = styled.div`
   cursor: pointer;
   overflow: hidden;
   box-shadow: ${Colors.shadow};
+  h2 {
+    margin: 5px 10px;
+    font-weight: bold;
+    font-size: ${fontSize[20]};
+  }
+
+  h3 {
+    font-size: ${fontSize[14]};
+    color: ${Colors.darkerGray};
+    margin-left: 10px;
+  }
+
+  h4 {
+    font-size: ${fontSize[12]};
+    color: ${Colors.gray};
+    margin-left: 10px;
+  }
 `;
 
 const TitleText = styled.h2`
@@ -36,86 +54,112 @@ const TitleText = styled.h2`
   font-size: ${fontSize[20]};
 `;
 
-const ImgHalf = styled.img`
-  width: 100%;
-  height: 40%;
-  min-height: 90px;
-  max-height: 90px;
+const HalfImgWrapper = styled.div`
+  img {
+    width: 100%;
+    height: 125px;
+  }
 `;
 
-const SingleContentWrapper = styled.div`
-  margin: 5px;
-`;
-
-const SubtitleText = styled.h3`
-  align-self: center;
-  margin: 0 10px;
-  font-weight: bold;
-`;
-
-const ImgInsideDiv = styled.img`
-  height: 80%;
-  align-self: center;
-`;
-
-const TitleImgWrapper = styled.div`
+const ImgAndTitleWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  padding: 10px;
-  position: relative;
-  top: -25px;
-  margin-bottom: -25px;
+  img {
+    height: 80px;
+  }
+
+  div {
+    box-shadow: ${Colors.shadow};
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: -40px;
+    z-index: 100;
+    background-color: ${Colors.whiteSmoke};
+  }
 `;
 
-const ImgRoundedWrapper = styled.div`
+const IconsAndTextWrapper = styled.div`
   display: flex;
-  justify-content: center;
-  background: ${Colors.white};
-  width: 60px;
-  height: 60px;
-  box-shadow: ${Colors.shadow};
-  border-radius: 5px;
-`;
-
-const ImgAndTextWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin: 5px 0px;
   align-items: center;
+  margin: 15px 0 10px 10px;
 `;
 
-const DatePulicationText = styled.a`
-  color: ${Colors.gray};
-  font-size: ${fontSize[10]};
-  margin: 0 5px;
-`;
-
-const SmallImg = styled.img`
-  width: 16px;
-  height: 16px;
-  margin: 0 5px;
-`;
-
-const DotImg = styled(SmallImg)`
-  width: 4px;
-  height: 4px;
+const DotImg = styled.img`
+  width: 5px;
+  height: 5px;
   align-self: center;
   margin: 0 10px;
 `;
 
-const Text = styled.a`
-  font-size: 12px;
+const SmallImg = styled(DotImg)`
+  height: 20px;
+  width: auto;
+  margin: 0;
 `;
+
+const workspaces = [
+  {
+    id: 1,
+    name: "Client Contract",
+    pathName: "ClientContract",
+    imgUrl: "icons/file-signature.png",
+    userNumber: 23,
+  },
+  {
+    id: 2,
+    name: "Supplier Contract",
+    pathName: "SupplierContract",
+    imgUrl: "icons/file-signature.png",
+    userNumber: 36,
+  },
+  {
+    id: 3,
+    name: "Corporate",
+    pathName: "Corporate",
+    imgUrl: "icons/entities.png",
+    userNumber: 45,
+  },
+  {
+    id: 4,
+    name: "Group Norms",
+    pathName: "GroupNorms",
+    imgUrl: "icons/book-alt.png",
+    userNumber: 59,
+  },
+  {
+    id: 5,
+    name: "Real Estate Contracts",
+    pathName: "RealEstateContracts",
+    imgUrl: "icons/request.png",
+    userNumber: 67,
+  },
+];
 
 export const Workspaces: FC = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     centerMode: true,
     swipeToSlide: true,
+    adaptiveHeight: true,
+    dots: true,
+    responsive: [
+      {
+        breakpoint: 1700,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        }
+        },
+        {
+          breakpoint: 1300,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        }
+    ]
   };
 
   const dispatch = useDispatch();
@@ -127,108 +171,41 @@ export const Workspaces: FC = () => {
     ...globalState.photos,
   }));
 
-  
-
   return (
     <WorkspacesWrapper>
       <TitleText> Workspaces </TitleText>
 
       <Slider {...settings}>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[111]?.url} alt="" />
-          <TitleImgWrapper>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src={linkSmart("icons/file-signature.png")} />
-            </ImgRoundedWrapper>
-            <SubtitleText>Client Contract</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src={linkSmart("icons/file-signature.png")} alt="" />
-              <Text>Contract</Text>
-              <DotImg src={linkSmart("icons/black-circle.png")} alt="" />
-              <SmallImg src={linkSmart("icons/people.png")} alt="" />
-              <Text>25 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[111]?.url} alt="" />
-          <TitleImgWrapper>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/file-signature.png" />
-            </ImgRoundedWrapper>
-            <SubtitleText>Supplier contract</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src="icons/file-signature.png" alt="" />
-              <Text>Contract</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <Text>50 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[112]?.url} alt="" />
-          <TitleImgWrapper>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/entities.png" />
-            </ImgRoundedWrapper>
-            <SubtitleText>Corporate</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src="icons/entities.png" alt="" />
-              <Text>Corporate</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <Text>25 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[113]?.url} alt="" />
-          <TitleImgWrapper>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/book-alt.png" />
-            </ImgRoundedWrapper>
-            <SubtitleText>Group norms</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src="icons/book-alt.png" alt="" />
-              <Text>Norms</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <Text>40 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
-        <SingleSlideContainer>
-          <ImgHalf src={photosList[115]?.url} alt="" />
-          <TitleImgWrapper>
-            <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/file-signature.png" />
-            </ImgRoundedWrapper>
-            <SubtitleText>Real estate contracts</SubtitleText>
-          </TitleImgWrapper>
-          <SingleContentWrapper>
-            <ImgAndTextWrapper>
-              <SmallImg src="icons/file-signature.png" alt="" />
-              <Text>Client contract</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
-              <Text>75 Users</Text>
-            </ImgAndTextWrapper>
-            <DatePulicationText> Last update 2 days ago</DatePulicationText>
-          </SingleContentWrapper>
-        </SingleSlideContainer>
+        {workspaces.map((value) => (
+          <div key={value.id}>
+            <StyledLink to={"/workspaces/" + value.pathName}>
+              <SingleSlideContainer>
+                <HalfImgWrapper>
+                  <img src={photosList[value.id]?.url} alt="photo" />
+                </HalfImgWrapper>
+                <div style={{ padding: "10px", position: "relative" }}>
+                  <ImgAndTitleWrapper>
+                    <div>
+                      <img src={linkSmart(value.imgUrl)} alt="icon" />
+                    </div>
+                    <h2>{value.name}</h2>
+                  </ImgAndTitleWrapper>
+                  <IconsAndTextWrapper>
+                    <SmallImg src={linkSmart(value.imgUrl)} alt="icon" />
+                    <h3>{value.name.split(" ")[0]}</h3>
+                    <DotImg
+                      src={linkSmart("icons/black-circle.png")}
+                      alt="icon"
+                    />
+                    <SmallImg src={linkSmart("icons/people.png")} alt="icon" />
+                    <h3>{value.userNumber} Users</h3>
+                  </IconsAndTextWrapper>
+                  <h4> Last update {value.id} days ago</h4>
+                </div>
+              </SingleSlideContainer>
+            </StyledLink>
+          </div>
+        ))}
       </Slider>
     </WorkspacesWrapper>
   );
