@@ -8,11 +8,15 @@ import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { StyledLink } from "../../../styledHelpers/Components";
 import { getUsers } from "../../../actions/usersActions";
 import { getPhotos } from "../../../actions/photosActions";
+import { BrowserRouter as Router, Link, Route} from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { IState } from "../../../reducers";
 import { IUsersReducer } from "../../../reducers/usersReducers";
 import { IPhotosReducer } from "../../../reducers/photosReducer";
+
+import { Workspace } from "../../workspace/Workspace";
+//import Workspace from "../../workspace/Workspace";
 
 const ExpandedWrapper = styled.div`
   position: absolute;
@@ -145,6 +149,14 @@ export const ExpandedMenu: FC = () => {
     setInputText(text);
   };
 
+  const workspaces = [
+    {name:"ClientContract", id: 1, imgUrl: "https://picsum.photos/id/1/200/300"}, 
+    {name:"SupplierContract", id: 2, imgUrl: "https://picsum.photos/id/1/200/300"},
+    {name:"Corporate", id: 3, imgUrl: "https://picsum.photos/id/1/200/300"}, 
+    {name:"GroupNorms", id: 4, imgUrl: "https://picsum.photos/id/1/200/300"}, 
+    {name:"RealEstateContract", id: 5, imgUrl: "https://picsum.photos/id/1/200/300"}, 
+  ]
+
   return (
     <ExpandedWrapper>
       <ExpandedContent>
@@ -209,7 +221,24 @@ export const ExpandedMenu: FC = () => {
 
           <CustomSubtitles>Workspaces</CustomSubtitles>
 
-          {"Client contract"
+           {"Client contract"
+            .toLowerCase()
+            .includes(inputText.toLowerCase()) && (
+            <ImgAndTextContainer>
+              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+              <StyledLink to="/workspace">
+                <CustomPargraf> Client contract </CustomPargraf>
+              </StyledLink>
+            </ImgAndTextContainer>
+          )}
+
+
+  {workspaces.map((item) =>
+  <div key={item.id}><Link  to={"/workspaces/"+item.name} ><img src={item.imgUrl} alt="icon" />{item.name}</Link></div>)
+  }
+  
+
+          {/* {"Client contract"
             .toLowerCase()
             .includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
@@ -258,7 +287,7 @@ export const ExpandedMenu: FC = () => {
                 <CustomPargraf> Real estate contracts </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
-          )}
+          )} */}
         </ScrollWrapper>
 
         <AccountWraper>

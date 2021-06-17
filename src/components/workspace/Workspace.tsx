@@ -6,6 +6,8 @@ import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router";
+import { BrowserRouter as Router, Link, Route, useParams } from "react-router-dom";
 
 import { CorporateMatters } from "./CorporateMatters";
 import { Pagination } from "../publications/Pagination";
@@ -153,7 +155,12 @@ const Subtititle = styled.h3`
   margin: 5px 0;
 `;
 
-export const Workspace: FC = () => {
+interface IWorkspaceProps {
+  name: string;
+  url: string;
+}
+
+export const Workspace: FC<IWorkspaceProps> = (props) => {
   const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
   const menuHandler = () => {
@@ -189,20 +196,31 @@ export const Workspace: FC = () => {
     { title: "...", color: "white", icon: "" },
   ];
 
+  // const  {name, imgUrl}: {name: string, imgUrl:string}  = useParams();
+  // const params = useParams();
+  const name = props.name;
+  const imgUrl = props.url;
+
   return (
     <WorkspaceWrapper>
       <WorkspaceContent>
         <div>
           <TopBarWrapper>
               <div style={{position: "relative"}}>
-                  <img src="icons/table.png" alt="photo" style={{width: "100%", height: "120px", objectFit: "cover"}}/>
+                  <img src="./icons/table.png" alt="photo" style={{width: "100%", height: "120px", objectFit: "cover"}}/>
               </div>
               <div style={{padding: "15px", marginBottom: "20px"}}>
                   <div style={{float: "left", marginRight: "20px"}}>
               <img src="icons/entities.png" alt="icon" style={{width: "55px"}}/>
               </div>
               <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: "-5px"}}>
-                  <h1>Ten tytuł</h1>
+                  {/* <h1>{console.warn(props)}</h1> */}
+                  {/* {props.match.params.name} */}
+                  {/* {console.warn(props, 'props route')} */}
+                 {/* {JSON.stringify(params)} */}
+                  {/* {name} */}
+                  <img src={imgUrl} alt="" />
+                  {name}
                   <img src="icons/cog.png" alt="icon" style={{width: "20px"}}/>
                   </div>
                   <p>Workspace purposa and a bit of context. This much needed description is here to remind peope where they are, if they are new or ahve poor memory</p>
@@ -257,3 +275,4 @@ export const Workspace: FC = () => {
     </WorkspaceWrapper>
   );
 };
+

@@ -21,8 +21,7 @@ type GetUsers = ReturnType<typeof getUsers>;
 type GetPosts = ReturnType<typeof getPosts>;
 type GetPhotos = ReturnType<typeof getPhotos>;
 
-const PostsWrapper = styled.div`
-`;
+const PostsWrapper = styled.div``;
 
 const SinglePostWrapper = styled.div`
   background: ${Colors.white};
@@ -45,8 +44,7 @@ const Subtititle = styled.h3`
   font-weight: bold;
 `;
 
-const PostText = styled.a`
-`;
+const PostText = styled.a``;
 
 const ImgAndTextWrapper = styled.div`
   display: flex;
@@ -74,8 +72,7 @@ interface IPaginationProps {
 }
 
 export const Pagination: FC<IPaginationProps> = (props) => {
-
-  const {isFollowed, searchValue} = props;
+  const { isFollowed, searchValue } = props;
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -85,35 +82,37 @@ export const Pagination: FC<IPaginationProps> = (props) => {
     dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { commentsList, usersList, postsList, currentUser, photosList } = useSelector<IState, ICommentsReducer & IUsersReducer & IPostsReducer & IPhotosReducer>((globalState) => ({
-    ...globalState.comments,
-    ...globalState.users,
-    ...globalState.posts,
-    ...globalState.photos,
-  }));
+  const { commentsList, usersList, postsList, currentUser, photosList } =
+    useSelector<
+      IState,
+      ICommentsReducer & IUsersReducer & IPostsReducer & IPhotosReducer
+    >((globalState) => ({
+      ...globalState.comments,
+      ...globalState.users,
+      ...globalState.posts,
+      ...globalState.photos,
+    }));
 
   const [pageNumber, setPageNumber] = useState(0);
 
   const commentsPerPage = 10;
   const pagesVisited = pageNumber * commentsPerPage;
-  
-  const displayComments = commentsList.filter((val) => {
-    if (searchValue == "") {
-      return val;
-    } else if (
-    val.name.toLowerCase().includes(searchValue.toLowerCase())
-    ) {
-      return val;
-    }
-  }).filter((val) => {
-    if (isFollowed == true) {
-      return val.id  == 1;
-    } else if (
-      val.name.toLowerCase().includes(searchValue.toLowerCase())
-    ) {
-      return val;
-    }
-  })              
+
+  const displayComments = commentsList
+    .filter((val) => {
+      if (searchValue == "") {
+        return val;
+      } else if (val.name.toLowerCase().includes(searchValue.toLowerCase())) {
+        return val;
+      }
+    })
+    .filter((val) => {
+      if (isFollowed == true) {
+        return usersList?.[postsList?.[val?.postId - 1]?.userId - 1].id == 1;
+      } else if (val.name.toLowerCase().includes(searchValue.toLowerCase())) {
+        return val;
+      }
+    })
     .slice(pagesVisited, pagesVisited + commentsPerPage)
     .map((comments) => {
       return (
@@ -122,22 +121,38 @@ export const Pagination: FC<IPaginationProps> = (props) => {
             <Subtititle>{comments?.name}</Subtititle>
             <PostText> {comments?.body}</PostText>
             <ImgAndTextWrapper>
-              <SmallImg src={photosList?.[postsList?.[comments?.postId-1]?.userId-1]?.url} alt="photo"  style={{ borderRadius: "50%"}}/>
-              <PostText>{usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PostText>
+              <SmallImg
+                src={
+                  photosList?.[postsList?.[comments?.postId - 1]?.userId - 1]
+                    ?.url
+                }
+                alt="photo"
+                style={{ borderRadius: "50%" }}
+              />
+              <PostText>
+                {
+                  usersList?.[postsList?.[comments?.postId - 1]?.userId - 1]
+                    ?.name
+                }
+              </PostText>
               <DotImg src="icons/black-circle.png" alt="circle" />
               <SmallImg src="icons/suitcase.png" alt="suitcase" />
               <PostText>Client contract</PostText>
               <DotImg src="icons/black-circle.png" alt="cirlce" />
-              <PublicationDate> Updated 2 days ago by {usersList?.[postsList?.[comments?.postId-1]?.userId-1]?.name}</PublicationDate>
+              <PublicationDate>
+                Updated 2 days ago by{" "}
+                {
+                  usersList?.[postsList?.[comments?.postId - 1]?.userId - 1]
+                    ?.name
+                }
+              </PublicationDate>
             </ImgAndTextWrapper>
           </SinglePostWrapper>
         </PostsWrapper>
       );
     });
 
-  
- const pageCount = Math.ceil(commentsList.length / commentsPerPage);
-
+  const pageCount = Math.ceil(commentsList.length / commentsPerPage);
 
   const changePage = ({ selected }: { selected: number }) => {
     setPageNumber(selected);
