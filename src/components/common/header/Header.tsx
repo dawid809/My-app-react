@@ -8,6 +8,7 @@ import { ExpandedMenu } from "../header/ExpandedMenu";
 import { Search } from "../header/Search";
 import { RightIcons } from "../header/RightIcons";
 import { LeftIconsContent } from "../header/LeftIcons";
+import { linkSmart } from "../smartLink/SmartLink";
 
 const InnerWrapper = styled.div`
   background: ${Colors.white};
@@ -49,7 +50,7 @@ export const Header: FC = () => {
         }}
       >
         <StyledLink to="/">
-          <Logo src="icons/logo.png" alt="logo" />
+          <Logo src={linkSmart("icons/logo.png")} alt="logo" />
         </StyledLink>
         <div ref={wrapperRef} style={{position: "relative"}}>
           <LeftIcons onClick={menuHandler}>

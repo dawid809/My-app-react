@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { Colors } from "../../../styledHelpers/Colors";
+import { linkSmart } from "../smartLink/SmartLink";
 
 const InputWrapper = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ export const Search: FC = () => {
   return (
     <InputWrapper>
       <CustomFilter type="text" placeholder="Search Legalcuster" />
-      <CustomImg src="icons/search.png" alt="Search" />
+      <CustomImg src={linkSmart("icons/search.png")} alt="Search" />
     </InputWrapper>
   );
 };

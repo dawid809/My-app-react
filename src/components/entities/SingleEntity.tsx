@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const Entity = styled.div`
   box-shadow: ${Colors.shadow};
@@ -50,7 +51,7 @@ export const SingleEntity: FC<ISingleEntityProps> = (props) => {
 
   return (
     <Entity>
-      <img src={url} alt="photo" />
+      <img src={linkSmart(url)} alt="photo" />
       <div>
         <h2>{title}</h2>
         <p>{id}</p>

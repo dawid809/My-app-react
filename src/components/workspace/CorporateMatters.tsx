@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const CorporateMattersWrapper = styled.div`
   background-color: #eeeeee;
@@ -90,7 +91,7 @@ export const CorporateMatters: FC = () => {
       <div className="display-row-wrapper">
         <SingleMatter>
           <div className="position-relative">
-            <img src="icons/entities.png" alt="icon" />
+            <img src={linkSmart("icons/entities.png")} alt="icon" />
             <h3>
               Explore your <b>entities</b>
             </h3>
@@ -98,12 +99,12 @@ export const CorporateMatters: FC = () => {
               Take a few minutes to look at the most important elements and
               epcificites of your entities.
             </p>
-            <TransparentImg src="icons/entities.png" alt="icon" />
+            <TransparentImg src={linkSmart("icons/entities.png")} alt="icon" />
           </div>
         </SingleMatter>
         <SingleMatter>
           <div className="position-relative">
-            <img src="icons/diagram.png" alt="icon" />
+            <img src={linkSmart("icons/diagram.png")} alt="icon" />
             <h3>
               Structure the <b>ownership</b>
             </h3>
@@ -111,12 +112,12 @@ export const CorporateMatters: FC = () => {
               Get a clear view of the ownership by looking at the ralations
               between individuals and entities.
             </p>
-            <TransparentImg src="icons/diagram.png" alt="icon" />
+            <TransparentImg src={linkSmart("icons/diagram.png")} alt="icon" />
           </div>
         </SingleMatter>
         <SingleMatter>
           <div className="position-relative">
-            <img src="icons/calendar.png" alt="icon" />
+            <img src={linkSmart("icons/calendar.png")} alt="icon" />
             <h3>
               Define the <b>calendar</b>
             </h3>
@@ -124,7 +125,7 @@ export const CorporateMatters: FC = () => {
               Prepare future events by creating detailed plan around the life of
               your entity.
             </p>
-            <TransparentImg src="icons/calendar.png" alt="icon" />
+            <TransparentImg src={linkSmart("icons/calendar.png")} alt="icon" />
           </div>
         </SingleMatter>
       </div>

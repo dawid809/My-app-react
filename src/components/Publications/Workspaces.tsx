@@ -11,6 +11,7 @@ import { IState } from "../../reducers";
 import { getPhotos } from "../../actions/photosActions";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 type GetPhotos = ReturnType<typeof getPhotos>;
 
@@ -137,16 +138,16 @@ export const Workspaces: FC = () => {
           <ImgHalf src={photosList[111]?.url} alt="" />
           <TitleImgWrapper>
             <ImgRoundedWrapper>
-              <ImgInsideDiv src="icons/file-signature.png" />
+              <ImgInsideDiv src={linkSmart("icons/file-signature.png")} />
             </ImgRoundedWrapper>
             <SubtitleText>Client Contract</SubtitleText>
           </TitleImgWrapper>
           <SingleContentWrapper>
             <ImgAndTextWrapper>
-              <SmallImg src="icons/file-signature.png" alt="" />
+              <SmallImg src={linkSmart("icons/file-signature.png")} alt="" />
               <Text>Contract</Text>
-              <DotImg src="icons/black-circle.png" alt="" />
-              <SmallImg src="icons/people.png" alt="" />
+              <DotImg src={linkSmart("icons/black-circle.png")} alt="" />
+              <SmallImg src={linkSmart("icons/people.png")} alt="" />
               <Text>25 Users</Text>
             </ImgAndTextWrapper>
             <DatePulicationText> Last update 2 days ago</DatePulicationText>

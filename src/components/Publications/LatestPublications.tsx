@@ -14,6 +14,7 @@ import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { IPostsReducer } from "../../reducers/postsReducer";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../../components/common/smartLink/SmartLink";
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
@@ -175,7 +176,7 @@ export const LatestPublications: FC = () => {
           {postsList.slice(1, 4).map((val) => {
             return (
               <SinglePublication key={val.id}>
-                <img src="icons/writing-contract.png" alt="writing-man" />
+                <img src={linkSmart("icons/writing-contract.png")} alt="writing-man" />
                 <div>
                   <h2>{val.body}</h2>
                   <div

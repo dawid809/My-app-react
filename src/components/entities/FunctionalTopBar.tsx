@@ -7,6 +7,7 @@ import useDropdown from "react-dropdown-hook";
 import { Filter } from "./Filter";
 import { FollowedDropdown } from "./FollowedDropdown";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 import "../entities/index.css";
 
@@ -239,15 +240,15 @@ export const FunctionalTopBar: FC<IFunctionalTopBarProps> = (props) => {
       <TopBarWrapper>
         <LeftTitleIconWrapper>
           <TitleText>Entities</TitleText>
-          <CustomIcon src="icons/cog.png" alt="Cog icon" />
+          <CustomIcon src={linkSmart("icons/cog.png")} alt="Cog icon" />
         </LeftTitleIconWrapper>
         <RightMosaicIconWrapper>
           <MosaicWrapper onClick={setMosaicClass}>
-            <BlueIcon src="icons/mosaic.png" alt="Mosaic icon" />
+            <BlueIcon src={linkSmart("icons/mosaic.png")} alt="Mosaic icon" />
             <BlueText> Mosaic </BlueText>
           </MosaicWrapper>
           <ListWrapper onClick={setListClass}>
-            <CustomIcon src="icons/menu.png" alt="Menu icon" />
+            <CustomIcon src={linkSmart("icons/menu.png")} alt="Menu icon" />
           </ListWrapper>
         </RightMosaicIconWrapper>
       </TopBarWrapper>
@@ -255,50 +256,50 @@ export const FunctionalTopBar: FC<IFunctionalTopBarProps> = (props) => {
         <LeftWrapper>
           <BlueWrapper>
             <BlueIcon
-              src="icons/circle-outline-with-a-central-dot.png"
+              src={linkSmart("icons/circle-outline-with-a-central-dot.png")}
               alt="Circle icon"
             />
             <BlueText>All</BlueText>
             <BlueIcon
-              src="icons/arrow-down.png"
+              src={linkSmart("icons/arrow-down.png")}
               alt="Arrow down icon"
               style={{ height: "7px", width: "11px" }}
             />
           </BlueWrapper>
           <GrayIcon
-            src="icons/more.png"
+            src={linkSmart("icons/more.png")}
             alt="More icon"
             style={{ marginLeft: "15px" }}
           />
-          <LineIcon src="icons/vertical-line.png" />
+          <LineIcon src={linkSmart("icons/vertical-line.png")} />
           <IconAndTextWrapper onClick={toggleIsSorted}>
-            <GrayIcon src="icons/sort.png" alt="Sort icon" />
+            <GrayIcon src={linkSmart("icons/sort.png")} alt="Sort icon" />
             <Text>Sort</Text>
           </IconAndTextWrapper>
           <div ref={filterRef} style={{ position: "relative" }}>
             <FilterContainer onClick={filterMenuHandler}>
               <IconAndTextWrapper>
-                <GrayIcon src="icons/filter.png" alt="Filter icon" />
+                <GrayIcon src={linkSmart("icons/filter.png")} alt="Filter icon" />
                 <Text>Filters</Text>
               </IconAndTextWrapper>
             </FilterContainer>
           </div>
           <IconAndTextWrapper>
-            <LineIcon src="icons/vertical-line.png" />
+            <LineIcon src={linkSmart("icons/vertical-line.png")} />
             <GrayIcon
               onClick={
                 handleFullScreen.active
                   ? handleFullScreen.exit
                   : handleFullScreen.enter
               }
-              src="icons/expand.png"
+              src={linkSmart("icons/expand.png")}
               alt="Expand icon"
             />
-            <LineIcon src="icons/vertical-line.png" />
+            <LineIcon src={linkSmart("icons/vertical-line.png")} />
           </IconAndTextWrapper>
           <CopyToClipboard text={url}>
             <IconAndTextWrapper>
-              <GrayIcon src="icons/share.png" alt="Share icon" />
+              <GrayIcon src={linkSmart("icons/share.png")} alt="Share icon" />
               <Text>Share</Text>
             </IconAndTextWrapper>
           </CopyToClipboard>
@@ -313,19 +314,19 @@ export const FunctionalTopBar: FC<IFunctionalTopBarProps> = (props) => {
               onChange={onSearchChange}
             />
             <GrayIcon
-              src="icons/search.png"
+              src={linkSmart("icons/search.png")}
               alt="Search icon"
               style={{ marginLeft: "-30px" }}
             />
           </SearchContainer>
-          <LineIcon src="icons/vertical-line.png" />
+          <LineIcon src={linkSmart("icons/vertical-line.png")} />
           <div ref={followedRef} style={{ position: "relative" }}>
             <FollowedContainer onClick={followedMenudHandler}>
               <IconWrapper style={{ padding: "5px" }}>
-                <BlueIcon src="icons/broadcast.png" alt="Broadcast icon" />
+                <BlueIcon src={linkSmart("icons/broadcast.png")} alt="Broadcast icon" />
                 <BlueText>Followed</BlueText>
                 <BlueIcon
-                  src="icons/arrow-down.png"
+                  src={linkSmart("icons/arrow-down.png")}
                   alt="Arrow down icon"
                   style={{ height: "7px", width: "11px" }}
                 />

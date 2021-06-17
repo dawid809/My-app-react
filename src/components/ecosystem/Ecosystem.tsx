@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const ContentContext = styled.div`
   width: 100%;
@@ -36,7 +37,7 @@ export const Ecosystem: FC = () => {
     <ContentContext>
       <EcosystemWrapper>
         <TestPageText>Ecosystem test page</TestPageText>
-        <TestIcon src="icons/repair.png" alt="repair tools" />
+        <TestIcon src={linkSmart("icons/repair.png")} alt="repair tools" />
       </EcosystemWrapper>
     </ContentContext>
   );

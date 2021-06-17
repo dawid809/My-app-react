@@ -7,6 +7,7 @@ import { StyledLink } from "../../../styledHelpers/Components";
 import DatePicker from "react-datepicker";
 import { useFormik } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
+import { linkSmart } from "../../common/smartLink/SmartLink";
 
 const InternalReviewsWrapper = styled.div`
   border-bottom: 1px solid ${Colors.lightGray};
@@ -195,7 +196,7 @@ export const InternalReviews: FC = () => {
         <TitleText>Internal reviews</TitleText>
         <EditWrapper>
           <EditButton onClick={editInternalReviewsTable} type="submit">
-            <EditIcon src="icons/pen.png" />
+            <EditIcon src={linkSmart("icons/pen.png")} />
           </EditButton>
         </EditWrapper>
       </div>

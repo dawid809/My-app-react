@@ -13,12 +13,14 @@ import { People } from '../people/People';
 import { Administration } from '../administration/Administration';
 import { Profile } from '../profile/Profile';
 import  {Workspace}  from '../workspace/Workspace';
+import { linkSmart } from '../common/smartLink/SmartLink';
+
 
 const Content = styled.div`
     display: flex;
 `;
 
-const MainPage: FC = () =>{
+const MainPage: FC = () =>{     
     return(
         <Router>
             <Wrapper>
@@ -52,8 +54,20 @@ const MainPage: FC = () =>{
                             </Route>
                             <Route path="/workspaces" >
                             <Switch>
+                                <Route path="/workspaces/ClientContract" exact>
+                                    <Workspace name="Client contract" src={linkSmart("icons/file-signature.png")}/>
+                                </Route>
                                 <Route path="/workspaces/SupplierContract" exact>
-                                    <Workspace name="Supplier contract" url="https://picsum.photos/id/1/200/300"/>
+                                    <Workspace name="Supplier contract" src={linkSmart("icons/file-signature.png")}/>
+                                </Route>
+                                <Route path="/workspaces/Corporate" exact>
+                                    <Workspace name="Corporate" src={linkSmart("icons/entities.png")}/>
+                                </Route>
+                                <Route path="/workspaces/GroupNorms" exact>
+                                    <Workspace name="Group norms" src={linkSmart("icons/book-alt.png")}/>
+                                </Route>
+                                <Route path="/workspaces/RealEstateContracts" exact>
+                                    <Workspace name="Real estate contracts" src={linkSmart("icons/request.png")}/>
                                 </Route>
                             </Switch>
                             </Route>

@@ -15,6 +15,7 @@ import { ICommentsReducer } from "../../reducers/commentsReducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPostsReducer } from "../../reducers/postsReducer";
 import { IPhotosReducer } from "../../reducers/photosReducer";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 type GetComments = ReturnType<typeof getComments>;
 type GetUsers = ReturnType<typeof getUsers>;
@@ -135,10 +136,10 @@ export const Pagination: FC<IPaginationProps> = (props) => {
                     ?.name
                 }
               </PostText>
-              <DotImg src="icons/black-circle.png" alt="circle" />
-              <SmallImg src="icons/suitcase.png" alt="suitcase" />
+              <DotImg src={linkSmart("icons/black-circle.png")} alt="circle" />
+              <SmallImg src={linkSmart("icons/suitcase.png")} alt="suitcase" />
               <PostText>Client contract</PostText>
-              <DotImg src="icons/black-circle.png" alt="cirlce" />
+              <DotImg src={linkSmart("icons/black-circle.png")} alt="cirlce" />
               <PublicationDate>
                 Updated 2 days ago by{" "}
                 {

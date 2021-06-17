@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPhotosReducer } from "../../reducers/photosReducer";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
@@ -175,7 +176,7 @@ export const MainUserData: FC = () => {
       <UserDataWrapper>
         <EditWrapper>
           <EditButton onClick={editUserDatasHandle} type="submit">
-            <EditIcon src="icons/pen.png" />
+            <EditIcon src={linkSmart("icons/pen.png")} />
           </EditButton>
         </EditWrapper>
         <UserInfoAndPhotoWrapper>

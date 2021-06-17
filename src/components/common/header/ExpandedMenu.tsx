@@ -8,7 +8,8 @@ import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { StyledLink } from "../../../styledHelpers/Components";
 import { getUsers } from "../../../actions/usersActions";
 import { getPhotos } from "../../../actions/photosActions";
-import { BrowserRouter as Router, Link, Route} from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { linkSmart } from "../smartLink/SmartLink";
 
 import { useSelector } from "react-redux";
 import { IState } from "../../../reducers";
@@ -150,12 +151,12 @@ export const ExpandedMenu: FC = () => {
   };
 
   const workspaces = [
-    {name:"ClientContract", id: 1, imgUrl: "https://picsum.photos/id/1/200/300"}, 
-    {name:"SupplierContract", id: 2, imgUrl: "https://picsum.photos/id/1/200/300"},
-    {name:"Corporate", id: 3, imgUrl: "https://picsum.photos/id/1/200/300"}, 
-    {name:"GroupNorms", id: 4, imgUrl: "https://picsum.photos/id/1/200/300"}, 
-    {name:"RealEstateContract", id: 5, imgUrl: "https://picsum.photos/id/1/200/300"}, 
-  ]
+    { name: "ClientContract", id: 1, imgUrl: "icons/file-signature.png" },
+    { name: "SupplierContract", id: 2, imgUrl: "icons/file-signature.png" },
+    { name: "Corporate", id: 3, imgUrl: "icons/entities.png" },
+    { name: "GroupNorms", id: 4, imgUrl: "icons/book-alt.png" },
+    { name: "RealEstateContracts", id: 5, imgUrl: "icons/request.png" },
+  ];
 
   return (
     <ExpandedWrapper>
@@ -170,7 +171,10 @@ export const ExpandedMenu: FC = () => {
           <CustomSubtitles>Platfom</CustomSubtitles>
           {"Home".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/house2.png" alt="house2" />
+              <CustomImgWithMargin
+                src={linkSmart("icons/house2.png")}
+                alt="house2"
+              />
               <StyledLink to="/">
                 <CustomPargraf> Home </CustomPargraf>
               </StyledLink>
@@ -180,7 +184,7 @@ export const ExpandedMenu: FC = () => {
           {"Publications".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin
-                src="icons/publications.png"
+                src={linkSmart("icons/publications.png")}
                 alt="publications"
               />
               <StyledLink to="/publications">
@@ -191,7 +195,10 @@ export const ExpandedMenu: FC = () => {
 
           {"People".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/people.png" alt="people" />
+              <CustomImgWithMargin
+                src={linkSmart("icons/people.png")}
+                alt="people"
+              />
               <StyledLink to="/people">
                 <CustomPargraf>People </CustomPargraf>
               </StyledLink>
@@ -200,7 +207,10 @@ export const ExpandedMenu: FC = () => {
 
           {"Entities".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/entities2.png" alt="entities2" />
+              <CustomImgWithMargin
+                src={linkSmart("icons/entities2.png")}
+                alt="entities2"
+              />
               <StyledLink to="/entities">
                 <CustomPargraf> Entities </CustomPargraf>
               </StyledLink>
@@ -210,7 +220,7 @@ export const ExpandedMenu: FC = () => {
           {"Administration".toLowerCase().includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
               <CustomImgWithMargin
-                src="icons/administration.png"
+                src={linkSmart("icons/administration.png")}
                 alt="administration"
               />
               <StyledLink to="/administration">
@@ -221,22 +231,27 @@ export const ExpandedMenu: FC = () => {
 
           <CustomSubtitles>Workspaces</CustomSubtitles>
 
-           {"Client contract"
+          {/* {"Client contract"
             .toLowerCase()
             .includes(inputText.toLowerCase()) && (
             <ImgAndTextContainer>
-              <CustomImgWithMargin src="icons/file-signature.png" alt="file" />
+              <CustomImgWithMargin src={linkSmart("icons/file-signature.png")} alt="file" />
               <StyledLink to="/workspace">
                 <CustomPargraf> Client contract </CustomPargraf>
               </StyledLink>
             </ImgAndTextContainer>
-          )}
+          )} */}
 
-
-  {workspaces.map((item) =>
-  <div key={item.id}><Link  to={"/workspaces/"+item.name} ><img src={item.imgUrl} alt="icon" />{item.name}</Link></div>)
-  }
-  
+          {workspaces.map((item) => (
+            <div key={item.id}>
+              <StyledLink to={"/workspaces/" + item.name}>
+              <ImgAndTextContainer>
+                <CustomImgWithMargin src={linkSmart(item.imgUrl)} alt="icon" />
+                <CustomPargraf>{item.name}</CustomPargraf>
+                </ImgAndTextContainer>
+              </StyledLink>
+            </div>
+          ))}
 
           {/* {"Client contract"
             .toLowerCase()
@@ -295,7 +310,7 @@ export const ExpandedMenu: FC = () => {
 
           <ProfileWrapper>
             <UserAvatar
-              src={photosList[currentUser?.id - 1]?.url}
+              src={photosList?.[currentUser?.id - 1]?.url}
               alt="User photo"
             />
             <RightProfileWrapper>
@@ -307,21 +322,30 @@ export const ExpandedMenu: FC = () => {
           </ProfileWrapper>
 
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/privacy.png" alt="privacy" />
+            <CustomImgWithMargin
+              src={linkSmart("icons/privacy.png")}
+              alt="privacy"
+            />
             <StyledLink to="/testPage">
               <CustomPargraf>Privacy </CustomPargraf>
             </StyledLink>
           </ImgAndTextContainer>
 
           <ImgAndTextContainer>
-            <CustomImgWithMargin src="icons/settings.png" alt="settings" />
+            <CustomImgWithMargin
+              src={linkSmart("icons/settings.png")}
+              alt="settings"
+            />
             <StyledLink to="/testPage">
               <CustomPargraf> Settings </CustomPargraf>
             </StyledLink>
           </ImgAndTextContainer>
         </AccountWraper>
         <LogoutWrapper>
-          <CustomImgWithMargin src="icons/logout.png" alt="logout" />
+          <CustomImgWithMargin
+            src={linkSmart("icons/logout.png")}
+            alt="logout"
+          />
           <StyledLink to="/testPage">
             <Logout> Logout </Logout>
           </StyledLink>

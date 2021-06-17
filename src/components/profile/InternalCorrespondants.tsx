@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
 import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPhotosReducer } from "../../reducers/photosReducer";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const InternalCorrespondantsWrapper = styled.div`
   margin: 10px;
@@ -55,20 +56,20 @@ export const InternalCorrespondants: FC = () => {
     <InternalCorrespondantsWrapper>
       <TitleText>Internal correspondants </TitleText>
       <SingleUserWrapper>
-        <UserAvatar src="icons/profile.png" alt="fotka" />
+        <UserAvatar src={linkSmart("icons/profile.png")} alt="fotka" />
         <BoldText>Imie Nazwisko</BoldText>
-        <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
+        <CustomImg src={linkSmart("icons/speech-bubble.png")} alt="wiadomość" />
         <CustomText>Message</CustomText>
-        <CustomImg src="icons/user.png" alt="wiadomość" />
+        <CustomImg src={linkSmart("icons/user.png")} alt="wiadomość" />
         <CustomText>Profile</CustomText>
       </SingleUserWrapper>
 
       <SingleUserWrapper>
-        <UserAvatar src="icons/profile.png" alt="fotka" />
+        <UserAvatar src={linkSmart("icons/profile.png")} alt="fotka" />
         <BoldText>Imie Nazwisko</BoldText>
-        <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
+        <CustomImg src={linkSmart("icons/speech-bubble.png")} alt="wiadomość" />
         <CustomText>Message</CustomText>
-        <CustomImg src="icons/user.png" alt="wiadomość" />
+        <CustomImg src={linkSmart("icons/user.png")} alt="wiadomość" />
         <CustomText>Profile</CustomText>
       </SingleUserWrapper>
     </InternalCorrespondantsWrapper>

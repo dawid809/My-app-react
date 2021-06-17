@@ -8,6 +8,7 @@ import "../publications/index.css";
 
 import { Pagination } from "../publications/Pagination";
 import  Followed  from "../publications/Followed";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const ResumeWorkWrapper = styled.div`
   position: relative;
@@ -135,16 +136,16 @@ const [isFollowed, setFollowed] = useState(false);
           <FilterContainer>
             <CustomFilter type="text" placeholder="Filter by title..." onChange={onSearchChange}/>
             <SearchImg
-              src="icons/search.png"
+              src={linkSmart("icons/search.png")}
               alt="filtrowanie"
             />
           </FilterContainer>
 
           <div ref={wrapperRef} style={{position: "relative"}}>
           <FollowedContainer onClick={menuHandler}>
-            <MediumImg src="icons/broadcast.png" alt="transmitowanie" />
+            <MediumImg src={linkSmart("icons/broadcast.png")} alt="transmitowanie" />
             <Subtititle>Followed</Subtititle>
-            <SmallImgArrow src="icons/arrow-down.png" alt="strzałka-dół" />
+            <SmallImgArrow src={linkSmart("icons/arrow-down.png")} alt="strzałka-dół" />
           </FollowedContainer>
           {dropdownOpen &&  <Followed handleIsFollowed={handleIsFollowed} setAllFollowed={setAllFollowed}/>}
           </div>

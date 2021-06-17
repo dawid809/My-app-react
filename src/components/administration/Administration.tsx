@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const AdministrationWrapper = styled.div`
   width: 100%;
@@ -36,7 +37,7 @@ export const Administration: FC = () => {
     <AdministrationWrapper>
       <AdministrationContent>
         <TestPageText>Administration test page</TestPageText>
-        <TestIcon src="icons/repair.png" alt="repair tools" />
+        <TestIcon src={linkSmart("icons/repair.png")} alt="repair tools" />
       </AdministrationContent>
     </AdministrationWrapper>
   );

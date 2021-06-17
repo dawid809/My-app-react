@@ -7,6 +7,7 @@ import { StyledLink } from "../../../styledHelpers/Components";
 import DatePicker from "react-datepicker";
 import { useFormik } from "formik";
 import "react-datepicker/dist/react-datepicker.css";
+import { linkSmart } from "../../common/smartLink/SmartLink";
 
 const ProposalsWrapper = styled.div`
   display: flex;
@@ -190,10 +191,6 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
   const [proposalsEnabled, setProposalsEnabled] = useState(false);
   const editProposalsTable = () => {
     const disable = proposalsEnabled;
-    console.log(
-      "disable",
-      formikSelectOptionsEnabled.formikSelectOptionsEnabled
-    );
     setProposalsEnabled(!disable);
   };
 
@@ -205,7 +202,7 @@ export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
         <TitleText>Proposals</TitleText>
         <EditWrapper>
           <EditButton onClick={editProposalsTable} type="submit">
-            <EditIcon src="icons/pen.png" />
+            <EditIcon src={linkSmart("icons/pen.png")} />
           </EditButton>
         </EditWrapper>
       </div>

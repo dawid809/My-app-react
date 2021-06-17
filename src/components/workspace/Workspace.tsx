@@ -6,12 +6,11 @@ import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { withRouter } from "react-router";
-import { BrowserRouter as Router, Link, Route, useParams } from "react-router-dom";
 
 import { CorporateMatters } from "./CorporateMatters";
 import { Pagination } from "../publications/Pagination";
 import Followed from "../publications/Followed";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const WorkspaceWrapper = styled.div`
   width: 100%;
@@ -34,13 +33,13 @@ const TopBarWrapper = styled.div`
   overflow: hidden;
 
   h1 {
-      font-size: ${fontSize[20]};
-      font-weight: bold;
+    font-size: ${fontSize[20]};
+    font-weight: bold;
   }
 
   p {
-      margin-top: 10px;
-      color: ${Colors.darkerGray};
+    margin-top: 10px;
+    color: ${Colors.darkerGray};
   }
 `;
 
@@ -157,7 +156,7 @@ const Subtititle = styled.h3`
 
 interface IWorkspaceProps {
   name: string;
-  url: string;
+  src: string;
 }
 
 export const Workspace: FC<IWorkspaceProps> = (props) => {
@@ -196,35 +195,50 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
     { title: "...", color: "white", icon: "" },
   ];
 
-  // const  {name, imgUrl}: {name: string, imgUrl:string}  = useParams();
-  // const params = useParams();
   const name = props.name;
-  const imgUrl = props.url;
+  const imgUrl = props.src;
 
   return (
     <WorkspaceWrapper>
       <WorkspaceContent>
         <div>
           <TopBarWrapper>
-              <div style={{position: "relative"}}>
-                  <img src="./icons/table.png" alt="photo" style={{width: "100%", height: "120px", objectFit: "cover"}}/>
+            <div style={{ position: "relative" }}>
+              <img
+                src="../icons/table.png"
+                alt="photo"
+                style={{ width: "100%", height: "120px", objectFit: "cover" }}
+              />
+            </div>
+            <div style={{ padding: "15px", marginBottom: "20px" }}>
+              <div style={{ float: "left", marginRight: "20px" }}>
+                <img
+                  src={linkSmart(imgUrl)}
+                  alt="icon"
+                  style={{ width: "55px" }}
+                />
               </div>
-              <div style={{padding: "15px", marginBottom: "20px"}}>
-                  <div style={{float: "left", marginRight: "20px"}}>
-              <img src="icons/entities.png" alt="icon" style={{width: "55px"}}/>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  marginTop: "-5px",
+                }}
+              >
+                <h1>{name}</h1>
+                <img
+                  src={linkSmart("icons/cog.png")}
+                  alt="icon"
+                  style={{ width: "20px" }}
+                />
               </div>
-              <div style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: "-5px"}}>
-                  {/* <h1>{console.warn(props)}</h1> */}
-                  {/* {props.match.params.name} */}
-                  {/* {console.warn(props, 'props route')} */}
-                 {/* {JSON.stringify(params)} */}
-                  {/* {name} */}
-                  <img src={imgUrl} alt="" />
-                  {name}
-                  <img src="icons/cog.png" alt="icon" style={{width: "20px"}}/>
-                  </div>
-                  <p>Workspace purposa and a bit of context. This much needed description is here to remind peope where they are, if they are new or ahve poor memory</p>
-              </div>
+              <p>
+                Workspace purposa and a bit of context. This much needed
+                description is here to remind peope where they are, if they are
+                new or ahve poor memory
+              </p>
+            </div>
           </TopBarWrapper>
           <CorporateMatters />
         </div>
@@ -238,14 +252,23 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
                 placeholder="Filter by title..."
                 onChange={onSearchChange}
               />
-              <SearchImg src="icons/search.png" alt="filtrowanie" />
+              <SearchImg
+                src={linkSmart("icons/search.png")}
+                alt="filtrowanie"
+              />
             </FilterContainer>
 
             <div ref={wrapperRef} style={{ position: "relative" }}>
               <FollowedContainer onClick={menuHandler}>
-                <MediumImg src="icons/broadcast.png" alt="transmitowanie" />
+                <MediumImg
+                  src={linkSmart("icons/broadcast.png")}
+                  alt="transmitowanie"
+                />
                 <Subtititle>Followed</Subtititle>
-                <SmallImgArrow src="icons/arrow-down.png" alt="strzałka-dół" />
+                <SmallImgArrow
+                  src={linkSmart("icons/arrow-down.png")}
+                  alt="strzałka-dół"
+                />
               </FollowedContainer>
               {dropdownOpen && (
                 <Followed
@@ -275,4 +298,3 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
     </WorkspaceWrapper>
   );
 };
-

@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const ProfileHeaderWrapper = styled.div`
   margin: 10px;
@@ -22,13 +23,13 @@ const BoldText = styled.h2`
 export const ProfileHeader: FC = () => {
   return (
     <ProfileHeaderWrapper>
-      <CustomImg src="icons/speech-bubble.png" alt="wiadomość" />
+      <CustomImg src={linkSmart("icons/speech-bubble.png")} alt="wiadomość" />
       <BoldText>Message</BoldText>
-      <CustomImg src="icons/request.png" alt="zapytanie" />
+      <CustomImg src={linkSmart("icons/request.png")} alt="zapytanie" />
       <BoldText>Create a request</BoldText>
-      <CustomImg src="icons/suitcase.png" alt="grono" />
+      <CustomImg src={linkSmart("icons/suitcase.png")} alt="grono" />
       <BoldText>Add to a clauster</BoldText>
-      <CustomImg src="icons/close.png" alt="zamknij" />
+      <CustomImg src={linkSmart("icons/close.png")} alt="zamknij" />
     </ProfileHeaderWrapper>
   );
 };

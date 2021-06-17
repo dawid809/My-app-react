@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 import { Colors } from "../../../styledHelpers/Colors";
 import { fontSize } from "../../../styledHelpers/FontSizes";
+import { linkSmart } from "../smartLink/SmartLink";
 
 const RightIconsWrapper = styled.div`
   margin-right: 20px;
@@ -51,13 +52,13 @@ const NotificationCounterWrapper = styled.div`
 export const RightIcons: FC = () => {
   return (
     <RightIconsWrapper>
-      <CustomImg src="icons/house.png" />
+      <CustomImg src={linkSmart("icons/house.png")} />
       <RoundedWrapperForImage>
-        <CustomIconInsideWrapper src="icons/comments.png" alt="Comments" />
+        <CustomIconInsideWrapper src={linkSmart("icons/comments.png")} alt="Comments" />
         <NotificationCounterWrapper>3</NotificationCounterWrapper>
       </RoundedWrapperForImage>
       <RoundedWrapperForImage>
-        <CustomIconInsideWrapper src="icons/bell.png" alt="Bell" />
+        <CustomIconInsideWrapper src={linkSmart("icons/bell.png")} alt="Bell" />
         <NotificationCounterWrapper>3</NotificationCounterWrapper>
       </RoundedWrapperForImage>
     </RightIconsWrapper>

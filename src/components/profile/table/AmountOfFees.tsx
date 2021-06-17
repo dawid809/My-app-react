@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Colors } from "../../../styledHelpers/Colors";
 import { fontSize } from "../../../styledHelpers/FontSizes";
 import { useFormik } from "formik";
+import { linkSmart } from "../../common/smartLink/SmartLink";
 
 const AmountOfFeesWrapper = styled.div`
   padding: 10px;
@@ -144,7 +145,7 @@ export const AmountOfFees: FC = () => {
         <TitleText>Amount of fees</TitleText>
         <EditWrapper>
           <EditButton onClick={editAmountOfFeesTable} type="submit">
-            <EditIcon src="icons/pen.png" />
+            <EditIcon src={linkSmart("icons/pen.png")} />
           </EditButton>
         </EditWrapper>
       </div>

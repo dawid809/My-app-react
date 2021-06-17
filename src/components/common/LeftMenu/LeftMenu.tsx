@@ -5,6 +5,7 @@ import { CustomImgWithMargin } from "../../../styledHelpers/Components";
 import { Profile } from "./Profile";
 import { fontSize } from "../../../styledHelpers/FontSizes";
 import { StyledLink } from "../../../styledHelpers/Components";
+import { linkSmart } from "../smartLink/SmartLink";
 
 const LeftWrapper = styled.div`
   padding: 36px;
@@ -37,7 +38,7 @@ export const LeftMenu: FC = () => {
       <General>
         <SubtitleWrapper>
           <CustomImgWithMargin
-            src="icons/publications.png"
+            src={linkSmart("icons/publications.png")}
             alt="Publications"
           />
           <StyledLink to="/publications">
@@ -46,14 +47,14 @@ export const LeftMenu: FC = () => {
         </SubtitleWrapper>
 
         <SubtitleWrapper>
-          <CustomImgWithMargin src="icons/ecosystem.png" alt="Ecosystem" />
+          <CustomImgWithMargin src={linkSmart("icons/ecosystem.png")} alt="Ecosystem" />
           <StyledLink to="/ecosystem">
             <SubtitleText>Ecosystem</SubtitleText>
           </StyledLink>
         </SubtitleWrapper>
 
         <SubtitleWrapper>
-          <CustomImgWithMargin src="icons/entities2.png" alt="Entities" />
+          <CustomImgWithMargin src={linkSmart("icons/entities2.png")} alt="Entities" />
           <StyledLink to="/entities">
             <SubtitleText>Entities</SubtitleText>
           </StyledLink>

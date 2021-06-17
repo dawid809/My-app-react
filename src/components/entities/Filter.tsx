@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const CustomInput = styled.input`
   border: ${Colors.border};
@@ -67,42 +68,42 @@ export const Filter: FC = () => {
       <FilterWrapper>
         <p> Rows are filtered by the following condition from the top.</p>
         <div>
-          <XIcon src="icons/close.png" alt="Close icon" />
+          <XIcon src={linkSmart("icons/close.png")} alt="Close icon" />
           <h3> Where </h3>
           <h3>Company</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <h3>Contains</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <input type="text" placeholder="Type..." />
         </div>
         <div>
-          <XIcon src="icons/close.png" alt="Close icon" />
+          <XIcon src={linkSmart("icons/close.png")} alt="Close icon" />
           <h3> Where </h3>
           <h3>Status</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <h3>is</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <input type="text" placeholder="Type..." />
           <h3>in</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <CustomInput type="text" placeholder="Entity..." />
         </div>
         <div>
-          <XIcon src="icons/close.png" alt="Close icon" />
+          <XIcon src={linkSmart("icons/close.png")} alt="Close icon" />
           <h3> And </h3>
           <h3>Status</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <h3>Ends before</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <input type="text" placeholder="Date" />
           <h3>in</h3>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
           <input type="text" placeholder="Entity..." />
         </div>
         <div style={{ paddingBottom: "15px" }}>
-          <XIcon src="icons/plus.png" alt="Plus icon" />
+          <XIcon src={linkSmart("icons/plus.png")} alt="Plus icon" />
           <p style={{ color: `${Colors.blue}` }}>Add filter choose property</p>
-          <ArrowIcon src="icons/arrow-down.png" alt="Arrow down icon" />
+          <ArrowIcon src={linkSmart("icons/arrow-down.png")} alt="Arrow down icon" />
         </div>
       </FilterWrapper>
     </div>

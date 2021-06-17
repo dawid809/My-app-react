@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Colors } from "../../styledHelpers/Colors";
 import { useFormik } from "formik";
+import { linkSmart } from "../common/smartLink/SmartLink";
 
 const PanelInformationWrapper = styled.div`
   margin: 10px;
@@ -120,7 +121,7 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
       )}
          {props.formikPanelInformationsEnabled ? (
            <AttachmentWrapper>
-                <CustomImg src="icons/request.png" alt="zapytanie" />
+                <CustomImg src={linkSmart("icons/request.png")} alt="zapytanie" />
                <CustomText>Attachment name: {attachmentValue}</CustomText>
                </AttachmentWrapper>
                ) : (
