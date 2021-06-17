@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { ISingleUser } from "../entities/users";
 import * as actionTypes from "../actions/actionTypes/userTypes";
 
@@ -18,7 +20,7 @@ export default (state = defaultState(), action: any) => {
       return {
         ...state,
         usersList: payload.data.usersList,
-        currentUser: payload.data.currentUser
+        currentUser: payload.data.currentUser,
       };
     }
     default: {

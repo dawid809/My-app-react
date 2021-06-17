@@ -96,7 +96,7 @@ const LinkText = styled(StyledLink)`
 const CustomInput = styled.input.attrs({
   type: "text",
 })`
-  font-size: 15px;
+  font-size: ${fontSize[16]};
   line-height: 1.3;
   display: flex;
   flex-direction: row;

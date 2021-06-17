@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   border-radius: 4px;
   top: 25px;
   overflow: hidden;
-  z-index:100;
+  z-index: 100;
   h2 {
     text-align: center;
     align-self: center;
@@ -36,8 +36,8 @@ interface IFollowedProps {
 }
 
 class Followed extends Component<IFollowedProps> {
-  render() {
-    const {handleIsFollowed, setAllFollowed} = this.props;
+  render(): JSX.Element {
+    const { handleIsFollowed, setAllFollowed } = this.props;
     return (
       <Wrapper>
         <h2 onClick={setAllFollowed}>All</h2>

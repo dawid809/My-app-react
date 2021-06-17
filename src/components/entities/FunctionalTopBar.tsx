@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
@@ -279,7 +279,10 @@ export const FunctionalTopBar: FC<IFunctionalTopBarProps> = (props) => {
           <div ref={filterRef} style={{ position: "relative" }}>
             <FilterContainer onClick={filterMenuHandler}>
               <IconAndTextWrapper>
-                <GrayIcon src={linkSmart("icons/filter.png")} alt="Filter icon" />
+                <GrayIcon
+                  src={linkSmart("icons/filter.png")}
+                  alt="Filter icon"
+                />
                 <Text>Filters</Text>
               </IconAndTextWrapper>
             </FilterContainer>
@@ -323,7 +326,10 @@ export const FunctionalTopBar: FC<IFunctionalTopBarProps> = (props) => {
           <div ref={followedRef} style={{ position: "relative" }}>
             <FollowedContainer onClick={followedMenudHandler}>
               <IconWrapper style={{ padding: "5px" }}>
-                <BlueIcon src={linkSmart("icons/broadcast.png")} alt="Broadcast icon" />
+                <BlueIcon
+                  src={linkSmart("icons/broadcast.png")}
+                  alt="Broadcast icon"
+                />
                 <BlueText>Followed</BlueText>
                 <BlueIcon
                   src={linkSmart("icons/arrow-down.png")}

@@ -54,7 +54,10 @@ export const RightIcons: FC = () => {
     <RightIconsWrapper>
       <CustomImg src={linkSmart("icons/house.png")} />
       <RoundedWrapperForImage>
-        <CustomIconInsideWrapper src={linkSmart("icons/comments.png")} alt="Comments" />
+        <CustomIconInsideWrapper
+          src={linkSmart("icons/comments.png")}
+          alt="Comments"
+        />
         <NotificationCounterWrapper>3</NotificationCounterWrapper>
       </RoundedWrapperForImage>
       <RoundedWrapperForImage>

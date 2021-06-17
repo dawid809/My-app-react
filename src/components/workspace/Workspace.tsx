@@ -4,8 +4,8 @@ import useDropdown from "react-dropdown-hook";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+
+import { FaBeer } from 'react-icons/fa';
 
 import { CorporateMatters } from "./CorporateMatters";
 import { Pagination } from "../publications/Pagination";
@@ -50,6 +50,29 @@ const TopContainer = styled.div`
   justify-content: space-between;
 `;
 
+const BackgroundImg = styled.img`
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+`;
+
+const TopBarTextAndImg = styled.div`
+  padding: 15px;
+  margin-bottom: 20px;
+
+  .float-left-wrapper {
+    float: left;
+    margin-right: 20px;
+  }
+
+  .title-text-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: -5px;
+    }
+`;
+
 const Title = styled.h2`
   align-self: center;
   font-weight: bold;
@@ -66,8 +89,6 @@ const TileList = styled.div`
 
   ul {
     display: flex;
-    /* flex-direction: row;
-justify-content: space-evenly; */
   }
 
   li {
@@ -75,6 +96,8 @@ justify-content: space-evenly; */
     padding: 5px 10px;
     border: ${Colors.border};
     border-radius: 4px;
+    display: flex;
+    flex-direction: row;
 
     i {
       width: 17px;
@@ -102,16 +125,14 @@ const SearchImg = styled(SmallImg)`
 const MediumImg = styled(SmallImg)`
   width: 22px;
   height: 22px;
-  filter: invert(16%) sepia(62%) saturate(3838%) hue-rotate(237deg)
-    brightness(78%) contrast(106%);
+  filter: opacity(0.4) drop-shadow(0 0 0 blue);
 `;
 
 const SmallImgArrow = styled.img`
   width: 9px;
   height: 6px;
   margin: 0 5px;
-  filter: invert(16%) sepia(62%) saturate(3838%) hue-rotate(237deg)
-    brightness(78%) contrast(106%);
+  filter: opacity(0.4) drop-shadow(0 0 0 blue);
 `;
 
 const CustomFilter = styled.input`
@@ -184,15 +205,15 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
     else return;
   };
 
-  const TileData = [
-    { title: "All", color: "#EECEFE", icon: "" },
-    { title: "SAS", color: "#00FF6D", icon: "faCoffee" },
-    { title: "SARL", color: "#BFF7F1", icon: "faCoffee" },
-    { title: "Secondary business", color: "#F5D305", icon: "faCoffee" },
-    { title: "Communities", color: "#BABABA", icon: "faCoffee" },
-    { title: "POA", color: "#DADDDB", icon: "faCoffee" },
-    { title: "Survey", color: "whitesmoke" },
-    { title: "...", color: "white", icon: "" },
+  const tileData = [
+    { title: "All", color: "#a673c0", backgoundColor: "#EECEFE"},
+    { title: "SAS", color: "#1fb861", backgoundColor: "#00FF6D"},
+    { title: "SARL", color: "#3ca89e", backgoundColor: "#BFF7F1"},
+    { title: "Secondary business", color: "#ccb419", backgoundColor: "#F5D305"},
+    { title: "Communities", color: "#665f5f", backgoundColor: "#BABABA"},
+    { title: "POA", color: "#949c97", backgoundColor: "#DADDDB"},
+    { title: "Survey", color: "#c4c9c5", backgoundColor: "#e6e9e6"},
+    { title: "...", color: "#e6ece8", backgoundColor: "#f7f8f7"},
   ];
 
   const name = props.name;
@@ -204,28 +225,17 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
         <div>
           <TopBarWrapper>
             <div style={{ position: "relative" }}>
-              <img
-                src="../icons/table.png"
-                alt="photo"
-                style={{ width: "100%", height: "120px", objectFit: "cover" }}
-              />
+              <BackgroundImg src="../icons/table.png" alt="photo" />
             </div>
-            <div style={{ padding: "15px", marginBottom: "20px" }}>
-              <div style={{ float: "left", marginRight: "20px" }}>
+            <TopBarTextAndImg>
+              <div className="float-left-wrapper">
                 <img
                   src={linkSmart(imgUrl)}
                   alt="icon"
                   style={{ width: "55px" }}
                 />
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  marginTop: "-5px",
-                }}
-              >
+              <div className="title-text-wrapper">
                 <h1>{name}</h1>
                 <img
                   src={linkSmart("icons/cog.png")}
@@ -238,7 +248,7 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
                 description is here to remind peope where they are, if they are
                 new or ahve poor memory
               </p>
-            </div>
+            </TopBarTextAndImg>
           </TopBarWrapper>
           <CorporateMatters />
         </div>
@@ -282,12 +292,12 @@ export const Workspace: FC<IWorkspaceProps> = (props) => {
 
         <TileList>
           <ul>
-            {TileData.map((value) => (
-              <li key={value.title} style={{ backgroundColor: value.color }}>
+            {tileData.map((value) => (
+              <li key={value.title} style={{ backgroundColor: value.backgoundColor }}>
                 <span>
-                  <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
+               <FaBeer color={value.color}/>
                 </span>
-                {value.title}
+                <h3 style={{color: value.color}}>{value.title}</h3>
               </li>
             ))}
           </ul>

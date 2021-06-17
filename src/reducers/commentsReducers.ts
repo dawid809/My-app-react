@@ -1,27 +1,29 @@
-import { ISingleComment } from '../entities/comments';
-import * as actionTypes from '../actions/actionTypes/commentTypes'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { ISingleComment } from "../entities/comments";
+import * as actionTypes from "../actions/actionTypes/commentTypes";
 
 export interface ICommentsReducer {
-    commentsList: ISingleComment[];
-    currentComment: ISingleComment
+  commentsList: ISingleComment[];
+  currentComment: ISingleComment;
 }
 
 const defaultState = (): ICommentsReducer => ({
-    commentsList: [],
-    currentComment: undefined
+  commentsList: [],
+  currentComment: undefined,
 });
 
 export default (state = defaultState(), action: any) => {
-    switch (action.type) {
-        case actionTypes.GET_COMMENTS: {
-            const payload: actionTypes.ICommentTypes['GET_COMMENTS'] = action;
-            return {
-                ...state,
-                commentsList: payload.commentsList
-            }
-        }
-        default: {
-            return state
-        }
+  switch (action.type) {
+    case actionTypes.GET_COMMENTS: {
+      const payload: actionTypes.ICommentTypes["GET_COMMENTS"] = action;
+      return {
+        ...state,
+        commentsList: payload.commentsList,
+      };
     }
-}
+    default: {
+      return state;
+    }
+  }
+};

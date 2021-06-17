@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
 import { Colors } from "../../styledHelpers/Colors";
-import { fontSize } from "../../styledHelpers/FontSizes";
 import { SingleEntity } from "./SingleEntity";
 import { FunctionalTopBar } from "./FunctionalTopBar";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
@@ -48,7 +47,7 @@ export const Entities: FC = () => {
     dispatch<GetPosts>(getPosts());
   }, []);
 
-  const { usersList, photosList, currentUser, postsList } = useSelector<
+  const { photosList } = useSelector<
     IState,
     IUsersReducer & IPhotosReducer & IPostsReducer
   >((globalState) => ({

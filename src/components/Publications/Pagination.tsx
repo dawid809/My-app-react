@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import ReactPaginate from "react-paginate";
-import "../publications/index.css";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { useSelector } from "react-redux";
@@ -16,6 +15,8 @@ import { IUsersReducer } from "../../reducers/usersReducers";
 import { IPostsReducer } from "../../reducers/postsReducer";
 import { IPhotosReducer } from "../../reducers/photosReducer";
 import { linkSmart } from "../common/smartLink/SmartLink";
+
+import "../publications/index.css";
 
 type GetComments = ReturnType<typeof getComments>;
 type GetUsers = ReturnType<typeof getUsers>;
@@ -83,16 +84,15 @@ export const Pagination: FC<IPaginationProps> = (props) => {
     dispatch<GetPhotos>(getPhotos());
   }, []);
 
-  const { commentsList, usersList, postsList, currentUser, photosList } =
-    useSelector<
-      IState,
-      ICommentsReducer & IUsersReducer & IPostsReducer & IPhotosReducer
-    >((globalState) => ({
-      ...globalState.comments,
-      ...globalState.users,
-      ...globalState.posts,
-      ...globalState.photos,
-    }));
+  const { commentsList, usersList, postsList, photosList } = useSelector<
+    IState,
+    ICommentsReducer & IUsersReducer & IPostsReducer & IPhotosReducer
+  >((globalState) => ({
+    ...globalState.comments,
+    ...globalState.users,
+    ...globalState.posts,
+    ...globalState.photos,
+  }));
 
   const [pageNumber, setPageNumber] = useState(0);
 

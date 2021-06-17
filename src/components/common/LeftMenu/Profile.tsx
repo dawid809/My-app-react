@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { IState } from "../../../reducers";
 import { IUsersReducer } from "../../../reducers/usersReducers";
 import { IPhotosReducer } from "../../../reducers/photosReducer";
-import {linkSmart} from "../smartLink/SmartLink";
+import { linkSmart } from "../smartLink/SmartLink";
 
 type GetUsers = ReturnType<typeof getUsers>;
 type GetPhotos = ReturnType<typeof getPhotos>;
@@ -95,12 +95,11 @@ export const Profile: FC = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <UserAvatar
             src={photosList?.[currentUser?.id - 1]?.url}
-          
             alt="User photo"
           />
-          <NameText>{usersList?.[currentUser?.id-1]?.name}</NameText>
+          <NameText>{usersList?.[currentUser?.id - 1]?.name}</NameText>
           <GrayText>
-            Job title - {usersList[currentUser?.id-1]?.company.name}
+            Job title - {usersList[currentUser?.id - 1]?.company.name}
           </GrayText>
         </div>
       </StyledLink>
@@ -110,16 +109,25 @@ export const Profile: FC = () => {
           <CustomImg src={linkSmart("icons/network.png")} alt="Network" />
           <StyledLink to="/testPage">
             <SubtitleText>Your network</SubtitleText>
-            <CustomImageWithBorder src={linkSmart("icons/user-plus.png")} alt="Add user" />
+            <CustomImageWithBorder
+              src={linkSmart("icons/user-plus.png")}
+              alt="Add user"
+            />
           </StyledLink>
         </SubtitleWrapper>
 
         <SubtitleWrapper>
-          <CustomImg src={linkSmart("icons/publications.png")} alt="Publications" />
+          <CustomImg
+            src={linkSmart("icons/publications.png")}
+            alt="Publications"
+          />
           <StyledLink to="/testPage">
             <SubtitleText>Your Publications</SubtitleText>
           </StyledLink>
-          <CustomImageWithBorder src={linkSmart("icons/plus.png")} alt="Icons" />
+          <CustomImageWithBorder
+            src={linkSmart("icons/plus.png")}
+            alt="Icons"
+          />
         </SubtitleWrapper>
       </AboutMe>
     </ProfileWrapper>

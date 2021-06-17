@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 
 import Slider from "react-slick";
 import { Colors } from "../../styledHelpers/Colors";
-import "../publications/index.css";
 
 import { useSelector } from "react-redux";
 import { IState } from "../../reducers";
@@ -13,6 +12,8 @@ import { IPhotosReducer } from "../../reducers/photosReducer";
 import { fontSize } from "../../styledHelpers/FontSizes";
 import { StyledLink } from "../../styledHelpers/Components";
 import { linkSmart } from "../common/smartLink/SmartLink";
+
+import "../publications/index.css";
 
 type GetPhotos = ReturnType<typeof getPhotos>;
 
@@ -150,16 +151,16 @@ export const Workspaces: FC = () => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-        }
         },
-        {
-          breakpoint: 1300,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-          }
-        }
-    ]
+      },
+      {
+        breakpoint: 1300,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const dispatch = useDispatch();

@@ -33,7 +33,7 @@ const TestIcon = styled.img`
 `;
 
 export default class TestPage extends Component {
-  render() {
+  render(): JSX.Element {
     return (
       <ContentContext>
         <TestPageWrapper>

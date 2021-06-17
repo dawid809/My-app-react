@@ -1,16 +1,18 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 
 import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
-import { getUsers } from "../../actions/usersActions";
-import { getPhotos } from "../../actions/photosActions";
-
-import { useSelector } from "react-redux";
-import { IState } from "../../reducers";
-import { IUsersReducer } from "../../reducers/usersReducers";
-import { IPhotosReducer } from "../../reducers/photosReducer";
 import { linkSmart } from "../common/smartLink/SmartLink";
+
+// import { useState } from "react";
+// import { getUsers } from "../../actions/usersActions";
+// import { getPhotos } from "../../actions/photosActions";
+
+// import { useSelector } from "react-redux";
+// import { IState } from "../../reducers";
+// import { IUsersReducer } from "../../reducers/usersReducers";
+// import { IPhotosReducer } from "../../reducers/photosReducer";
 
 const InternalCorrespondantsWrapper = styled.div`
   margin: 10px;
@@ -27,7 +29,7 @@ const SingleUserWrapper = styled.div`
 
 const TitleText = styled.h1`
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: ${fontSize[18]};
   padding: 5px 0;
   margin-bottom: 15px;
 `;

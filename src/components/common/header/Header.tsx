@@ -52,7 +52,7 @@ export const Header: FC = () => {
         <StyledLink to="/">
           <Logo src={linkSmart("icons/logo.png")} alt="logo" />
         </StyledLink>
-        <div ref={wrapperRef} style={{position: "relative"}}>
+        <div ref={wrapperRef} style={{ position: "relative" }}>
           <LeftIcons onClick={menuHandler}>
             <LeftIconsContent />
           </LeftIcons>

@@ -153,7 +153,7 @@ const CustomDatePickerDisabled = styled(CustomDatePicker)`
 interface IProps {
   formikSelectOptionsEnabled?: boolean;
 }
-export const Proposals: FC<IProps> = (formikSelectOptionsEnabled) => {
+export const Proposals: FC<IProps> = () => {
   const formikTable = useFormik({
     initialValues: {
       rowone: {

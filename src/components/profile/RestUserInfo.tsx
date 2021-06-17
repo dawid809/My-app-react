@@ -1,9 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
-import { Select, Descriptions, Upload, Button } from "antd";
-import "antd/dist/antd.css";
+import { Select, Descriptions } from "antd";
 import { Colors } from "../../styledHelpers/Colors";
 import { PanelInformations } from "./PanelInformations";
 import { InternalCorrespondants } from "./InternalCorrespondants";
@@ -12,16 +10,8 @@ import { InternalReviews } from "./table/InternalReviews";
 import { AmountOfFees } from "./table/AmountOfFees";
 import { fontSize } from "../../styledHelpers/FontSizes";
 
-// import { getUsers } from "../../actions/usersActions";
-// import { getPhotos } from "../../actions/photosActions";
-
-// import { useSelector } from "react-redux";
-// import { IState } from "../../reducers";
-// import { IUsersReducer } from "../../reducers/usersReducers";
-// import { IPhotosReducer } from "../../reducers/photosReducer";
-
-// type GetUsers = ReturnType<typeof getUsers>;
-// type GetPhotos = ReturnType<typeof getPhotos>;
+// Some style are globally
+import "antd/dist/antd.css";
 
 const UserWrapper = styled.div`
   display: flex;
@@ -129,7 +119,8 @@ export const RestUserInfo: FC = () => {
     setFormikSelectOptionsEnabled(!disable);
   };
 
-  const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] = useState(true);
+  const [formikPanelInformationsEnabled, setformikPanelInformationsEnabled] =
+    useState(true);
 
   const editPanelInformationsHandle = () => {
     const disable = formikPanelInformationsEnabled;
@@ -156,10 +147,13 @@ export const RestUserInfo: FC = () => {
       <form onSubmit={formikSelectOption.handleSubmit}>
         <UserExperienceWrapper>
           <EditWrapper>
-            <EditButton onClick={() => {
-              editSelectOptionHandle();
-          editPanelInformationsHandle();
-        }} type="submit">
+            <EditButton
+              onClick={() => {
+                editSelectOptionHandle();
+                editPanelInformationsHandle();
+              }}
+              type="submit"
+            >
               <EditIcon src="icons/pen.png" />
             </EditButton>
           </EditWrapper>
@@ -286,13 +280,12 @@ export const RestUserInfo: FC = () => {
           )}
         </UserExperienceWrapper>
       </form>
-      <PanelInformations  formikPanelInformationsEnabled={formikPanelInformationsEnabled} />
+      <PanelInformations
+        formikPanelInformationsEnabled={formikPanelInformationsEnabled}
+      />
       <InternalCorrespondants />
-
       <Proposals />
-
       <InternalReviews />
-
       <AmountOfFees />
     </UserWrapper>
   );

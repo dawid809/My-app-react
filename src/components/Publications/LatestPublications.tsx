@@ -155,11 +155,11 @@ export const LatestPublications: FC = () => {
               margin: "10px 15px",
             }}
           >
-            <h2>{postsList[currentUser?.id-1]?.body}</h2>
+            <h2>{postsList[currentUser?.id - 1]?.body}</h2>
             <DateAndUserContainer>
               <h3>7 jan. 2020</h3>
-              <img src={photosList[currentUser?.id-1]?.url} alt="photo" />
-              <h4>{usersList[currentUser?.id-1]?.name}</h4>
+              <img src={photosList[currentUser?.id - 1]?.url} alt="photo" />
+              <h4>{usersList[currentUser?.id - 1]?.name}</h4>
             </DateAndUserContainer>
           </div>
         </div>
@@ -176,7 +176,10 @@ export const LatestPublications: FC = () => {
           {postsList.slice(1, 4).map((val) => {
             return (
               <SinglePublication key={val.id}>
-                <img src={linkSmart("icons/writing-contract.png")} alt="writing-man" />
+                <img
+                  src={linkSmart("icons/writing-contract.png")}
+                  alt="writing-man"
+                />
                 <div>
                   <h2>{val.body}</h2>
                   <div
@@ -188,10 +191,10 @@ export const LatestPublications: FC = () => {
                   >
                     <h3>7 jan. 2020</h3>
                     <img
-                      src={photosList[currentUser?.id-1]?.url}
+                      src={photosList[currentUser?.id - 1]?.url}
                       style={{ width: "20px", borderRadius: "50%" }}
                     ></img>
-                    <h4>{usersList[currentUser?.id-1]?.name}</h4>
+                    <h4>{usersList[currentUser?.id - 1]?.name}</h4>
                   </div>
                 </div>
               </SinglePublication>

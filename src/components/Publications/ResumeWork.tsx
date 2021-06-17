@@ -1,13 +1,13 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import useDropdown from "react-dropdown-hook";
 
-import { Colors } from '../../styledHelpers/Colors';
+import { Colors } from "../../styledHelpers/Colors";
 import { fontSize } from "../../styledHelpers/FontSizes";
 import "../publications/index.css";
 
 import { Pagination } from "../publications/Pagination";
-import  Followed  from "../publications/Followed";
+import Followed from "../publications/Followed";
 import { linkSmart } from "../common/smartLink/SmartLink";
 
 const ResumeWorkWrapper = styled.div`
@@ -102,21 +102,19 @@ const Subtititle = styled.h3`
 `;
 
 export const ResumeWork: FC = () => {
-
   const [wrapperRef, dropdownOpen, toggleDropdown] = useDropdown();
 
   const menuHandler = () => {
     toggleDropdown();
   };
 
-  
-const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
-const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  setSearchValue(event.target.value);
-};
+  const onSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
+  };
 
-const [isFollowed, setFollowed] = useState(false);
+  const [isFollowed, setFollowed] = useState(false);
 
   const handleIsFollowed = () => {
     if (isFollowed == false) setFollowed(!isFollowed);
@@ -127,31 +125,43 @@ const [isFollowed, setFollowed] = useState(false);
     if (isFollowed == true) setFollowed(!isFollowed);
     else return;
   };
- 
+
   return (
     <ResumeWorkWrapper>
       <TopContainer>
         <Title>Resume your work </Title>
         <RightIconsAndTextWrapper>
           <FilterContainer>
-            <CustomFilter type="text" placeholder="Filter by title..." onChange={onSearchChange}/>
-            <SearchImg
-              src={linkSmart("icons/search.png")}
-              alt="filtrowanie"
+            <CustomFilter
+              type="text"
+              placeholder="Filter by title..."
+              onChange={onSearchChange}
             />
+            <SearchImg src={linkSmart("icons/search.png")} alt="filtrowanie" />
           </FilterContainer>
 
-          <div ref={wrapperRef} style={{position: "relative"}}>
-          <FollowedContainer onClick={menuHandler}>
-            <MediumImg src={linkSmart("icons/broadcast.png")} alt="transmitowanie" />
-            <Subtititle>Followed</Subtititle>
-            <SmallImgArrow src={linkSmart("icons/arrow-down.png")} alt="strzałka-dół" />
-          </FollowedContainer>
-          {dropdownOpen &&  <Followed handleIsFollowed={handleIsFollowed} setAllFollowed={setAllFollowed}/>}
+          <div ref={wrapperRef} style={{ position: "relative" }}>
+            <FollowedContainer onClick={menuHandler}>
+              <MediumImg
+                src={linkSmart("icons/broadcast.png")}
+                alt="transmitowanie"
+              />
+              <Subtititle>Followed</Subtititle>
+              <SmallImgArrow
+                src={linkSmart("icons/arrow-down.png")}
+                alt="strzałka-dół"
+              />
+            </FollowedContainer>
+            {dropdownOpen && (
+              <Followed
+                handleIsFollowed={handleIsFollowed}
+                setAllFollowed={setAllFollowed}
+              />
+            )}
           </div>
         </RightIconsAndTextWrapper>
       </TopContainer>
-      <Pagination searchValue={searchValue} isFollowed={isFollowed}/>
+      <Pagination searchValue={searchValue} isFollowed={isFollowed} />
     </ResumeWorkWrapper>
   );
 };

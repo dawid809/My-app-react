@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Colors } from "./Colors";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
-  background: whitesmoke;
+  background: ${Colors.whiteSmoke};
   margin-left: auto;
   margin-right: auto;
   width: auto;

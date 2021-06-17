@@ -11,7 +11,7 @@ const ContentContext = styled.div`
 `;
 
 const EcosystemWrapper = styled.div`
-  background: whitesmoke;
+  background: ${Colors.whiteSmoke};
   height: 400px;
   margin: 0.5% 5%;
   border: 1px solid ${Colors.gray};

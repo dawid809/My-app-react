@@ -1,16 +1,16 @@
-import { Dispatch } from 'redux';
-import * as actionTypes from '../actions/actionTypes/commentTypes';
-import { ISingleComment } from '../entities/comments';
+import { Dispatch } from "redux";
+import * as actionTypes from "../actions/actionTypes/commentTypes";
+import { ISingleComment } from "../entities/comments";
 
-
-export const getComments = (): Promise<ISingleComment[]> => ((dispatch: Dispatch) => {
-
-    return fetch('https://jsonplaceholder.typicode.com/comments')
-    .then(response => response.json())
-    .then((commentsList: ISingleComment[]) => {
+export const getComments = (): Promise<ISingleComment[]> =>
+  ((dispatch: Dispatch) => {
+    return fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((response) => response.json())
+      .then((commentsList: ISingleComment[]) => {
         dispatch({
-            type: actionTypes.GET_COMMENTS,
-            commentsList
-        })
-    })
-}) as any;
+          type: actionTypes.GET_COMMENTS,
+          commentsList,
+        });
+      });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }) as any;

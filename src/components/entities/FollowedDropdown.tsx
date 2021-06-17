@@ -41,7 +41,6 @@ export const FollowedDropdown: FC<IFollowedDropdownProps> = ({
   handleIsFollowed,
   setAllFollowed,
 }) => {
-
   return (
     <FollowedWrapper>
       <h2 onClick={setAllFollowed}>All</h2>

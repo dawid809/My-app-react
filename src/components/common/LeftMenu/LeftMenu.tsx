@@ -47,14 +47,20 @@ export const LeftMenu: FC = () => {
         </SubtitleWrapper>
 
         <SubtitleWrapper>
-          <CustomImgWithMargin src={linkSmart("icons/ecosystem.png")} alt="Ecosystem" />
+          <CustomImgWithMargin
+            src={linkSmart("icons/ecosystem.png")}
+            alt="Ecosystem"
+          />
           <StyledLink to="/ecosystem">
             <SubtitleText>Ecosystem</SubtitleText>
           </StyledLink>
         </SubtitleWrapper>
 
         <SubtitleWrapper>
-          <CustomImgWithMargin src={linkSmart("icons/entities2.png")} alt="Entities" />
+          <CustomImgWithMargin
+            src={linkSmart("icons/entities2.png")}
+            alt="Entities"
+          />
           <StyledLink to="/entities">
             <SubtitleText>Entities</SubtitleText>
           </StyledLink>

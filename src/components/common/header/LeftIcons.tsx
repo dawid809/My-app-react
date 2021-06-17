@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { fontSize } from '../../../styledHelpers/FontSizes';
+import { fontSize } from "../../../styledHelpers/FontSizes";
 import { linkSmart } from "../smartLink/SmartLink";
 
 const CustomIcon = styled.img`
@@ -38,7 +38,10 @@ export const LeftIconsContent: FC = () => {
       <WraperHome>
         <CustomIcon src={linkSmart("icons/house2.png")} alt="home" />
         <TitleText>Home</TitleText>
-        <CustomArrowIcon src={linkSmart("icons/arrow-down.png")} alt="arrow down" />
+        <CustomArrowIcon
+          src={linkSmart("icons/arrow-down.png")}
+          alt="arrow down"
+        />
       </WraperHome>
     </LeftIconsWrapper>
   );

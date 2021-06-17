@@ -18,7 +18,7 @@ const TitleText = styled.h1`
 const CustomText = styled.h3`
   margin: 10px 0;
   font-size: 15px;
-   line-height: 1.3;
+  line-height: 1.3;
 `;
 
 const GrayText = styled(CustomText)`
@@ -27,13 +27,13 @@ const GrayText = styled(CustomText)`
 `;
 
 const AttachmentWrapper = styled.div`
-display: flex;
-align-items: center;
-background: ${Colors.lazure};
+  display: flex;
+  align-items: center;
+  background: ${Colors.lazure};
 `;
 
 const CustomAttachment = styled.input.attrs({
-    type: "file"
+  type: "file",
 })`
   padding: 5px;
   background: ${Colors.lazure};
@@ -78,12 +78,11 @@ interface IPanelInformationsProps {
 }
 
 export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
-
   const formik = useFormik({
     initialValues: {
-      hourly: '310 PLN/Day (No Negociated!)a',
-      monthly: 'Monthly 10$ reatiner - see with Jeennna',
-      servicesAndProjects: 'Corporate M&A and international acquisitions '
+      hourly: "310 PLN/Day (No Negociated!)a",
+      monthly: "Monthly 10$ reatiner - see with Jeennna",
+      servicesAndProjects: "Corporate M&A and international acquisitions ",
     },
     enableReinitialize: true,
     onSubmit: (values) => {
@@ -91,58 +90,62 @@ export const PanelInformations: FC<IPanelInformationsProps> = (props) => {
     },
   });
 
-
-  const [attachmentValue, setAttachmentValue] = useState('')
+  const [attachmentValue, setAttachmentValue] = useState("");
 
   return (
     <form onSubmit={formik.handleSubmit}>
-    <PanelInformationWrapper>
-      <TitleText>Panel Informations</TitleText>
+      <PanelInformationWrapper>
+        <TitleText>Panel Informations</TitleText>
 
-      <GrayText>Hourly fee</GrayText>
-      {props.formikPanelInformationsEnabled ? (
-      <CustomText>{formik.values.hourly}</CustomText>
-      ) : (
-        <CustomInput style={{marginBottom: '10px', width: '50%'}}
-        name="hourly"
-        value={formik.values.hourly}
-        onChange={formik.handleChange}
-      />
-      )}
-      <GrayText>Terms & conditions </GrayText>
-      {props.formikPanelInformationsEnabled ? (
-         <CustomText>{formik.values.monthly}</CustomText>
-      ) : (
-        <CustomInput style={{marginBottom: '10px', width: '50%'}}
-        name="monthly"
-        value={formik.values.monthly}
-        onChange={formik.handleChange}
-      />
-      )}
-         {props.formikPanelInformationsEnabled ? (
-           <AttachmentWrapper>
-                <CustomImg src={linkSmart("icons/request.png")} alt="zapytanie" />
-               <CustomText>Attachment name: {attachmentValue}</CustomText>
-               </AttachmentWrapper>
-               ) : (
-      <CustomAttachment onChange={event => setAttachmentValue(event.target.files[0].name)} />
-      )}
-         {props.formikPanelInformationsEnabled ? (
-        <ServicesAndProjectsWrapper>
-      <TitleText>Services&Projects </TitleText>
-      <CustomText>{formik.values.servicesAndProjects}</CustomText>
-    </ServicesAndProjectsWrapper>
-       ) : (
-        <ServicesAndProjectsWrapper>
-      <TitleText>Services&Projects </TitleText>
-      <CustomInput style={{marginBottom: '10px', width: '50%'}}
-        name="servicesAndProjects"
-        value={formik.values.servicesAndProjects}
-        onChange={formik.handleChange}
-      />
-    </ServicesAndProjectsWrapper>
+        <GrayText>Hourly fee</GrayText>
+        {props.formikPanelInformationsEnabled ? (
+          <CustomText>{formik.values.hourly}</CustomText>
+        ) : (
+          <CustomInput
+            style={{ marginBottom: "10px", width: "50%" }}
+            name="hourly"
+            value={formik.values.hourly}
+            onChange={formik.handleChange}
+          />
         )}
-    </PanelInformationWrapper>
+        <GrayText>Terms & conditions </GrayText>
+        {props.formikPanelInformationsEnabled ? (
+          <CustomText>{formik.values.monthly}</CustomText>
+        ) : (
+          <CustomInput
+            style={{ marginBottom: "10px", width: "50%" }}
+            name="monthly"
+            value={formik.values.monthly}
+            onChange={formik.handleChange}
+          />
+        )}
+        {props.formikPanelInformationsEnabled ? (
+          <AttachmentWrapper>
+            <CustomImg src={linkSmart("icons/request.png")} alt="zapytanie" />
+            <CustomText>Attachment name: {attachmentValue}</CustomText>
+          </AttachmentWrapper>
+        ) : (
+          <CustomAttachment
+            onChange={(event) => setAttachmentValue(event.target.files[0].name)}
+          />
+        )}
+        {props.formikPanelInformationsEnabled ? (
+          <ServicesAndProjectsWrapper>
+            <TitleText>Services&Projects </TitleText>
+            <CustomText>{formik.values.servicesAndProjects}</CustomText>
+          </ServicesAndProjectsWrapper>
+        ) : (
+          <ServicesAndProjectsWrapper>
+            <TitleText>Services&Projects </TitleText>
+            <CustomInput
+              style={{ marginBottom: "10px", width: "50%" }}
+              name="servicesAndProjects"
+              value={formik.values.servicesAndProjects}
+              onChange={formik.handleChange}
+            />
+          </ServicesAndProjectsWrapper>
+        )}
+      </PanelInformationWrapper>
     </form>
   );
 };
