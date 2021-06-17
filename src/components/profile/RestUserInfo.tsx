@@ -11,7 +11,8 @@ import { AmountOfFees } from "./table/AmountOfFees";
 import { fontSize } from "../../styledHelpers/FontSizes";
 
 // Some style are globally
-import "antd/dist/antd.css";
+ //import "antd/dist/antd.css";
+ import "./antd.css"
 
 const UserWrapper = styled.div`
   display: flex;
